@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [/GitBook](/GitBook)
+* [GitBook](GitBook)
 
 
 
