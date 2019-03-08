@@ -1,5 +1,5 @@
 # Summary
 
 * [Introduction](README.md)
-* [GitBook](GitBook)
+* [GitBook](GitBook/安装.md)
 
