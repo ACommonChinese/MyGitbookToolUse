@@ -30,4 +30,4 @@ FTP是File Transfer Protocol文件传输协议，上传文件的软件有很多�
 
 主机根目录干净了，现在只有wordpress内容，接下来需要清空数据库，在主机管理面板中的数据库信息中，清空数据库。因为安装wordpress需要使用到数据库并往里面建表，所以事先应让数据库干净。
 
-
+根目录清空，上传wordpress到根目录htdocs下，清空数据库，这三步之后，我们就可以安装wordpress了，
