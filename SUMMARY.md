@@ -4,4 +4,5 @@
 * [GitBook](GitBook/README.md)
     * [安装](GitBook/安装.md)
     * [语法](GitBook/语法.md)
+* [WordPress](WordPress/README.md)
 
