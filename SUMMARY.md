@@ -7,5 +7,5 @@
 * [WordPress](WordPress/README.md)
     * [简介](WordPress/简介.md)
     * [域名解析和域名绑定](WordPress/域名解析和域名绑定.md)
-    * []
+    * [使用FTP上传WordPress](使用FTP上传WordPress.md)
 
