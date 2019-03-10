@@ -30,4 +30,35 @@ FTP是File Transfer Protocol文件传输协议，上传文件的软件有很多�
 
 主机根目录干净了，现在只有wordpress内容，接下来需要清空数据库，在主机管理面板中的数据库信息中，清空数据库。因为安装wordpress需要使用到数据库并往里面建表，所以事先应让数据库干净。
 
-根目录清空，上传wordpress到根目录htdocs下，清空数据库，这三步之后，我们就可以安装wordpress了，
+根目录清空，上传wordpress到根目录htdocs下，清空数据库，这三步之后，我们就可以安装wordpress了，由于此时可能还没有备案成功，没有备案的主机不允许通过域名解析访问，只能通过临时域名打开。因此使用临时域名操作，在主机管理控制台的站点信息里有临时域名：
+![](/WordPress/images/9.png)
+打开浏览器输入临时域名，如果是第一次，会出现Wordpress的安装页面。WordPress的安装需要以下几项信息：
+- 数据库名
+- 数据库用户名
+- 数据库密码
+- 数据库主机
+- 数据表前缀
+
+这些信息都可以在主机管理控制台中的主机信息中查看，按照提示傻瓜式下一步即可。
+
+至此，wordpress安装真正完成。
+
+我们来看一下wordpress的文件结构，进入到站点根目录htdocs下，可以看到：
+
+- wp-admin
+- wp-content
+- wp-includes
+- ...
+
+等文件目录，其中wp-content即是wordpress的根目录，我们以后上传的东西在这个目录下，wp-content下的文件目录类似于：
+
+- languages(语言相关，多语言文件.mo会放入这里)
+- plugins(插件相关)
+- themes(主题相关，安装的Avada, BeTheme等主题在这里)
+- upgrade(升级相关)
+- uploads(上传的一些文件，比如图片)
+- index.php(索引文件)
+- ...
+
+
+
