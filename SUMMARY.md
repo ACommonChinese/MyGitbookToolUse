@@ -2,7 +2,7 @@
 
 * [Introduction](README.md)
 * [GitBook](GitBook/README.md)
-    * [安装](GitBook/安装.md)
+	* [安装](GitBook/安装.md)
     * [语法](GitBook/语法.md)
 * [WordPress](WordPress/README.md)
     * [简介](WordPress/简介.md)
@@ -11,6 +11,8 @@
     * [备案](WordPress/备案.md)
     * [主题介绍](WordPress/主题介绍.md)
     * [BeTheme主题](WordPress/BeTheme/README.md)
-        * [购买和配置主题](WordPress/BeTheme/购买和配置主题.md)
+		* [购买和配置主题](WordPress/BeTheme/购买和配置主题.md)
         * [基本操作](WordPress/BeTheme/基本操作.md)
+* [iOS](iOS/README.md)
+	* [UIView生命周期](WordPress/iOS/UIView生命周期)
 
