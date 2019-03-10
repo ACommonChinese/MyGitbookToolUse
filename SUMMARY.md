@@ -5,5 +5,5 @@
   * [安装](GitBook/安装.md)
   * [语法](GitBook/语法.md)
 * [WordPress](WordPress/README.md)
-  * [简介](WordPress/jian-jie.md)
+  * [简介](WordPress/简介.md)
 
