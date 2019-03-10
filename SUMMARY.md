@@ -11,6 +11,6 @@
     * [备案](WordPress/备案.md)
     * [主题介绍](WordPress/主题介绍.md)
     * [BeTheme主题](WordPress/BeTheme/README.md)
-      * [购买和配置主题](WordPress/BeTheme/购买和配置主题.md)
-      * [基本操作](WordPress/BeTheme/基本操作.md)
+        * [购买和配置主题](WordPress/BeTheme/购买和配置主题.md)
+        * [基本操作](WordPress/BeTheme/基本操作.md)
 
