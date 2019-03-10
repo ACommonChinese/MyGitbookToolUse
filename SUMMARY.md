@@ -6,4 +6,4 @@
   * [语法](GitBook/语法.md)
 * [WordPress](WordPress/README.md)
   * [简介](WordPress/简介.md)
-  * [域名解析](WordPress/)
+  * [域名解析](WordPress/域名解析.md)
