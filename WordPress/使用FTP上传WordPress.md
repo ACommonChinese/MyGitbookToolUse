@@ -6,7 +6,7 @@ FTP是File Transfer Protocol文件传输协议，上传文件的软件有很多�
 首先，我们下载下来最新版的WordPress[https://wordpress.org/download/](https://wordpress.org/download/), 这个.org是英文官网，也有中文官网，最新版的通过.org这个网站下载，下载好后接下来登录FTP。
 
 主机地址、FTP用户名、FTP密码是登录FTP软件的必要条件，这些可以在主机控制台的站点信息里找到  
-![](/WordPress/images/5.png)  
+![](/WordPress/images/5.png =200x300)  
 打开FileZilla, 文件 --&gt; 站点管理器 --&gt; 新站点 --&gt; 输入相关内容，其中端口使用默认的21，填好后点击连接，如果连接不成功，则试着加密选项中选择：只使用明文FTP\(不安全\)  
 ![](/WordPress/images/6.png)
 
