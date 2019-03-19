@@ -90,8 +90,10 @@ void main() {
   print(ba is A); // true
   print(ba is B); // true
 }
-
 ```
+
+再看一个示例：
+
 
 
 
