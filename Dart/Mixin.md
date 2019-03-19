@@ -94,7 +94,36 @@ void main() {
 
 再看一个示例：
 
+```dart
+abstract class Super {
+  void method() {
+    print("Super");
+  }
+}
 
+class MySuper implements Super {
+  void method() {
+    print("MySuper");
+  }
+}
+
+mixin Mixin on Super { // 此Mixin只能被Super或其子类with
+  void method() {
+    super.method();
+    print("Sub");
+  }
+}
+
+class Client extends MySuper with Mixin {}
+
+void main() {
+  Client().method();
+}
+
+// 程序输出结果：
+// MySuper
+// Sub
+```
 
 
 
