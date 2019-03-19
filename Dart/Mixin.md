@@ -12,7 +12,7 @@ class Walker {
 
 如果我们不想让我们创建的mixin被实例化或扩展，我们可以像这样定义它：
 
-```Dart
+```dart
 abstract class Walker {
   // This class is intended to be used as a mixin, and should not be
   // extended directly.
@@ -26,7 +26,7 @@ abstract class Walker {
 
 要使用mixin的话，你需要使用with关键字，后跟一个或多个mixin的名称：
 
-```Dart
+```dart
 class Cat extends Mammal with Walker {}
 
 class Dove extends Bird with Walker, Flyer {}
@@ -34,7 +34,7 @@ class Dove extends Bird with Walker, Flyer {}
 
 再来看示例：
 
-```
+```dart
 class A {
   String getMessage() => 'A';
 }
