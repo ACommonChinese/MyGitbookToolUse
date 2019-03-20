@@ -14,7 +14,7 @@
         * [购买和配置主题](WordPress/BeTheme/购买和配置主题.md)
         * [基本操作](WordPress/BeTheme/基本操作.md)
 * [iOS](iOS/README.md)
-    * [UIView生命周期](WordPress/iOS/UIView生命周期)
+    * [UIView生命周期](iOS/UIView生命周期)
 * [Dart](Dart/README.md)
     * [Mixin](Dart/Mixin.md)
 
