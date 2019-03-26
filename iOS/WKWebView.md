@@ -4,11 +4,10 @@ WKWebView是iOS8 出来的浏览器控件, 用来取代UIWebView。使用时impo
 
 Core class:
 
+* WKWebView
+* WKWebViewConfiguration
 
-
-
-
-WKWebViewConfiguration
+* WKUserScript
 
 
 
