@@ -529,7 +529,7 @@ if (@available(iOS 11.0, *)) {
 
     // 进度条初始化
     self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.navigationController.navigationBar.bounds), [[UIScreen mainScreen] bounds].size.width, 2)];
-    self.progressView.backgroundColor = [UIColor blueColor];
+    self.progressView.tintColor = [UIColor blueColor];
     // 设置进度条的高度，下面这句代码表示进度条的宽度变为原来的1倍，高度变为原来的1.5倍.
     self.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.5f);
 
