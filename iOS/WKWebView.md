@@ -18,7 +18,8 @@ Core class:
 ### WKWebView
 
 ```Objective-C
--- 常用属性 --
+============================
+== 常用属性 ============================
 // 导航代理
 @property (nullable, nonatomic, weak) id <WKNavigationDelegate> navigationDelegate;
 // UI代理
@@ -43,8 +44,6 @@ Core class:
 @property (nonatomic) BOOL allowsBackForwardNavigationGestures;
 // 自定义UserAgent, 会覆盖默认的值, iOS 9之后有效
 @property (nullable, nonatomic, copy) NSString *customUserAgent
-
-
 ```
 
 ### 进度条
