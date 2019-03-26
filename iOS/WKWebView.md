@@ -7,6 +7,10 @@ Core class:
 * WKWebView
 * WKWebViewConfiguration
 * WKUserScript
+* WKUserContentController
+* WKWebsiteDataStore
+
+
 
 
 
