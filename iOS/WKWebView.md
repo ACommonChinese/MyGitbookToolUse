@@ -348,8 +348,7 @@ NSLog(@"%@", [WKWebsiteDataStore allWebsiteDataTypes]);
 ```
 
 从以上可以看出，苹果暴露了各种缓存的获取方法和移除方法。但是没有给设置方法。而且cookie并不突出。和其他兄弟一样。所以苹果的本意还是不希望原生直接干预cookie的设置。
-但是从iOS11开始，一切都变了。苹果彻底放开了cookie的操作权限。它在WKWebsiteDataStore中暴露了一个
-WKHTTPCookieStore类型的属性。专门用来管理cookie。
+但是从iOS11开始，苹果放开了cookie的操作权限。它在WKWebsiteDataStore中暴露了一个WKHTTPCookieStore类型的属性专门用来管理cookie。
 
 
 
