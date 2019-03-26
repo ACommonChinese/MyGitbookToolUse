@@ -45,12 +45,30 @@ Core class:
 @property (nullable, nonatomic, copy) NSString *customUserAgent
 
 ============================ 常用方法 ============================
+// 带配置信息的初始化方法，configuration表示配置信息对象
+- (instancetype)initWithFrame:(CGRect)frame configuration:(WKWebViewConfiguration *)configuration
+// 加载请求
+- (nullable WKNavigation *)loadRequest:(NSURLRequest *)request;
+// 加载HTML
+- (nullable WKNavigation *)loadHTMLString:(NSString *)string baseURL:(nullable NSURL *)baseURL;
+// 返回上一级
+- (nullable WKNavigation *)goBack;
+// 前进下一级, 需要曾经打开过, 才能前进
+- (nullable WKNavigation *)goForward;
+// 刷新页面
+- (nullable WKNavigation *)reload;
+// 根据缓存有效期来刷新页面
+- (nullable WKNavigation *)reloadFromOrigin;
+// 停止加载页面
+- (void)stopLoading;
+// 执行JavaScript代码
+- (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler;
 ```
 
 ### 进度条
 
 参考链接
 
-[https://www.cnblogs.com/mafeng/p/7266655.html](https://www.cnblogs.com/mafeng/p/7266655.html)
+[https://www.cnblogs.com/mafeng/p/7266655.html](https://www.cnblogs.com/mafeng/p/7266655.html)  
 [https://www.jianshu.com/p/833448c30d70](https://www.jianshu.com/p/833448c30d70)
 
