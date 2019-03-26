@@ -92,6 +92,148 @@ Core class:
 @property (nonatomic) WKDataDetectorTypes dataDetectorTypes API_AVAILABLE(ios(10.0));
 ```
 
+### WKUserContentController
+
+WKUserContentController 是JavaScript与原生进行交互的桥梁, 主要使用的方法有:
+
+```Objective-C
+// 注入JavaScript与原生交互协议
+// JS 端可通过 window.webkit.messageHandlers.<name>.postMessage(<messageBody>) 发送消息
+- (void)addScriptMessageHandler:(id <WKScriptMessageHandler>)scriptMessageHandler name:(NSString *)name;
+// 移除注入的协议, 在dealloc方法中调用
+- (void)removeScriptMessageHandlerForName:(NSString *)name;
+// 通过WKUserScript注入需要执行的JavaScript代码
+- (void)addUserScript:(WKUserScript *)userScript;
+// 移除所有注入的JavaScript代码
+- (void)removeAllUserScripts;
+```
+
+使用WKUserContentController注入的交互协议, 需要遵循WKScriptMessageHandler协议, 在其协议方法中获取JavaScript端传递的事件和参数:
+
+```Objective-C
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message;
+```
+
+WKScriptMessage包含了传递的协议名称及参数, 主要从下面的属性中获取:
+
+```Objective-C
+// 协议名称, 即上面的add方法传递的name
+@property (nonatomic, readonly, copy) NSString *name;
+// 传递的参数
+@property (nonatomic, readonly, copy) id body;
+```
+
+### WKUserScript
+
+WKUserScript用于往加载的页面中添加额外需要执行的JavaScript代码, 主要是一个初始化方法:
+
+```Objective-C
+/*
+source: 需要执行的JavaScript代码
+injectionTime: 加入的位置, 是一个枚举
+typedef NS_ENUM(NSInteger, WKUserScriptInjectionTime) {
+    WKUserScriptInjectionTimeAtDocumentStart,
+    WKUserScriptInjectionTimeAtDocumentEnd
+} API_AVAILABLE(macosx(10.10), ios(8.0));
+
+forMainFrameOnly: 是加入所有框架, 还是只加入主框架
+*/
+- (instancetype)initWithSource:(NSString *)source injectionTime:(WKUserScriptInjectionTime)injectionTime forMainFrameOnly:(BOOL)forMainFrameOnly;
+```
+
+### WKUIDelegate
+
+The WKUIDelegate class provides methods for presenting native user interface elements on behalf of a webpage.
+WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以显示一些native的交互元素。
+比如使用系统的弹框来替换JS中的一些弹框。
+
+```Objective-C
+/**
+ webView中弹出警告框时调用, 只能有一个按钮
+
+ @param webView webView
+ @param message 提示信息
+ @param frame 可用于区分哪个窗口调用的
+ @param completionHandler 警告框消失的时候调用, 回调给JS
+ */
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"警告" message:message preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"我知道了" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler();
+    }];
+    
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+/** 对应js的confirm方法
+ webView中弹出选择框时调用, 两个按钮
+
+ @param webView webView description
+ @param message 提示信息
+ @param frame 可用于区分哪个窗口调用的
+ @param completionHandler 确认框消失的时候调用, 回调给JS, 参数为选择结果: YES or NO
+ */
+- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler {
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请选择" message:message preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"同意" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(YES);
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"不同意" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+        completionHandler(NO);
+    }];
+    
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+/** 对应js的prompt方法
+ webView中弹出输入框时调用, 两个按钮 和 一个输入框
+
+ @param webView webView description
+ @param prompt 提示信息
+ @param defaultText 默认提示文本
+ @param frame 可用于区分哪个窗口调用的
+ @param completionHandler 输入框消失的时候调用, 回调给JS, 参数为输入的内容
+ */
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable result))completionHandler {
+    
+    
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请输入" message:prompt preferredStyle:(UIAlertControllerStyleAlert)];
+
+    
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入";
+    }];
+    
+    UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
+        
+        UITextField *tf = [alert.textFields firstObject];
+        
+                completionHandler(tf.text);
+    }];
+    
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
+                completionHandler(defaultText);
+    }];
+    
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+```
+
+### WKNavigationDelegate
+
+
+
+
+注：对于加载非https的url, 须在Info.plist中添加App Transport Security Settings的Allow Arbitrary Loads为YES
+
 ### 进度条
 
 参考链接
