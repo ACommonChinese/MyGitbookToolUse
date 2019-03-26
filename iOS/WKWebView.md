@@ -16,15 +16,15 @@ Core class:
 * WKUIDelegate
 
 * WKWebView
-  * WKWebViewConfiguration
-    * WKUserContentController *userContentController
-    * WKPreferences *preferences
-    * WKWebsiteDataStore *websiteDataStore
-      * WKHTTPCookieStore *httpCookieStore
-  * WKUIDelegate
-  * WKNavigationDelegate
+  - WKWebViewConfiguration
+    - WKUserContentController *userContentController
+    - WKPreferences *preferences
+    - WKWebsiteDataStore *websiteDataStore
+      - WKHTTPCookieStore *httpCookieStore
+  - WKUIDelegate
+  - WKNavigationDelegate
 
-  
+
 ### WKWebView
 
 ```Objective-C
