@@ -229,7 +229,60 @@ WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以�
 
 ### WKNavigationDelegate
 
+``` Objective-C
+// 决定导航的动作，通常用于处理跨域的链接能否导航。
+// WebKit对跨域进行了安全检查限制，不允许跨域，因此我们要对不能跨域的链接单独处理。
+// 但是，对于Safari是允许跨域的，不用这么处理。
+// 这个是决定是否Request
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+    //  在发送请求之前，决定是否跳转
+    decisionHandler(WKNavigationActionPolicyAllow);  
+}
 
+// 是否接收响应
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler{
+    // 在收到响应后，决定是否跳转和发送请求之前那个允许配套使用
+    decisionHandler(WKNavigationResponsePolicyAllow);
+}
+
+//用于授权验证的API，与AFN、UIWebView的授权验证API是一样的
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *__nullable credential))completionHandler{
+    
+    completionHandler(NSURLSessionAuthChallengePerformDefaultHandling ,nil);
+}
+
+// main frame的导航开始请求时调用
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation{
+   
+}
+
+// 当main frame接收到服务重定向时调用
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(null_unspecified WKNavigation *)navigation{
+    // 接收到服务器跳转请求之后调用
+}
+
+// 当main frame开始加载数据失败时，会回调
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
+
+}
+
+// 当内容开始返回时调用
+- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{  
+}
+
+//当main frame导航完成时，会回调
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation{
+    // 页面加载完成之后调用
+}
+
+// 当main frame最后下载数据失败时，会回调
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
+}
+
+// 当web content处理完成时，会回调
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
+}
+```
 
 
 注：对于加载非https的url, 须在Info.plist中添加App Transport Security Settings的Allow Arbitrary Loads为YES
