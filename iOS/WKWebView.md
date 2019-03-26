@@ -235,7 +235,7 @@ WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以�
 // 但是，对于Safari是允许跨域的，不用这么处理。
 // 这个是决定是否Request
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
-    //  在发送请求之前，决定是否跳转
+    // 在发送请求之前，决定是否跳转
     decisionHandler(WKNavigationActionPolicyAllow);  
 }
 
@@ -245,10 +245,9 @@ WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以�
     decisionHandler(WKNavigationResponsePolicyAllow);
 }
 
-//用于授权验证的API，与AFN、UIWebView的授权验证API是一样的
-- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *__nullable credential))completionHandler{
-    
-    completionHandler(NSURLSessionAuthChallengePerformDefaultHandling ,nil);
+// 用于授权验证的API，与AFN、UIWebView的授权验证API是一样的
+- (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *__nullable credential))completionHandler {
+	completionHandler(NSURLSessionAuthChallengePerformDefaultHandling ,nil);
 }
 
 // main frame的导航开始请求时调用
@@ -283,6 +282,75 @@ WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以�
 - (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
 }
 ```
+
+### WKWebsiteDataStore
+
+WKWebsiteDataStore 提供了网站所能使用的数据类型，包括 cookies，硬盘缓存，内存缓存活在一些WebSQL的数据持久化和本地持久化。可通过 WKWebViewConfiguration 类的属性 websiteDataStore 进行相关的设置
+
+```Objective-C
+// 默认的data store
++ (WKWebsiteDataStore *)defaultDataStore;
+
+// 如果为webView设置了这个data Store，则不会有数据缓存被写入文件
+// 当需要实现隐私浏览的时候，可使用这个
++ (WKWebsiteDataStore *)nonPersistentDataStore;
+
+// 是否是可缓存数据的，只读
+@property (nonatomic, readonly, getter=isPersistent) BOOL persistent;
+
+// 获取所有可使用的数据类型
++ (NSSet<NSString *> *)allWebsiteDataTypes;
+
+// 查找指定类型的缓存数据
+// 回调的值是WKWebsiteDataRecord的集合
+- (void)fetchDataRecordsOfTypes:(NSSet<NSString *> *)dataTypes completionHandler:(void (^)(NSArray<WKWebsiteDataRecord *> *))completionHandler;
+
+// 删除指定的纪录
+// 这里的参数是通过上面的方法查找到的WKWebsiteDataRecord实例获取的
+- (void)removeDataOfTypes:(NSSet<NSString *> *)dataTypes forDataRecords:(NSArray<WKWebsiteDataRecord *> *)dataRecords completionHandler:(void (^)(void))completionHandler;
+
+// 删除某时间后修改的某类型的数据
+- (void)removeDataOfTypes:(NSSet<NSString *> *)websiteDataTypes modifiedSince:(NSDate *)date completionHandler:(void (^)(void))completionHandler;
+
+// 保存的HTTP cookies
+@property (nonatomic, readonly) WKHTTPCookieStore *httpCookieStore
+```
+  
+注意事项：参照 [https://blog.csdn.net/u012413955/article/details/79783282](https://blog.csdn.net/u012413955/article/details/79783282)
+
+关于Data types:
+
+``` Objective-C
+Returns a set of all available website data types
+获取dataStore中所有的数据类型:
+
+NSLog(@"%@", [WKWebsiteDataStore allWebsiteDataTypes]);
+{(
+	WKWebsiteDataTypeDiskCache, // 硬盘缓存
+	WKWebsiteDataTypeOfflineWebApplicationCache, // 离线应用缓存
+	WKWebsiteDataTypeMemoryCache, // 内存缓存
+	WKWebsiteDataTypeLocalStorage, // localStorage,cookie的一个兄弟
+	WKWebsiteDataTypeFetchCache,
+	WKWebsiteDataTypeCookies, // cookie
+	WKWebsiteDataTypeSessionStorage, // session
+	WKWebsiteDataTypeIndexedDBDatabases, // 索引数据库
+	WKWebsiteDataTypeWebSQLDatabases, // 数据库
+	WKWebsiteDataTypeServiceWorkerRegistrations
+)}
+
+
+移除某些特定的数据类型:
+-(void)removeDataOfTypes:(NSSet<NSString*>*)dataTypes forDataRecords:(NSArray<WKWebsiteDataRecord *> *)dataRecords completionHandler:(void (^)(void))completionHandler;
+
+移除指定时期的特定的数据类型:
+- (void)removeDataOfTypes:(NSSet<NSString*> *)websiteDataTypes modifiedSince:(NSDate *)date completionHandler:(void (^)(void))completionHandler;
+
+```
+
+从以上可以看出，苹果暴露了各种缓存的获取方法和移除方法。但是没有给设置方法。而且cookie并不突出。和其他兄弟一样。所以苹果的本意还是不希望原生直接干预cookie的设置。
+但是从iOS11开始，一切都变了。苹果彻底放开了cookie的操作权限。它在WKWebsiteDataStore中暴露了一个
+WKHTTPCookieStore类型的属性。专门用来管理cookie。
+
 
 
 注：对于加载非https的url, 须在Info.plist中添加App Transport Security Settings的Allow Arbitrary Loads为YES
