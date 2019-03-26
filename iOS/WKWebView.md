@@ -12,9 +12,8 @@ Core class:
 
 2 delegate:
 
-
-
-
+* WKNavigationDelegate
+* WKUIDelegate
 
 ### 进度条
 
