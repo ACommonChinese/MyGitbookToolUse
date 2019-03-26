@@ -43,6 +43,9 @@ Core class:
 @property (nonatomic) BOOL allowsBackForwardNavigationGestures;
 // 自定义UserAgent, 会覆盖默认的值, iOS 9之后有效
 @property (nullable, nonatomic, copy) NSString *customUserAgent
+
+============================ 常用方法 ============================
+
 ```
 
 ### 进度条
