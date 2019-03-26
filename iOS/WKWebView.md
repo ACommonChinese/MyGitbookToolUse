@@ -143,8 +143,8 @@ forMainFrameOnly: 是加入所有框架, 还是只加入主框架
 
 ### WKUIDelegate
 
-The WKUIDelegate class provides methods for presenting native user interface elements on behalf of a webpage.
-WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以显示一些native的交互元素。
+The WKUIDelegate class provides methods for presenting native user interface elements on behalf of a webpage.  
+WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以显示一些native的交互元素。  
 比如使用系统的弹框来替换JS中的一些弹框。
 
 ```Objective-C
@@ -157,12 +157,12 @@ WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以�
  @param completionHandler 警告框消失的时候调用, 回调给JS
  */
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
-    
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"警告" message:message preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"我知道了" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         completionHandler();
     }];
-    
+
     [alert addAction:ok];
     [self presentViewController:alert animated:YES completion:nil];
 }
@@ -176,16 +176,16 @@ WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以�
  @param completionHandler 确认框消失的时候调用, 回调给JS, 参数为选择结果: YES or NO
  */
 - (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler {
-    
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请选择" message:message preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"同意" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
         completionHandler(YES);
     }];
-    
+
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"不同意" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
         completionHandler(NO);
     }];
-    
+
     [alert addAction:ok];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
@@ -201,26 +201,26 @@ WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以�
  @param completionHandler 输入框消失的时候调用, 回调给JS, 参数为输入的内容
  */
 - (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * _Nullable result))completionHandler {
-    
-    
+
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请输入" message:prompt preferredStyle:(UIAlertControllerStyleAlert)];
 
-    
+
     [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = @"请输入";
     }];
-    
+
     UIAlertAction *ok = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
-        
+
         UITextField *tf = [alert.textFields firstObject];
-        
+
                 completionHandler(tf.text);
     }];
-    
+
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:(UIAlertActionStyleCancel) handler:^(UIAlertAction * _Nonnull action) {
                 completionHandler(defaultText);
     }];
-    
+
     [alert addAction:ok];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
@@ -229,7 +229,7 @@ WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以�
 
 ### WKNavigationDelegate
 
-``` Objective-C
+```Objective-C
 // 决定导航的动作，通常用于处理跨域的链接能否导航。
 // WebKit对跨域进行了安全检查限制，不允许跨域，因此我们要对不能跨域的链接单独处理。
 // 但是，对于Safari是允许跨域的，不用这么处理。
@@ -247,12 +247,12 @@ WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以�
 
 // 用于授权验证的API，与AFN、UIWebView的授权验证API是一样的
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *__nullable credential))completionHandler {
-	completionHandler(NSURLSessionAuthChallengePerformDefaultHandling ,nil);
+    completionHandler(NSURLSessionAuthChallengePerformDefaultHandling ,nil);
 }
 
 // main frame的导航开始请求时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation{
-   
+
 }
 
 // 当main frame接收到服务重定向时调用
@@ -315,7 +315,7 @@ WKWebsiteDataStore 提供了网站所能使用的数据类型，包括 cookies�
 // 保存的HTTP cookies
 @property (nonatomic, readonly) WKHTTPCookieStore *httpCookieStore
 ```
-  
+
 注意事项：参照 [https://blog.csdn.net/u012413955/article/details/79783282](https://blog.csdn.net/u012413955/article/details/79783282)
 
 关于Data types:
@@ -326,16 +326,16 @@ Returns a set of all available website data types
 
 NSLog(@"%@", [WKWebsiteDataStore allWebsiteDataTypes]);
 {(
-	WKWebsiteDataTypeDiskCache, // 硬盘缓存
-	WKWebsiteDataTypeOfflineWebApplicationCache, // 离线应用缓存
-	WKWebsiteDataTypeMemoryCache, // 内存缓存
-	WKWebsiteDataTypeLocalStorage, // localStorage,cookie的一个兄弟
-	WKWebsiteDataTypeFetchCache,
-	WKWebsiteDataTypeCookies, // cookie
-	WKWebsiteDataTypeSessionStorage, // session, HTML会话存储
-	WKWebsiteDataTypeIndexedDBDatabases, // 索引数据库
-	WKWebsiteDataTypeWebSQLDatabases, // 数据库
-	WKWebsiteDataTypeServiceWorkerRegistrations
+    WKWebsiteDataTypeDiskCache, // 硬盘缓存
+    WKWebsiteDataTypeOfflineWebApplicationCache, // 离线应用缓存
+    WKWebsiteDataTypeMemoryCache, // 内存缓存
+    WKWebsiteDataTypeLocalStorage, // localStorage,cookie的一个兄弟
+    WKWebsiteDataTypeFetchCache,
+    WKWebsiteDataTypeCookies, // cookie
+    WKWebsiteDataTypeSessionStorage, // session, HTML会话存储
+    WKWebsiteDataTypeIndexedDBDatabases, // 索引数据库
+    WKWebsiteDataTypeWebSQLDatabases, // 数据库
+    WKWebsiteDataTypeServiceWorkerRegistrations
 )}
 
 
@@ -344,7 +344,6 @@ NSLog(@"%@", [WKWebsiteDataStore allWebsiteDataTypes]);
 
 移除指定时期的特定的数据类型:
 - (void)removeDataOfTypes:(NSSet<NSString*> *)websiteDataTypes modifiedSince:(NSDate *)date completionHandler:(void (^)(void))completionHandler;
-
 ```
 
 获取dataRecord示例：
@@ -353,7 +352,7 @@ NSLog(@"%@", [WKWebsiteDataStore allWebsiteDataTypes]);
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    
+
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
     [self.view addSubview:self.webView];
@@ -362,7 +361,7 @@ NSLog(@"%@", [WKWebsiteDataStore allWebsiteDataTypes]);
     [config.websiteDataStore fetchDataRecordsOfTypes:[NSSet setWithObjects:WKWebsiteDataTypeLocalStorage, nil] completionHandler:^(NSArray<WKWebsiteDataRecord *> * _Nonnull recordList) {
         for (WKWebsiteDataRecord *record in recordList) {
             NSLog(@"%@----%@", record.displayName, record.dataTypes);
-            
+
             /**
             baidu.com----{(
                            WKWebsiteDataTypeLocalStorage
@@ -371,21 +370,20 @@ NSLog(@"%@", [WKWebsiteDataStore allWebsiteDataTypes]);
 
         }
     }];
-    
+
     NSString *urlStr = @"http://www.baidu.com"; // 注：对于加载非https的url, 须在Info.plist中添加App Transport Security Settings的Allow Arbitrary Loads为YES
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
 }
-
 ```
 
-从以上可以看出，苹果暴露了各种缓存的获取方法和移除方法。但是没有给设置方法。而且cookie并不突出。和其他兄弟一样。所以苹果的本意还是不希望原生直接干预cookie的设置。
+从以上可以看出，苹果暴露了各种缓存的获取方法和移除方法。但是没有给设置方法。而且cookie并不突出。和其他兄弟一样。所以苹果的本意还是不希望原生直接干预cookie的设置。  
 但是从iOS11开始，苹果放开了cookie的操作权限。它在WKWebsiteDataStore中暴露了一个WKHTTPCookieStore类型的属性专门用来管理cookie。
 
-### WKHTTPCookieStore(iOS 11.0)
+### WKHTTPCookieStore\(iOS 11.0\)
 
 ```Objective-C
 WKWebViewConfiguration *config = ...;
-config.websiteDataStore.httpCookieStore 
+config.websiteDataStore.httpCookieStore
 ```
 
 ```Objective-C
@@ -420,7 +418,7 @@ WKHTTPCookieStoreObserver协议方法
 @end
 ```
 
-简单示例：
+简单示例：  
 删除指定时间的所有类型数据
 
 ```Objective-C
@@ -428,7 +426,7 @@ NSSet *websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
 NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
 [[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
      // Done
-	NSLog(@"释放");
+    NSLog(@"释放");
 }];
 ```
 
@@ -464,16 +462,16 @@ WKWebsiteDataStore *dataStore = [WKWebsiteDataStore defaultDataStore];
 
 ```Objective-C
 NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
-	                        NSHTTPCookieName: @"liuhuofeitong",
-	                        NSHTTPCookieValue: @"2018",
-	                        NSHTTPCookieDomain: @"baidu.com",
-	                        NSHTTPCookiePath: @"/",
-	                        NSHTTPCookieExpires :   [NSDate dateWithTimeIntervalSinceNow:60*60*24]
-	                    }];
-    
+                            NSHTTPCookieName: @"liuhuofeitong",
+                            NSHTTPCookieValue: @"2018",
+                            NSHTTPCookieDomain: @"baidu.com",
+                            NSHTTPCookiePath: @"/",
+                            NSHTTPCookieExpires :   [NSDate dateWithTimeIntervalSinceNow:60*60*24]
+                        }];
+
 if (@available(iOS 11.0, *)) {
     [web.webView.configuration.websiteDataStore.httpCookieStore setCookie:cookie completionHandler:^{
-        
+
     }];
 } else {
     // Fallback on earlier versions
