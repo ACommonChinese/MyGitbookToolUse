@@ -24,7 +24,6 @@ Core class:
   - WKUIDelegate
   - WKNavigationDelegate
 
-
 ### WKWebView
 
 ```Objective-C
