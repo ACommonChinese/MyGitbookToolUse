@@ -423,7 +423,74 @@ WKHTTPCookieStoreObserver协议方法
 简单示例：
 删除指定时间的所有类型数据
 
+```Objective-C
+NSSet *websiteDataTypes = [WKWebsiteDataStore allWebsiteDataTypes];
+NSDate *dateFrom = [NSDate dateWithTimeIntervalSince1970:0];
+[[WKWebsiteDataStore defaultDataStore] removeDataOfTypes:websiteDataTypes modifiedSince:dateFrom completionHandler:^{
+     // Done
+	NSLog(@"释放");
+}];
+```
 
+查找删除
+
+```Objective-C
+WKWebsiteDataStore *dataStore = [WKWebsiteDataStore defaultDataStore];
+[dataStore fetchDataRecordsOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] completionHandler:^(NSArray<WKWebsiteDataRecord *> * _Nonnull records) {
+    for (WKWebsiteDataRecord *record in records) {
+        [dataStore removeDataOfTypes:record.dataTypes forDataRecords:@[record] completionHandler:^{
+            // done
+        }];
+    }
+}];
+```
+
+查找删除特定的内容
+
+```Objective-C
+WKWebsiteDataStore *dataStore = [WKWebsiteDataStore defaultDataStore];
+[dataStore fetchDataRecordsOfTypes:[WKWebsiteDataStore allWebsiteDataTypes] completionHandler:^(NSArray<WKWebsiteDataRecord *> * _Nonnull records) {
+    for (WKWebsiteDataRecord *record in records) {
+        if ([record.displayName isEqualToString:@"baidu"]) {
+            [dataStore removeDataOfTypes:record.dataTypes forDataRecords:@[record] completionHandler:^{
+                // done
+            }];
+        }
+    }
+}];
+```
+
+新增 cookie
+
+```Objective-C
+NSHTTPCookie *cookie = [NSHTTPCookie cookieWithProperties:@{
+	                        NSHTTPCookieName: @"liuhuofeitong",
+	                        NSHTTPCookieValue: @"2018",
+	                        NSHTTPCookieDomain: @"baidu.com",
+	                        NSHTTPCookiePath: @"/",
+	                        NSHTTPCookieExpires :   [NSDate dateWithTimeIntervalSinceNow:60*60*24]
+	                    }];
+    
+if (@available(iOS 11.0, *)) {
+    [web.webView.configuration.websiteDataStore.httpCookieStore setCookie:cookie completionHandler:^{
+        
+    }];
+} else {
+    // Fallback on earlier versions
+}
+```
+
+获取cookie
+
+```Objective-C
+if (@available(iOS 11.0, *)) {
+    [webView.configuration.websiteDataStore.httpCookieStore getAllCookies:^(NSArray<NSHTTPCookie *> * _Nonnull cookies) {
+        NSLog(@"%@", cookies);
+    }] ;
+} else {
+    // Fallback on earlier versions
+}
+```
 
 ### 进度条
 
