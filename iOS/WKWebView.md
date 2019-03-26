@@ -86,6 +86,10 @@ Core class:
 @property (nullable, nonatomic, copy) NSString *applicationNameForUserAgent API_AVAILABLE(macosx(10.11), ios(9.0));
 // 是否在加载完之后再渲染网页
 @property (nonatomic) BOOL suppressesIncrementalRendering;
+// 布尔值, 确定wkwebView对象是否总是允许网页缩放
+@property (nonatomic) BOOL ignoresViewportScaleLimits API_AVAILABLE(ios(10.0));
+// 网页内容探测, 默认：WKDataDetectorTypeNone; WKDataDetectorTypePhoneNumber， WKDataDetectorTypeLink， ...
+@property (nonatomic) WKDataDetectorTypes dataDetectorTypes API_AVAILABLE(ios(10.0));
 ```
 
 ### 进度条
