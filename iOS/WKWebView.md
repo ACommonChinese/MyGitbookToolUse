@@ -16,14 +16,15 @@ WKWebView是iOS8 出来的浏览器控件, 用来取代UIWebView，使用时impo
 * WKUIDelegate
 
 **层次结构**
+
 * WKWebView
-  - WKWebViewConfiguration
-    - WKUserContentController *userContentController
-    - WKPreferences *preferences
-    - WKWebsiteDataStore *websiteDataStore
-      - WKHTTPCookieStore *httpCookieStore
-  - WKUIDelegate
-  - WKNavigationDelegate
+  * WKWebViewConfiguration
+    * WKUserContentController \*userContentController
+    * WKPreferences \*preferences
+    * WKWebsiteDataStore \*websiteDataStore
+      * WKHTTPCookieStore \*httpCookieStore
+  * WKUIDelegate
+  * WKNavigationDelegate
 
 ### WKWebView
 
@@ -502,7 +503,7 @@ if (@available(iOS 11.0, *)) {
 }
 ```
 
--------------------------------------------------------------------------------------
+---
 
 **下面通过几个示例展示一下WKWebView的常见用法**
 
@@ -531,10 +532,9 @@ if (@available(iOS 11.0, *)) {
     self.progressView.backgroundColor = [UIColor blueColor];
     // 设置进度条的高度，下面这句代码表示进度条的宽度变为原来的1倍，高度变为原来的1.5倍.
     self.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.5f);
-    [self.view addSubview:self.progressView];
-    
+
     [self.navigationController.navigationBar insertSubview:self.progressView atIndex:0];
-    
+
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
     [self.view addSubview:self.webView];
@@ -594,14 +594,9 @@ if (@available(iOS 11.0, *)) {
 }
 
 @end
-
 ```
 
 ### title
-
-
-
-
 
 参考链接
 
