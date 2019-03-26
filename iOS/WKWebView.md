@@ -6,7 +6,6 @@ Core class:
 
 * WKWebView
 * WKWebViewConfiguration
-
 * WKUserScript
 
 
