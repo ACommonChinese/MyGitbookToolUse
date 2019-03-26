@@ -65,6 +65,29 @@ Core class:
 - (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^ _Nullable)(_Nullable id, NSError * _Nullable error))completionHandler;
 ```
 
+### WKWebViewConfiguration
+
+```Objective-C
+// 内容交互控制器，自己注入JS代码及JS调用原生方法注册，在delloc时需要移除注入
+@property (nonatomic, strong) WKUserContentController *userContentController;
+// 用户选择网页内容的粒度，默认值WKSelectionGranularityDynamic
+@property (nonatomic) WKSelectionGranularity selectionGranularity;
+// 网页加载时的偏好设置，比如是否通过js自动打开新的窗口  
+@property (nonatomic, strong) WKPreferences *preferences;
+// 网站数据储存对象，这个属性根据自己需求选择不设置（使用默认）或自己设置，使用这个对象可以设置不存储任何数据和移除/获取缓存数据, [WKWebsiteDataStore defaultDataStore], [WKWebsiteDataStore nonPersistentDataStore]; [WKWebsiteDataStore defaultDataStore].httpCookieStore
+@property (nonatomic, strong) WKWebsiteDataStore *websiteDataStore API_AVAILABLE(macosx(10.11), ios(9.0));
+// 是否允许播放媒体文件
+@property (nonatomic) BOOL allowsAirPlayForMediaPlayback
+// 需要用户来操作才能播放的多媒体类型
+@property (nonatomic) WKAudiovisualMediaTypes mediaTypesRequiringUserActionForPlayback
+// 是使用h5的视频播放器在线播放, 还是使用原生播放器全屏播放
+@property (nonatomic) BOOL allowsInlineMediaPlayback;
+// 把硬件的一些信息告诉浏览器, 如：self.yourSite.customUserAgent=@"Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.3; Trident/7.0; .NET4.0E; .NET4.0C)";
+@property (nullable, nonatomic, copy) NSString *applicationNameForUserAgent API_AVAILABLE(macosx(10.11), ios(9.0));
+// 是否在加载完之后再渲染网页
+@property (nonatomic) BOOL suppressesIncrementalRendering;
+```
+
 ### 进度条
 
 参考链接
