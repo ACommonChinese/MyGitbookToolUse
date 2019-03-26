@@ -257,6 +257,7 @@ WKUIDelegate这个类提供了一些方法，作用是为了在webpage上可以�
 
 // 用于授权验证的API，与AFN、UIWebView的授权验证API是一样的
 // Called when the web view needs to respond to an authentication challenge.
+// If you do not implement this method, the web view will respond to the authentication challenge with the NSURLSessionAuthChallengeRejectProtectionSpace disposition.
 - (void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *__nullable credential))completionHandler {
     completionHandler(NSURLSessionAuthChallengePerformDefaultHandling ,nil);
 }
