@@ -320,7 +320,7 @@ WKWebsiteDataStore 提供了网站所能使用的数据类型，包括 cookies�
 
 关于Data types:
 
-``` Objective-C
+```Objective-C
 Returns a set of all available website data types
 获取dataStore中所有的数据类型:
 
@@ -332,7 +332,7 @@ NSLog(@"%@", [WKWebsiteDataStore allWebsiteDataTypes]);
 	WKWebsiteDataTypeLocalStorage, // localStorage,cookie的一个兄弟
 	WKWebsiteDataTypeFetchCache,
 	WKWebsiteDataTypeCookies, // cookie
-	WKWebsiteDataTypeSessionStorage, // session
+	WKWebsiteDataTypeSessionStorage, // session, HTML会话存储
 	WKWebsiteDataTypeIndexedDBDatabases, // 索引数据库
 	WKWebsiteDataTypeWebSQLDatabases, // 数据库
 	WKWebsiteDataTypeServiceWorkerRegistrations
@@ -347,12 +347,84 @@ NSLog(@"%@", [WKWebsiteDataStore allWebsiteDataTypes]);
 
 ```
 
+获取dataRecord示例：
+
+```Objective-C
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    
+    WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
+    self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
+    [self.view addSubview:self.webView];
+
+    // WKWebsiteDataRecord
+    [config.websiteDataStore fetchDataRecordsOfTypes:[NSSet setWithObjects:WKWebsiteDataTypeLocalStorage, nil] completionHandler:^(NSArray<WKWebsiteDataRecord *> * _Nonnull recordList) {
+        for (WKWebsiteDataRecord *record in recordList) {
+            NSLog(@"%@----%@", record.displayName, record.dataTypes);
+            
+            /**
+            baidu.com----{(
+                           WKWebsiteDataTypeLocalStorage
+                           )}
+             */
+
+        }
+    }];
+    
+    NSString *urlStr = @"http://www.baidu.com"; // 注：对于加载非https的url, 须在Info.plist中添加App Transport Security Settings的Allow Arbitrary Loads为YES
+    [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:urlStr]]];
+}
+
+```
+
 从以上可以看出，苹果暴露了各种缓存的获取方法和移除方法。但是没有给设置方法。而且cookie并不突出。和其他兄弟一样。所以苹果的本意还是不希望原生直接干预cookie的设置。
 但是从iOS11开始，苹果放开了cookie的操作权限。它在WKWebsiteDataStore中暴露了一个WKHTTPCookieStore类型的属性专门用来管理cookie。
 
+### WKHTTPCookieStore(iOS 11.0)
+
+```Objective-C
+WKWebViewConfiguration *config = ...;
+config.websiteDataStore.httpCookieStore 
+```
+
+```Objective-C
+/*!  查找所有已存储的cookie
+ */
+- (void)getAllCookies:(void (^)(NSArray<NSHTTPCookie *> *))completionHandler;
+
+/*! 保存一个cookie, 保存成功后, 会走一次回调方法
+ */
+- (void)setCookie:(NSHTTPCookie *)cookie completionHandler:(nullable void (^)(void))completionHandler;
+
+/*! 删除一个cookie, 待删除的cookie对象可通过 'getAllCookies' 方法获取
+ */
+- (void)deleteCookie:(NSHTTPCookie *)cookie completionHandler:(nullable void (^)(void))completionHandler;
+
+/*! 添加一个观察者, 需要遵循协议 WKHTTPCookieStoreObserver 
+当cookie发送变化时, 会通过 WKHTTPCookieStoreObserver 的协议方法通知该观察者, 在使用完后需要移除观察者
+ */
+- (void)addObserver:(id<WKHTTPCookieStoreObserver>)observer;
+
+/*! 移除观察者
+ */
+- (void)removeObserver:(id<WKHTTPCookieStoreObserver>)observer;
+```
+
+WKHTTPCookieStoreObserver协议方法
+
+```Objective-C
+@protocol WKHTTPCookieStoreObserver <NSObject>
+@optional
+- (void)cookiesDidChangeInCookieStore:(WKHTTPCookieStore *)cookieStore;
+@end
+```
+
+简单示例：
+
+删除指定时间的所有类型数据
 
 
-注：对于加载非https的url, 须在Info.plist中添加App Transport Security Settings的Allow Arbitrary Loads为YES
 
 ### 进度条
 
