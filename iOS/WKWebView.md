@@ -36,11 +36,11 @@ Core class:
 @property (nonatomic, readonly) BOOL canGoBack;
 // 是否可向前
 @property (nonatomic, readonly) BOOL canGoForward;
-// WKWebView继承自UIView, 所以如果想设置scrollView的一些属性, 需要对此属性进行配置
+// WKWebView继承自UIScrollView, 所以如果想设置scrollView的一些属性, 需要对此属性进行配置
 @property (nonatomic, readonly, strong) UIScrollView *scrollView;
 // 是否允许手势左滑返回上一级, 类似导航控制的左滑返回
 @property (nonatomic) BOOL allowsBackForwardNavigationGestures;
-//自定义UserAgent, 会覆盖默认的值 ,iOS 9之后有效
+// 自定义UserAgent, 会覆盖默认的值, iOS 9之后有效
 @property (nullable, nonatomic, copy) NSString *customUserAgent
 ```
 
