@@ -17,6 +17,8 @@ Core class:
 
 * WKWebView
   * WKWebViewConfiguration
+  * WKUIDelegate
+  * WKNavigationDelegate
 
 ### WKWebView
 
