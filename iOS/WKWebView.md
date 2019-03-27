@@ -647,7 +647,7 @@ GitHub地址：[https://github.com/ACommonChinese/ZZSelfLearns/tree/master/JS%E5
 #import "InteractViewController.h"
 #import <WebKit/WebKit.h>
 
-@interface InteractViewController () <WKScriptMessageHandler>
+@interface InteractViewController () <WKScriptMessageHandler, WKNavigationDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (nonatomic, strong) WKWebView *webView;
@@ -669,11 +669,20 @@ GitHub地址：[https://github.com/ACommonChinese/ZZSelfLearns/tree/master/JS%E5
     [self.webView loadHTMLString:[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil] baseURL:baseURL];
     [self.topView addSubview:self.webView];
     
+    self.webView.navigationDelegate = self;
+    
     WKUserContentController *userCC = config.userContentController;
     // JS调用OC添加处理脚本
     [userCC addScriptMessageHandler:self name:@"showMobile"];
     [userCC addScriptMessageHandler:self name:@"showName"];
     [userCC addScriptMessageHandler:self name:@"showMessage"];
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
+    __weak __typeof(self) weakSelf = self;
+    [webView evaluateJavaScript:@"document.title" completionHandler:^(id _Nullable title, NSError * _Nullable error) {
+        weakSelf.title = title;
+    }];
 }
 
 #pragma mark - <WKScriptMessageHandler>
@@ -722,7 +731,90 @@ GitHub地址：[https://github.com/ACommonChinese/ZZSelfLearns/tree/master/JS%E5
 @end
 ```
 
-### title
+**index.html**
+
+
+```HTML
+<html>
+    <!--描述网页信息-->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>This is title</title>
+        <style>
+            *{
+                font-size: 40px;
+            }
+        .btn {
+            height:80px;
+            width:80%;
+            margin-left: 10%;
+            background-color: #0071E7;
+            border: solid 1px #0071E7;
+            border-radius:5px;
+            font-size: 1em;
+            color: white
+        }
+        </style>
+        
+        <script>
+            function clear() {
+                document.getElementById('mobile').innerHTML = ''
+                document.getElementById('name').innerHTML = ''
+                document.getElementById('msg').innerHTML = ''
+            }
+            // OC调用JS的方法列表
+            function showMobile(mobile) {
+                // 这里已经调用过来了 但是搞不明白为什么alert方法没有响应
+                // alert('我是上面的小黄 手机号是:13300001111')
+                document.getElementById('mobile').innerHTML = 'showMobile: ' + mobile
+            }
+            function showName(name) {
+                // alert('你好 ' + msg + ', 我也很高兴见到你')
+                document.getElementById('name').innerHTML = 'showName: ' + name
+            }
+            function showMessage(num, msg) {
+                document.getElementById('msg').innerHTML = 'showMessage: ' + num + ',' + msg
+            }
+        
+            // JS响应方法列表
+            function btnClick1() {
+                window.webkit.messageHandlers.showMobile.postMessage(null)
+            }
+        
+            function btnClick2() {
+                window.webkit.messageHandlers.showName.postMessage('xiao黄')
+            }
+        
+            function btnClick3() {
+                window.webkit.messageHandlers.showMessage.postMessage(['13300001111', 'param2'])
+            }
+       </script>
+        
+    </head>
+    
+    <!--网页具体内容-->
+    <body>        
+        <div id="mobile"></div>
+        <div>
+            <button class="btn" type="button" onclick="btnClick1()">call OC: showMobile(null)</button>
+        </div>
+        <br/>
+        
+        <div id="name"></div>
+        <div>
+            <button class="btn" type="button" onclick="btnClick2()">call OC: showName('xiao黄')</button>
+        </div>
+        <br/>
+        
+        <div id="msg"></div>
+        <div>
+            <button class="btn" type="button" onclick="btnClick3()">call OC: showMessage(['xx', 'xx'])</button>
+        </div>
+    </body>
+</html>
+
+```
+
 
 参考链接
 
