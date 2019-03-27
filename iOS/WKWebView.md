@@ -598,6 +598,12 @@ if (@available(iOS 11.0, *)) {
 
 ### JS/OC交互
 
+* WKWebView
+  - WKWebViewConfiguration
+    - WKUserContentController *userContentController
+
+JS调用OC，需要给userContentController设置<WKScriptMessageHandler>和name, 比如：
+
 
 
 ### title
