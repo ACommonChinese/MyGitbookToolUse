@@ -641,7 +641,7 @@ JS调用OC，需要给userContentController设置<WKScriptMessageHandler>和name
 
 ![](./images/1.png)
 
-[https://github.com/ACommonChinese/ZZSelfLearns/tree/master/JS%E5%9B%9E%E8%B0%83%E5%B0%8F%E6%B5%8B%E8%AF%95/](https://github.com/ACommonChinese/ZZSelfLearns/tree/master/JS%E5%9B%9E%E8%B0%83%E5%B0%8F%E6%B5%8B%E8%AF%95/)
+GitHub地址：[https://github.com/ACommonChinese/ZZSelfLearns/tree/master/JS%E5%9B%9E%E8%B0%83%E5%B0%8F%E6%B5%8B%E8%AF%95/](https://github.com/ACommonChinese/ZZSelfLearns/tree/master/JS%E5%9B%9E%E8%B0%83%E5%B0%8F%E6%B5%8B%E8%AF%95/)
 
 ```Objective-C
 #import "InteractViewController.h"
