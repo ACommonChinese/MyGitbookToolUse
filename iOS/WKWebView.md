@@ -604,6 +604,19 @@ if (@available(iOS 11.0, *)) {
 
 JS调用OC，需要给userContentController设置<WKScriptMessageHandler>和name, 比如：
 
+```Objective-C
+[self.webView.configuration.userContentController addScriptMessageHandler:self name:@"myName"]
+
+#pragma mark - WKScriptMessageHandler
+
+// OC在JS调用方法做的处理
+- (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
+	if ([name isEqualToString:@"myName"]) {
+		...
+	}
+}
+```
+
 
 
 ### title
