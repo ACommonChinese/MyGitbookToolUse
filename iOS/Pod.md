@@ -18,6 +18,10 @@ gem sources -a gem sources --add https://gems.ruby-china.com/ #(参考：https:/
 gem sources -l # 验证是否成功
 源: ruby china官网地址：https://gems.ruby-china.com/
 
+upgrade to the latest RubyGems:
+gem update —system
+或： sudo gem update —system
+
 OS X 10.11 以前安装命令为：
 sudo gem install cocoapods # 安装cocoapods
 
