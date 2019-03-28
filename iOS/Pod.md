@@ -245,6 +245,10 @@ pod 'JYCarousel', '~>0.1' //使用大于等于0.1但小于1.0的版本
 pod 'JYCarousel', '~>0' //高于0的版本，写这个限制和什么都不写是一个效果，都表示使用最新版本
 ```
 
+**依赖库的自定义写法**
+`pod 'JYCarousel', :path => '/Users/Dely/Desktop/JYCarousel'`
+
+
 
 
 
