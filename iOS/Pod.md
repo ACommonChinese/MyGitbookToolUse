@@ -217,6 +217,8 @@ end
 end
 ```
 
+即Target JYCocoaPodsTestUITests使用了YYText
+
 **source**
 
 指定specs的位置,自定义添加自己的podspec。公司内部使用
@@ -244,7 +246,7 @@ pod 'JYCarousel', '~>0' //高于0的版本，写这个限制和什么都不写�
 ```
 
 
-即Target JYCocoaPodsTestUITests使用了YYText
+
 
 
 #### 提交自己的Podspec
