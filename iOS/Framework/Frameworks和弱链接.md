@@ -44,6 +44,37 @@ int main() {
 再建一个叫MyFramework的库(File -> New -> Project -> Cocoa Touch Framework)，放入module目录中，右键module -> Add files to 'TestWeakLink' -> 把MyFramework/MyFramwork.xcodeproj引入进去
 ![](images/1.png)
 
+我们新建一个Person类，然后测试：
+
+```Objective-C
+@interface Person : NSObject
+
+- (void)eat:(NSString *)food;
+
+@end
+
+@implementation Person
+
+- (void)eat:(NSString *)food {
+    NSLog(@"Person eat: %@", food);
+}
+
+@end
+```
+
+要使用Framework，需要做以下配置：
+
+1. 把Person引入MyFramework.h\
+```Objective-C
+#if __has_include(<MyFramwork/MyFramwork.h>)
+#import <MyFramwork/MyFramwork.h>
+#else
+#import "Person.h"
+#endif
+```
+2. 
+ 
+
 
 
 
