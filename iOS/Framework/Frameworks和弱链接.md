@@ -99,6 +99,14 @@ int main() {
 @end
 ```
 
+手机OS版本：12.1.2
+项目Deployment Target: 12.1
+MyFramework Deployment Target：12.2  
+
+由于MyFramework版本小于手机OS版本，导致编译不通过，这时候把MyFramework
+
+
+
 
  
 
