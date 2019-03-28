@@ -64,16 +64,20 @@ int main() {
 
 要使用Framework，需要做以下配置：
 
-1. 把Person引入MyFramework.h\
+1. 把Person.h头文件引入MyFramework.h
 ```Objective-C
 #if __has_include(<MyFramwork/MyFramwork.h>)
-#import <MyFramwork/MyFramwork.h>
+#import <MyFramwork/Person.h>
 #else
 #import "Person.h"
 #endif
 ```
 
-2. 
+2. 把Person.h这个头文件放入Public中
+![](images/2.png)
+
+3. 
+
  
 
 
