@@ -154,6 +154,7 @@ touch Podfile # 或者调用：pod init
 
 2. 编辑Podfile文件（假设项目名为JYCocoaPodsTest）
 示例：1
+
 ```Ruby
 platform :ios, '9.0'
 inhibit_all_warnings!
@@ -171,6 +172,7 @@ end
 ```
 
 示例 2
+
 ```Ruby
 source 'ssh://git@gitlab.9ijx.com:9830/iOS/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
