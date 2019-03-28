@@ -218,6 +218,7 @@ end
 **source**
 
 指定specs的位置,自定义添加自己的podspec。公司内部使用
+
 ```Ruby
 cocoapods 官方source是隐式的需要的，一旦你指定了其他source 你就需要也把官方的指定上
 source 'ssh://git@gitlab.9ijx.com:9830/iOS/Specs.git'
