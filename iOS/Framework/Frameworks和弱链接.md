@@ -19,4 +19,20 @@ extern int MyFunction() __attribute__((weak_import));
 extern int MyVariable __attribute__((weak_import));
 ```
 
+Check weakly linked symbols:
 
+```Objective-C
+extern int MyWeakLinkedFunction() __attribute__((weak_import));
+ 
+int main()
+{
+    int result = 0;
+ 
+    if (MyWeakLinkedFunction != NULL)
+    {
+        result = MyWeakLinkedFunction();
+    }
+ 
+    return result;
+}
+```
