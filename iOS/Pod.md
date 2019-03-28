@@ -110,6 +110,7 @@ Pod::Spec.new do |spec|
 end
 ```
 
+**How does the Specs Repo work?**
 
 
 ##### Private Pods
