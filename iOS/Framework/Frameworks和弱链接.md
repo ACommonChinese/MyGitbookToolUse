@@ -76,7 +76,10 @@ int main() {
 2. 把Person.h这个头文件放入Public中
 ![](images/2.png)
 
-3. 
+3. 主项目中 -> TARGETS -> Build Phases -> Link Binary With Libraries -> click "+" 加入MyFramework.framework。同理在Target Dependencies中也加入，另外在General下面的Embedded Binaries中也加入
+
+![](images/3.png)
+
 
  
 
