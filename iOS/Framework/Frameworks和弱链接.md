@@ -80,6 +80,25 @@ int main() {
 
 ![](images/3.png)
 
+4. 使用：
+
+```Objective-c
+#import <MyFramework/MyFramework.h>
+
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    Person *p = Person.new;
+    [p eat:@"Fruit"];
+}
+
+
+@end
+```
+
 
  
 
