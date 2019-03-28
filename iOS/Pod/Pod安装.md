@@ -26,3 +26,9 @@ pod —version
 
 cocoapods本地路径： .cocoapods/repos/master
 
+更新Podspec索引文件:
+pod setup
+pod setup将所有第三方的Podspec索引文件更新到本地的~/.cocoapods/repos目录下
+所有的第三方开源库的Podspec文件都托管在https://github.com/CocoaPods/Specs
+我们需要把这个Podspec文件保存到本地，这样才能让我们使用命令pod search 开源库搜索一个开源库，怎样才能把github上的Podspec文件保存本地呢？那就是 pod setup
+如果执行 pod setup，并且命令执行成功，说明把github上的Podsepc文件更新到本地，那么会创建~/.cocoapods/repos目录，并且repos目录里有一个master目录，这个master目录保存的就是github上所有第三方开源库的Podspec索引文件
