@@ -24,15 +24,22 @@ Check weakly linked symbols:
 ```Objective-C
 extern int MyWeakLinkedFunction() __attribute__((weak_import));
  
-int main()
-{
+int main() {
     int result = 0;
  
-    if (MyWeakLinkedFunction != NULL)
-    {
+    if (MyWeakLinkedFunction != NULL) { // Note: When checking for the existence of a symbol, you must explicitly compare it to NULL or nil in your code. You cannot use the negation operator ( ! ) to negate the address of the symbol.
         result = MyWeakLinkedFunction();
     }
  
     return result;
 }
 ```
+
+如果工程依赖于一个framework，想weak link它，在Target的Build Phases中的Link Binayr With Libraries中把它置为optional即可。
+[https://stackoverflow.com/questions/33038137/xcode-and-optional-frameworks](https://stackoverflow.com/questions/33038137/xcode-and-optional-frameworks)
+
+我们通过一个示例展示：
+
+
+
+
