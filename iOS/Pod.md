@@ -146,8 +146,111 @@ Pod::Spec.new do |s|
 end
 ```
 
-#### 
+#### Pod的使用
 
+1. 新建Podfile文件
+cd /… …/JYCocoaPodsTest
+touch Podfile # 或者调用：pod init
+
+2. 编辑Podfile文件（假设项目名为JYCocoaPodsTest）
+示例：1
+```Ruby
+platform :ios, '9.0'
+inhibit_all_warnings!
+
+xcodeproj 'JYCocoaPodsTest'
+workspace 'JYCocoaPodsTest' #指定应该包含所有projects的Xcode workspace. 如果没有显示指定workspace并且在Podfile所在目录只有一个project，那么project的名称会被用作于workspace的名称
+
+use_frameworks!
+
+target 'JYCocoaPodsTest' do 
+pod 'AFNetworking'
+pod 'JYCarousel', '0.0.1'
+
+end
+```
+
+示例 2
+```Ruby
+source 'ssh://git@gitlab.9ijx.com:9830/iOS/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git'
+ 
+platform :ios, '7.0'
+use_frameworks! # swift项目默认 use_frameworks! OC项目cocoapods 默认 #use_frameworks!
+inhibit_all_warnings! # 屏蔽cocoapods库里面的所有警告 pod 'JYCarousel', :inhibit_warnings => true
+workspace 'JYCocoaPodsTest'
+target 'JYCocoaPodsTest' do
+pod 'AFNetworking'
+pod 'JYCarousel', '0.0.1'
+pod 'WCJCache', :git => "http://gitlab.9ijx.com/iOS/WCJCache.git"
+ 
+target :JYCocoaPodsTestUITests do
+    inherit! :search_paths #明确指定继承于父层的所有pod，默认就是继承的
+    pod 'YYText'
+ 
+end
+```
+
+**target**
+
+```Ruby
+target 'xxxx' do
+  // ......
+end
+
+指定特定Target的依赖库, 可以嵌套子Target的依赖库
+
+比如：
+
+target 'JYCocoaPodsTest' do
+pod 'AFNetworking'
+pod 'JYCarousel', '0.0.1'
+
+target :JYCocoaPodsTestUITests do
+    inherit! :search_paths
+    pod 'YYText'
+ 
+end
+
+end
+```
+
+**source**
+
+指定specs的位置,自定义添加自己的podspec。公司内部使用
+```Ruby
+cocoapods 官方source是隐式的需要的，一旦你指定了其他source 你就需要也把官方的指定上
+source 'ssh://git@gitlab.9ijx.com:9830/iOS/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git' # 官方的
+```
+
+当我们使用pod install或者pod setup时，会自动在~/.cocoapods/repo目录下生成相关source文件夹。
+
+
+**依赖库的基本写法**
+```Ruby
+pod 'JYCarousel', //不显式指定依赖库版本，表示每次都获取最新版本
+pod 'JYCarousel', '0.01'//只使用0.0.1版本
+pod 'JYCarousel', '>0.0.1' //使用高于0.0.1的版本
+pod 'JYCarousel', '>=0.0.1' //使用大于或等于0.0.1的版本
+pod 'JYCarousel', '<0.0.2' //使用小于0.0.2的版本
+pod 'JYCarousel', '<=0.0.2' //使用小于或等于0.0.2的版本
+pod 'JYCarousel', '~>0.0.1' //使用大于等于0.0.1但小于0.1的版本，相当于>=0.0.1&&<0.1
+pod 'JYCarousel', '~>0.1' //使用大于等于0.1但小于1.0的版本
+pod 'JYCarousel', '~>0' //高于0的版本，写这个限制和什么都不写是一个效果，都表示使用最新版本
+```
+
+
+即Target JYCocoaPodsTestUITests使用了YYText
+
+
+#### 提交自己的Podspec
+更新Podspec索引文件:
+pod setup
+pod setup将所有第三方的Podspec索引文件更新到本地的~/.cocoapods/repos目录下
+所有的第三方开源库的Podspec文件都托管在https://github.com/CocoaPods/Specs
+我们需要把这个Podspec文件保存到本地，这样才能让我们使用命令pod search 开源库搜索一个开源库，怎样才能把github上的Podspec文件保存本地呢？那就是 pod setup
+如果执行 pod setup，并且命令执行成功，说明把github上的Podsepc文件更新到本地，那么会创建~/.cocoapods/repos目录，并且repos目录里有一个master目录，这个master目录保存的就是github上所有第三方开源库的Podspec索引文件
 
 ##### Private Pods
 
