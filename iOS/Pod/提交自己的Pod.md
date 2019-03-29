@@ -148,6 +148,15 @@ git add \*
 git commit -m "add tag example"  
 git tag 0.0.1 \# 指定tag为0.0.1，和spec中的version保持一致
 
+关于tag的一些操作：
+
+```
+git tag // 列出所有tag
+git tag -d 1.2 // 删除本地tag 1.2
+git push origin :refs/tags/1.2 // 删除远程tag 1.2
+git push --tag 给远程添加tag
+```
+
 然后后就可以验证这个podspec文件是否合法：  
 pod spec lint ZZQRManager.podspec \# 如果只有一个podspec，像本例，ZZQRManager.podspec可以省略不写，另外, lint后可以加--allow-warnings忽略警告.
 
