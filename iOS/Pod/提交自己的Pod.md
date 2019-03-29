@@ -105,7 +105,7 @@ $ pod ipc spec ZZQRManager.podspec
 
 正式开始：
 
-假设项目和库都写好：
+假设我们项目和库都写好并已上传到github：
 
 在项目PodTest中添加.podspec文件（在根目录添加）
 `pod spec create 'ZZQRManager'` # 创建ZZQRManager.podspec文件
@@ -120,9 +120,10 @@ $ pod ipc spec ZZQRManager.podspec
   * ZZQRManager目录, 里面是.h .m ZZQRManager.bundle
   * ZZQRManager.podspec
 
+```Ruby
 Pod::Spec.new do |s|
     s.name         = 'ZZQRManager'
-    s.version      = '1.3'
+    s.version      = '0.0.1'
     s.summary      = 'An easy way to use qr manage'
     s.homepage     = 'https://github.com/ACommonChinese/ZZQRManager/'
     s.license      = 'MIT'
@@ -134,9 +135,84 @@ Pod::Spec.new do |s|
     s.frameworks   = "UIKit"
     s.requires_arc = true
 end
+```
 
+source支持git, hg, http, svn的方式，我们这里使用git. 注意上面的version，这个应和git管理的tag值保持一致，因此我们需要打tag
 
+cd ..../ZZQRManager
+git add *
+git commit -m "add tag example"
+git tag 0.0.1 # 指定tag为0.0.1，和spec中的version保持一致
 
+然后后就可以验证这个podspec文件是否合法：
+pod spec lint ZZQRManager.podspec # 如果只有一个podspec，像本例，ZZQRManager.podspec可以省略不写，另外, lint后可以加--allow-warnings忽略警告.
+
+验证通过后就可以上传到CocoasPods：
+要上传Podspec到Cocoapod, 重点是tag, 即首先在git上设定tag值用于匹配.podspec文件中的version.
+```Bash
+git tag 1.0.1    #给源代码打版本标签，与podspec文件中version一致即可
+git push --tag  
+```
+
+然后依次按下面步骤操作：
+**Step 1> 注册trunk (第一次提交到cocoapod是需要注册trunk的)**
+
+```
+$ pod trunk register liuxing8807@126.com 'ACommonChinese'
+pod trunk register liuxing8807@126.com 'ACommonChinese'
+[!] Please verify the session by clicking the link in the verification email that has been sent to liuxing8807@126.com
+```
+
+**Step 2> 打开邮箱链接并点击链接，然后调用命令查询注册信息***
+```
+$ pod trunk me
+  - Name:     ACommonChinese
+  - Email:    liuxing8807@126.com
+  - Since:    April 19th, 2016 21:09
+  - Pods:
+    ...
+```
+
+**Step 3> 发布到CocoaPods**
+```
+pod trunk push ZZQRManager.podspec # 忽略警告：pod trunk push ZZQRManager.podspec --allow-warnings
+```
+
+参考：
+[https://www.jianshu.com/p/cbd3cab306cd](https://www.jianshu.com/p/cbd3cab306cd)
+[https://blog.csdn.net/pangshishan1/article/details/71709271](https://blog.csdn.net/pangshishan1/article/details/71709271)
+[https://www.jianshu.com/p/e5209ac6ce6b](https://www.jianshu.com/p/e5209ac6ce6b)
+
+审核通过后，可以通过pod search ZZQRManager查找，另外在~/.cocoapods/repos/master/Specs/目录下会看到ZZQRManager.podspec.json文件，这是trunk帮我们生成的：
+
+```JSON
+{
+  "name": "ZZQRManager",
+  "version": "1.3",
+  "summary": "An easy way to use qr manage",
+  "homepage": "https://github.com/ACommonChinese/ZZQRManager/",
+  "license": "MIT",
+  "authors": {
+    "ACommonChinese": "liuxing8807@126.com"
+  },
+  "platforms": {
+    "ios": "7.0"
+  },
+  "source": {
+    "git": "https://github.com/ACommonChinese/ZZQRManager.git",
+    "tag": "1.3"
+  },
+  "source_files": "ZZQRManager/*.{h,m}",
+  "resources": "ZZQRManager/ZZQRManager.bundle",
+  "requires_arc": true
+}
+```
+
+pod spec lint xxx 遇到的错误：
+   - ERROR | [iOS] unknown: Encountered an unknown error (Could not find a `ios` simulator (valid values: com.apple.coresimulator.simruntime.ios-12-2, com.apple.coresimulator.simruntime.tvos-12-2, com.apple.coresimulator.simruntime.watchos-5-2). Ensure that Xcode -> Window -> Devices has at least one `ios` simulator listed or otherwise add one.) during validation.
+
+解决方法：升级CocoaPods: 
+`sudo gem install cocoapods`
 
 
 
