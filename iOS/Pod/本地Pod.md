@@ -1,6 +1,8 @@
 # 本地Pod
 
-使用Pod可以管理本地文件，podspec并不提交给CocoaPod，通过示例演示：
+使用Pod可以管理本地文件，podspec并不提交给CocoaPod。注意，实际项目不一般不会这样操作，写此仅为了展示Pod支持通过File引用的方式。
+
+通过示例演示：
 [](./demos/LocalFilePodDemo)
 
 **1.新建Single-View Application: LocalFilePodDemo** 
