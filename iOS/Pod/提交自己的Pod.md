@@ -110,6 +110,30 @@ $ pod ipc spec ZZQRManager.podspec
 在项目PodTest中添加.podspec文件（在根目录添加）
 `pod spec create 'ZZQRManager'` # 创建ZZQRManager.podspec文件
 
+以下是我的文件结构：
+
+* ZZQRManager
+  * Demo
+  * images
+  * LICENSE
+  * README.md
+  * ZZQRManager目录, 里面是.h .m ZZQRManager.bundle
+  * ZZQRManager.podspec
+
+Pod::Spec.new do |s|
+    s.name         = 'ZZQRManager'
+    s.version      = '1.3'
+    s.summary      = 'An easy way to use qr manage'
+    s.homepage     = 'https://github.com/ACommonChinese/ZZQRManager/'
+    s.license      = 'MIT'
+    s.authors      = {'ACommonChinese' => 'liuxing8807@126.com'}
+    s.platform     = :ios, '11.0'
+    s.source       = {:git => "https://github.com/ACommonChinese/ZZQRManager.git", :tag => s.version}
+    s.source_files = 'ZZQRManager/*.{h,m}'
+    s.resource     = 'ZZQRManager/ZZQRManager.bundle'
+    s.frameworks   = "UIKit"
+    s.requires_arc = true
+end
 
 
 
