@@ -6,7 +6,8 @@
 **1.新建Single-View Application: LocalFilePodDemo** 
 为了规范，我们在此工程目录下新建一LocalPods，以存放本地库文件。
 
-![image](./images/1.png)
+![image](./images/1.png) 
+
 
 ```Objective-C
 @interface Animal : NSObject
