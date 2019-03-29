@@ -46,6 +46,12 @@ target :JYCocoaPodsTestUITests do
 end
 ```
 
+注意上例中添加了非官方的source, source用于指定specs的位置, 自定义添加自己的podspec。
+公司内部使用cocoapods 官方source是隐式的需要的，一旦你指定了其他source 你就需要也把官方的指定上
+source 'ssh://git@gitlab.9ijx.com:9830/iOS/Specs.git'
+source 'https://github.com/CocoaPods/Specs.git' # 官方的
+
+
 **target**
 
 ```Ruby
@@ -83,7 +89,6 @@ source 'https://github.com/CocoaPods/Specs.git' # 官方的
 ```
 
 当我们使用pod install或者pod setup时，会自动在~/.cocoapods/repo目录下生成相关source文件夹。
-
 
 **依赖库的基本写法**
 ```Ruby
