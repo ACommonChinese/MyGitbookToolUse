@@ -20,6 +20,7 @@
         * [Pod安装](iOS/Pod/Pod安装.md)
         * [Pod使用](iOS/Pod/Pod使用.md)
         * [提交自己的Pod](iOS/Pod/提交自己的Pod.md)
+        * [本地Pod](iOS/Pod/本地Pod.md)
         * [私有Pod](iOS/Pod/私有Pod.md)
     * [Framework](iOS/Framework/README.md)
         * [Frameworks的创建和使用](iOS/Framework/Frameworks的创建和使用.md)
