@@ -18,3 +18,6 @@ app.listen(8090, () => {
 ```
 - 终端指令 node app.js启动服务器
 - 浏览器中 <http://127.0.0.1:8090>访问服务器
+
+安装时出现问题：npm err! cb() never called, 解决方法参见：[Here](https://www.alex-arriaga.com/issue-when-running-npm-install-npm-err-cb-never-called-solved/)
+
