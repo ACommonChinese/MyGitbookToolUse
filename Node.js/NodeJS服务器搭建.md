@@ -6,9 +6,16 @@
 - 在MyNode中新建文件如：app.js
 - 安装express, 终端输入  npm i express --save
 - 在app.js中写如下代码:
-  ```JavaScript
-  
-  ```
+```JavaScript
+var express = require('express')
+var app = express()
+app.use(function(req, res, next) {
+	res.end('hello world')
+})
+app.listen(8090, () => {
+	console.log(`App listening at http://127.0.0.1:8090`)
+})
+```
 
 
 
