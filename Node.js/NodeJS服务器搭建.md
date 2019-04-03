@@ -5,7 +5,6 @@
 - 在MyNode中新建文件如：app.js
 - 安装express, 终端输入  npm i express --save
 - 在app.js中写如下代码:
-
 ​```javascript
 var express = require('express')
 var app = express()
