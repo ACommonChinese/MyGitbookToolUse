@@ -6,7 +6,7 @@
 - 在MyNode中新建文件如：app.js
 - 安装express, 终端输入  npm i express --save
 - 在app.js中写如下代码:
-```JavaScript
+​```javascript
 var express = require('express')
 var app = express()
 app.use(function(req, res, next) {
@@ -22,10 +22,11 @@ app.listen(8090, () => {
 安装时出现问题：npm err! cb() never called, 解决方法参见：[Here](https://www.alex-arriaga.com/issue-when-running-npm-install-npm-err-cb-never-called-solved/)
 
 
-```
+```javascript
 node -v #check version
 sudo npm cache clean -f #Clear your npm cache
 npm install -g n #Install the latest version of the Node helper
 sudo n stable #Tell the helper(n) to install the latest stable version of Node
 npm install #install again
 ```
+
