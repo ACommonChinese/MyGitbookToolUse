@@ -1,6 +1,5 @@
 # NodeJS服务器搭建
 
-
 - 新建项目文件夹比如 MyNode
 - 在文件夹内打开终端，运行 npm init , 一直回车或者填你想填的内容
 - 在MyNode中新建文件如：app.js
