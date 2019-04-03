@@ -1,6 +1,9 @@
 # NodeJS服务器搭建
 
-1） 新建项目文件夹如 serverpjt
+
+- 新建项目文件夹如 serverpjt
+
+
 
 2） 在文件夹内打开终端，运行 npm init , 一直回车或者填你想填的内容
 
