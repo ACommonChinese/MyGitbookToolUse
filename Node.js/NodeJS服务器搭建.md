@@ -3,13 +3,17 @@
 
 - 新建项目文件夹比如 MyNode
 - 在文件夹内打开终端，运行 npm init , 一直回车或者填你想填的内容
-- 在MyNode中
+- 在MyNode中新建文件如：app.js
+- 安装express, 终端输入  npm i express --save
+- 在app.js中写如下代码:
 
-3） 新建文件如 app.js
 
-4） 安装express, 终端输入  npm i express --save
 
-5） 在app.js中写如下代码
+
+
+4） 
+
+5） 
 
 var express = require('express')
 
