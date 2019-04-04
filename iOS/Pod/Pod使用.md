@@ -108,5 +108,5 @@ pod 'JYCarousel', '~>0' //高于0的版本，写这个限制和什么都不写�
 **依赖库的自定义写法**
 `pod 'JYCarousel', :path => '/Users/Dely/Desktop/JYCarousel'`
 
-注意：如果引入一个pod没有指定版本号，则当执行pod install第一次安装时，
+注意：如果引入一个pod没有指定版本号，则当执行pod install第一次安装时，Podfile.lock文件中就会记录当前版本，并写下版本号，下一次再执行pod install, 即使有新版本也不会更新，除非指定了版本号或调用pod update。
 
