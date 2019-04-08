@@ -41,6 +41,8 @@ FTP是File Transfer Protocol文件传输协议，上传文件的软件有很多�
 * 数据库主机
 * 数据表前缀
 
+![](images/10.png)
+
 这些信息都可以在主机管理控制台中的主机信息中查看，按照提示傻瓜式下一步即可。
 
 至此，wordpress安装真正完成。
@@ -61,6 +63,7 @@ FTP是File Transfer Protocol文件传输协议，上传文件的软件有很多�
 * uploads\(上传的一些文件，比如图片\)
 * index.php\(索引文件\)
 * ...
+
 
 
 
