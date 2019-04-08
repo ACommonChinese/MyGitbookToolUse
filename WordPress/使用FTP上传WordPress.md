@@ -3,8 +3,9 @@
 FTP是File Transfer Protocol文件传输协议，上传文件的软件有很多，我这里使用[FileZilla](https://filezilla-project.org/)，下载时注意Download FileZilla Client（所有平台都有）, 没有必要Download FileZilla Server, 因为阿里云里面有Server端的解压等功能，我们只是上传文件，使用Client端的就可以了。
 
 wordpress对PHP版本有要求，所以在准备上传wordpress之前需要对主机[https://cp.aliyun.com](https://cp.aliyun.com)做一些操作：
-- 站点信息 -> 高级环境设置 -> PHP版本设置：改为PHP7.0或以上版本
-- 数据库信息 -> 重置密码(或设置密码) -> 填写好密码后，加密模式勾选为41位
+
+* 站点信息 -&gt; 高级环境设置 -&gt; PHP版本设置：改为PHP7.0或以上版本
+* 数据库信息 -&gt; 重置密码\(或设置密码\) -&gt; 填写好密码后，加密模式勾选为41位
 
 接下来我们使用FileZilla把WordPress上传到主机。  
 首先，我们下载下来最新版的WordPress[https://wordpress.org/download/](https://wordpress.org/download/), 这个.org是英文官网，也有中文官网，最新版的通过.org这个网站下载，下载好后接下来登录FTP。
@@ -67,7 +68,6 @@ wordpress对PHP版本有要求，所以在准备上传wordpress之前需要对�
 * uploads\(上传的一些文件，比如图片\)
 * index.php\(索引文件\)
 * ...
-
 
 
 
