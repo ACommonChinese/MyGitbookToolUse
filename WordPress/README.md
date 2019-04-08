@@ -10,6 +10,8 @@ WordPress是使用[PHP](https://baike.baidu.com/item/PHP/9337)语言开发的博
 * 清空数据库，把数据库改为7.0或以上版本
 * 数据库改为41位加密方式
 * 安装wordpress到根目录下
-* 
+* 购买主题，并上传主题到wordpress下的themes下
+* 启用主题，安装主题内某一Demo(预建站点)
+* 修改Demo
 
 
