@@ -21,74 +21,7 @@
 - 静态库：链接时,静态库会被完整的复制到可执行文件中,被多次使用就有多份拷贝
 - 动态库：链接时不复制,程序运行时由系统动态的加载到内存, 供程序调用, 系统只加载一次, 多个程序共用, 节省内存
 
-### .framework动态库的创建和使用
-
-新建一个Single View App的iOS工程：TestWeakLink, 然后在工程主目录下建一module文件夹，引入这个module文件夹到工程。
-再建一个叫MyFramework的库(File -> New -> Project -> Cocoa Touch Framework)，放入module目录中，右键module -> Add files to 'TestWeakLink' -> 把MyFramework/MyFramwork.xcodeproj引入进去
-![](images/1.png)
-
-我们新建一个Person类，然后测试：
-
-```Objective-C
-@interface Person : NSObject
-
-- (void)eat:(NSString *)food;
-
-@end
-
-@implementation Person
-
-- (void)eat:(NSString *)food {
-    NSLog(@"Person eat: %@", food);
-}
-
-@end
-```
-
-要使用Framework，需要做以下配置：
-
-1. 把Person.h头文件引入MyFramework.h
-```Objective-C
-#if __has_include(<MyFramwork/MyFramwork.h>)
-#import <MyFramwork/Person.h>
-#else
-#import "Person.h"
-#endif
-```
-
-2. 把Person.h这个头文件放入Public中
-![](images/2.png)
-
-3. 主项目中 -> TARGETS -> Build Phases -> Link Binary With Libraries -> click "+" 加入MyFramework.framework。同理在Target Dependencies中也加入，另外在General下面的Embedded Binaries中也加入
-
-![](images/3.png)
-
-4. 使用：
-
-```Objective-c
-#import <MyFramework/MyFramework.h>
-
-
-@implementation ViewController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    Person *p = Person.new;
-    [p eat:@"Fruit"];
-}
-
-
-@end
-```
-
-我们这样建的Framework是动态库，可以进入到MyFramework目录，找到MyFramework, 使用file命令查看：
-```bash
-$ file MyFramework
-MyFramework: Mach-O 64-bit dynamically linked shared library x86_64 # dynamically linked代表是动态链接, 也可以使用lipo -info MyFramework 查看架构信息
-```
-
-动态库里可以引入一些静态库，如果这些静态库不暴露在外面，则不会和外面项目中的库引起冲突。
+需要注意的是，目前swift并不支持静态库
 
 ### .a静态库的的创建和使用
 Cocoa Touch Framework, 即.framework有动态库和静态库之分，Cocoa Touch Static Library，即.a是静态库
@@ -217,6 +150,86 @@ Architectures in the fat file: libMyStaticFramework.a are: x86_64 arm64  #可以
 为了尽可能的支持更多平台，建议把Build Active Architecture Only（只针对当前活跃架构编译）设置为NO
 
 ![](images/12.png)
+
+### .framework
+
+.framework可为动态库和静态库，先来看动态库
+
+新建一个Single View App的iOS工程：TestWeakLink, 然后在工程主目录下建一module文件夹，引入这个module文件夹到工程。
+再建一个叫MyFramework的库(File -> New -> Project -> Cocoa Touch Framework)，放入module目录中，右键module -> Add files to 'TestWeakLink' -> 把MyFramework/MyFramwork.xcodeproj引入进去
+![](images/1.png)
+
+我们新建一个Person类，然后测试：
+
+```Objective-C
+@interface Person : NSObject
+
+- (void)eat:(NSString *)food;
+
+@end
+
+@implementation Person
+
+- (void)eat:(NSString *)food {
+    NSLog(@"Person eat: %@", food);
+}
+
+@end
+```
+
+要使用Framework，需要做以下配置：
+
+1. 把Person.h头文件引入MyFramework.h
+```Objective-C
+#if __has_include(<MyFramwork/MyFramwork.h>)
+#import <MyFramwork/Person.h>
+#else
+#import "Person.h"
+#endif
+```
+
+2. 把Person.h这个头文件放入Public中
+![](images/2.png)
+
+3. 主项目中 -> TARGETS -> Build Phases -> Link Binary With Libraries -> click "+" 加入MyFramework.framework。同理在Target Dependencies中也加入，另外在General下面的Embedded Binaries中也加入
+
+![](images/3.png)
+
+4. 使用：
+
+```Objective-c
+#import <MyFramework/MyFramework.h>
+
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    Person *p = Person.new;
+    [p eat:@"Fruit"];
+}
+
+@end
+```
+
+我们这样建的Framework是动态库，可以进入到MyFramework目录，找到MyFramework, 使用file命令查看：
+```bash
+$ file MyFramework
+MyFramework: Mach-O 64-bit dynamically linked shared library x86_64 # dynamically linked代表是动态链接, 也可以使用lipo -info MyFramework 查看架构信息
+```
+
+注意这仍旧存在一个CPU架构的问题，同上面.a类似，设置Build Active Architecture Only -> Debug 改为No并且使用lipo -create 合并成真机和模拟器都可使用的包
+
+**注：** 动态库里可以引入一些静态库，如果这些静态库不暴露在外面，则不会和外面项目中的库引起冲突。
+
+**.framework静态库**
+
+.framework静态库和.framework动态库的制作类似，区分有两个：
+- 更改TARGETS -> Build Settings -> Mach-O Type为`Static Library`
+- 由于不是动态库，因此没有必要在Embedded Binaries中引入
+
+![](images/13.png)
 
 ----------------------
 
