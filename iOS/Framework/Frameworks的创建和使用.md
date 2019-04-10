@@ -1,5 +1,7 @@
 # Frameworks的创建和使用
 
+### 动态库的创建和使用
+
 新建一个Single View App的iOS工程：TestWeakLink, 然后在工程主目录下建一module文件夹，引入这个module文件夹到工程。
 再建一个叫MyFramework的库(File -> New -> Project -> Cocoa Touch Framework)，放入module目录中，右键module -> Add files to 'TestWeakLink' -> 把MyFramework/MyFramwork.xcodeproj引入进去
 ![](images/1.png)
@@ -62,11 +64,13 @@
 我们这样建的Framework是动态库，可以进入到MyFramework目录，找到MyFramework, 使用file命令查看：
 ```bash
 $ file MyFramework
-MyFramework: Mach-O 64-bit dynamically linked shared library x86_64 # dynamically linked代表是动态链接
+MyFramework: Mach-O 64-bit dynamically linked shared library x86_64 # dynamically linked代表是动态链接, 也可以使用lipo -info MyFramework 查看架构信息
 ```
 
 动态库里可以引入一些静态库，如果这些静态库不暴露在外面，则不会和外面项目中的库引起冲突。
 
+### 静态库的.a的创建和使用
+Cocoa Touch Framework, 即.framework有动态库和静态库之分，Cocoa Touch Static Library，即.a是静态库
 
 
 
