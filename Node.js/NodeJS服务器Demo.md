@@ -2,9 +2,7 @@
 
 Node js example demo
 
-Demo地址：
-
-[https://github.com/ACommonChinese/NodeJSExampleDemo](https://github.com/ACommonChinese/NodeJSExampleDemo "Demo地址")
+Demo地址：[https://github.com/ACommonChinese/NodeJSExampleDemo](https://github.com/ACommonChinese/NodeJSExampleDemo "Demo地址")
 
 此为NodeJS服务器访问静态资源示例，使用方法：
 
