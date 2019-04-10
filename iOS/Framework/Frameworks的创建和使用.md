@@ -206,6 +206,10 @@ Architectures in the fat file: libMyStaticFramework.a are: x86_64 arm64  #可以
 ![](images/10.png)
 ![](images/11.png)
 
+**坑**
+
+
+
 ----------------------
 
 参考链接：
