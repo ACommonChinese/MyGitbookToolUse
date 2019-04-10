@@ -1,5 +1,13 @@
 # Frameworks的创建和使用
 
+库是程序代码的集合, 是封装和共享程序代码的一种方式，根据源代码的公开情况,库可以分为2种类型：
+- 开源库
+  - 公开源代码,能看到具体实现
+  - 如SDWebImage, AFNetworking
+- 闭源库
+  - 不公开源代码,是经过编译后的二进制文件,看不到具体实现
+  - 主要分为: 静态库, 动态库
+
 ### 动态库的创建和使用
 
 新建一个Single View App的iOS工程：TestWeakLink, 然后在工程主目录下建一module文件夹，引入这个module文件夹到工程。
@@ -72,6 +80,13 @@ MyFramework: Mach-O 64-bit dynamically linked shared library x86_64 # dynamicall
 ### 静态库的.a的创建和使用
 Cocoa Touch Framework, 即.framework有动态库和静态库之分，Cocoa Touch Static Library，即.a是静态库
 
+![](images/4.png)
+
+
+
+----------------------
+
+参考链接：
 
 
 
