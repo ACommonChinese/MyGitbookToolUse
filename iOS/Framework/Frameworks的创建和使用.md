@@ -150,10 +150,61 @@ Command+B编译后会生成libMyStaticFramework.a文件，右键show in Finder
 ![](images/5.png)
 光有.a文件不行, 还需要把头文件暴露出去供别人使用，暴露头文件可以：
 - 直接把头文件copy过去,但是一般不会这么做
-- 第二种工程内配置, 如下所示：
+- 第二种工程内配置，把需要暴露的头文件添加进去, 如下所示：
 ![](images/6.png)
 
+比如我们把Person.h添加进去，这样Command+B编译后，再show in Finder查看：
+![](images/7.png)
 
+**静态库的合并**
+真机和模拟器的静态库不一样, 要满足同时适用在真机和模拟器上, 就要对编译好真机和模拟器的两个静态库进行合并：
+lipo -create path_of_lib_1 path_of_lib_2 dest_path，示例：
+
+```shell
+$ lipo -create Debug-iphoneos/libMyStaticFramework.a Debug-iphonesimulator/libMyStaticFramework.a -output ./libMyStaticFramework.a
+```
+
+![](images/8.png)
+
+这个新的libMyStaticFramework.a可同时运行在模拟机和真机上，但缺点是合并后的包会变大，因此一些第三方的静态库.a区分不同的包.
+我们可以使用lipo -info查看一下这个合并后的包：
+
+```shell
+$ lipo -info libMyStaticFramework.a 
+Architectures in the fat file: libMyStaticFramework.a are: x86_64 arm64  #可以看到同时支持x86体系和arm体系
+```
+
+**静态库.a的使用**
+
+静态库的使用很简单，把.a和头文件拖入工程使用即可：
+
+```Objective-C
+#import "ViewController.h"
+#import "MyStaticFramework.h"
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+ 
+    MyStaticFramework *f = MyStaticFramework.new;
+    [f sayHello];
+    Person *p = [[Person alloc] init];
+    [p sayHello];
+}
+
+@end
+```
+
+最后，制作静态库.a的Release版本，只需要改一下Build Configuration为Release即可：
+
+![](images/9.png)
+![](images/10.png)
+![](images/11.png)
 
 ----------------------
 
