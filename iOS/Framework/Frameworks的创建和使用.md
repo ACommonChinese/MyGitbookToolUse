@@ -208,7 +208,15 @@ Architectures in the fat file: libMyStaticFramework.a are: x86_64 arm64  #可以
 
 **坑**
 
+刚创建的.a静态库支持的cpu架构为：`x86_64 arm64`，如果一个模拟器或真机不是使用的`x86_64`或`arm64`就可能跑不起来。比如:
+- iPhone simulator 4s ~ iPhone simulator 5: `i386`
+- iPhone simulator 5s ~ iPhone simulator 7plus: `x86_64`
+- iPhone 3gs ~ iPhone 4s: `armv7`
+- iPhone 5 ~ iPhone 5c: `armv7s`
 
+为了尽可能的支持更多平台，建议把Build Active Architecture Only（只针对当前活跃架构编译）设置为NO
+
+![](images/12.png)
 
 ----------------------
 
