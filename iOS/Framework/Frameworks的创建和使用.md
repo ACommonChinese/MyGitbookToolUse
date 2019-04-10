@@ -8,6 +8,19 @@
   - 不公开源代码,是经过编译后的二进制文件,看不到具体实现
   - 主要分为: 静态库, 动态库
 
+静态库常见后缀名：
+- .a
+- .framework
+
+动态库常见后缀名：
+.dylib
+.tbd
+.framework
+
+使用上的区别：
+- 静态库：链接时,静态库会被完整的复制到可执行文件中,被多次使用就有多份拷贝
+- 动态库：链接时不复制,程序运行时由系统动态的加载到内存, 供程序调用, 系统只加载一次, 多个程序共用, 节省内存
+
 ### 动态库的创建和使用
 
 新建一个Single View App的iOS工程：TestWeakLink, 然后在工程主目录下建一module文件夹，引入这个module文件夹到工程。
@@ -82,11 +95,71 @@ Cocoa Touch Framework, 即.framework有动态库和静态库之分，Cocoa Touch
 
 ![](images/4.png)
 
+示例：
+File -> new -> Cocoa Touch Static Library, 设命名为`MyStaticFramework`
+```Objective-C
+@interface MyStaticFramework : NSObject
+
+- (void)sayHello;
+
+@end
+
+@implementation MyStaticFramework
+
+- (void)sayHello {
+    Person *p = [[Person alloc] init];
+    [p sayHello];
+    
+    Cat *cat = [[Cat alloc] init];
+    [cat sayHello];
+}
+
+@end
+
+@interface Person : NSObject
+
+- (void)sayHello;
+
+@end
+
+@implementation Person
+
+- (void)sayHello {
+    NSLog(@"Person say hello");
+}
+
+@end
+
+@interface Cat : NSObject
+
+- (void)sayHello;
+
+@end
+
+@implementation Cat
+
+- (void)sayHello {
+    NSLog(@"Cat say hello");
+}
+
+@end
+
+```
+
+Command+B编译后会生成libMyStaticFramework.a文件，右键show in Finder
+![](images/5.png)
+光有.a文件不行, 还需要把头文件暴露出去供别人使用，暴露头文件可以：
+- 直接把头文件copy过去,但是一般不会这么做
+- 第二种工程内配置, 如下所示：
+![](images/6.png)
+
 
 
 ----------------------
 
 参考链接：
+
+- http://www.cnblogs.com/mtystar/p/6082363.html
 
 
 
