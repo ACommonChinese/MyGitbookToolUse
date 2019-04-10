@@ -2,7 +2,9 @@
 
 Node js example demo
 
-Demo地址：\[[https://github.com/ACommonChinese/NodeJSExampleDemo](https://github.com/ACommonChinese/NodeJSExampleDemo)\]\([https://github.com/ACommonChinese/NodeJSExampleDemo](https://github.com/ACommonChinese/NodeJSExampleDemo)\)
+Demo地址：
+
+[https://github.com/ACommonChinese/NodeJSExampleDemo](https://github.com/ACommonChinese/NodeJSExampleDemo "Demo地址")
 
 此为NodeJS服务器访问静态资源示例，使用方法：
 
@@ -12,6 +14,4 @@ Demo地址：\[[https://github.com/ACommonChinese/NodeJSExampleDemo](https://git
 4. 把你的文档放入public中即可，比如在public下建目录yourDocs并在里面放入index.html, 则访问地址为：`xxx/yourDocs/index.html`
 
 **\[注：\]** 也可以使用pm2管理进程：`pm2 start app.js`
-
-
 
