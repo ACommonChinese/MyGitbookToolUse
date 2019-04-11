@@ -1,0 +1,932 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Frameworks的创建和使用 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="Frameworks和弱链接.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../GitBook/">
+            
+                <a href="../../GitBook/">
+            
+                    
+                    GitBook
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../GitBook/安装.html">
+            
+                <a href="../../GitBook/安装.html">
+            
+                    
+                    安装
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../GitBook/语法.html">
+            
+                <a href="../../GitBook/语法.html">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../WordPress/">
+            
+                <a href="../../WordPress/">
+            
+                    
+                    WordPress
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../WordPress/简介.html">
+            
+                <a href="../../WordPress/简介.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../WordPress/域名解析和域名绑定.html">
+            
+                <a href="../../WordPress/域名解析和域名绑定.html">
+            
+                    
+                    域名解析和域名绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../WordPress/使用FTP上传WordPress.html">
+            
+                <a href="../../WordPress/使用FTP上传WordPress.html">
+            
+                    
+                    使用FTP上传WordPress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../../WordPress/备案.html">
+            
+                <a href="../../WordPress/备案.html">
+            
+                    
+                    备案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../../WordPress/主题介绍.html">
+            
+                <a href="../../WordPress/主题介绍.html">
+            
+                    
+                    主题介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../../WordPress/BeTheme/">
+            
+                <a href="../../WordPress/BeTheme/">
+            
+                    
+                    BeTheme主题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.6.1" data-path="../../WordPress/BeTheme/购买和配置主题.html">
+            
+                <a href="../../WordPress/BeTheme/购买和配置主题.html">
+            
+                    
+                    购买和配置主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6.2" data-path="../../WordPress/BeTheme/基本操作.html">
+            
+                <a href="../../WordPress/BeTheme/基本操作.html">
+            
+                    
+                    基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6.3" data-path="../../WordPress/BeTheme/遇到的一些问题.html">
+            
+                <a href="../../WordPress/BeTheme/遇到的一些问题.html">
+            
+                    
+                    遇到的一些问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    iOS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../UIView生命周期.html">
+            
+                <a href="../UIView生命周期.html">
+            
+                    
+                    UIView生命周期
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../WKWebView.html">
+            
+                <a href="../WKWebView.html">
+            
+                    
+                    WKWebView
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../组件化.html">
+            
+                <a href="../组件化.html">
+            
+                    
+                    组件化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../Pod/">
+            
+                <a href="../Pod/">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="../Pod/Pod安装.html">
+            
+                <a href="../Pod/Pod安装.html">
+            
+                    
+                    Pod安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" data-path="../Pod/Pod使用.html">
+            
+                <a href="../Pod/Pod使用.html">
+            
+                    
+                    Pod使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.3" data-path="../Pod/提交自己的Pod.html">
+            
+                <a href="../Pod/提交自己的Pod.html">
+            
+                    
+                    提交自己的Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.4" data-path="../Pod/本地Pod.html">
+            
+                <a href="../Pod/本地Pod.html">
+            
+                    
+                    本地Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.5" data-path="../Pod/私有Pod.html">
+            
+                <a href="../Pod/私有Pod.html">
+            
+                    
+                    私有Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.5.1" data-path="Frameworks的创建和使用.html">
+            
+                <a href="Frameworks的创建和使用.html">
+            
+                    
+                    Frameworks的创建和使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5.2" data-path="Frameworks和弱链接.html">
+            
+                <a href="Frameworks和弱链接.html">
+            
+                    
+                    Frameworks和弱链接
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../Dart/">
+            
+                <a href="../../Dart/">
+            
+                    
+                    Dart
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../Dart/Mixin.html">
+            
+                <a href="../../Dart/Mixin.html">
+            
+                    
+                    Mixin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../Node.js/">
+            
+                <a href="../../Node.js/">
+            
+                    
+                    Node.js
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../Node.js/NodeJS服务器搭建.html">
+            
+                <a href="../../Node.js/NodeJS服务器搭建.html">
+            
+                    
+                    NodeJS服务器搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../Node.js/NodeJS服务器Demo.html">
+            
+                <a href="../../Node.js/NodeJS服务器Demo.html">
+            
+                    
+                    NodeJS服务器Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../工具使用/">
+            
+                <a href="../../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../工具使用/MAC_OS/Handoff.html">
+            
+                <a href="../../工具使用/MAC_OS/Handoff.html">
+            
+                    
+                    MAC_OS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Frameworks的创建和使用</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="frameworks&#x7684;&#x521B;&#x5EFA;&#x548C;&#x4F7F;&#x7528;">Frameworks&#x7684;&#x521B;&#x5EFA;&#x548C;&#x4F7F;&#x7528;</h1>
+<p>&#x5E93;&#x662F;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x7684;&#x96C6;&#x5408;, &#x662F;&#x5C01;&#x88C5;&#x548C;&#x5171;&#x4EAB;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x6839;&#x636E;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x516C;&#x5F00;&#x60C5;&#x51B5;,&#x5E93;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;2&#x79CD;&#x7C7B;&#x578B;&#xFF1A;</p>
+<ul>
+<li>&#x5F00;&#x6E90;&#x5E93;<ul>
+<li>&#x516C;&#x5F00;&#x6E90;&#x4EE3;&#x7801;,&#x80FD;&#x770B;&#x5230;&#x5177;&#x4F53;&#x5B9E;&#x73B0;</li>
+<li>&#x5982;SDWebImage, AFNetworking</li>
+</ul>
+</li>
+<li>&#x95ED;&#x6E90;&#x5E93;<ul>
+<li>&#x4E0D;&#x516C;&#x5F00;&#x6E90;&#x4EE3;&#x7801;,&#x662F;&#x7ECF;&#x8FC7;&#x7F16;&#x8BD1;&#x540E;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;,&#x770B;&#x4E0D;&#x5230;&#x5177;&#x4F53;&#x5B9E;&#x73B0;</li>
+<li>&#x4E3B;&#x8981;&#x5206;&#x4E3A;: &#x9759;&#x6001;&#x5E93;, &#x52A8;&#x6001;&#x5E93;</li>
+</ul>
+</li>
+</ul>
+<p>&#x9759;&#x6001;&#x5E93;&#x5E38;&#x89C1;&#x540E;&#x7F00;&#x540D;&#xFF1A;</p>
+<ul>
+<li>.a</li>
+<li>.framework</li>
+</ul>
+<p>&#x52A8;&#x6001;&#x5E93;&#x5E38;&#x89C1;&#x540E;&#x7F00;&#x540D;&#xFF1A;
+.dylib
+.tbd
+.framework</p>
+<p>&#x4F7F;&#x7528;&#x4E0A;&#x7684;&#x533A;&#x522B;&#xFF1A;</p>
+<ul>
+<li>&#x9759;&#x6001;&#x5E93;&#xFF1A;&#x94FE;&#x63A5;&#x65F6;,&#x9759;&#x6001;&#x5E93;&#x4F1A;&#x88AB;&#x5B8C;&#x6574;&#x7684;&#x590D;&#x5236;&#x5230;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E2D;,&#x88AB;&#x591A;&#x6B21;&#x4F7F;&#x7528;&#x5C31;&#x6709;&#x591A;&#x4EFD;&#x62F7;&#x8D1D;</li>
+<li>&#x52A8;&#x6001;&#x5E93;&#xFF1A;&#x94FE;&#x63A5;&#x65F6;&#x4E0D;&#x590D;&#x5236;,&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x7531;&#x7CFB;&#x7EDF;&#x52A8;&#x6001;&#x7684;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;, &#x4F9B;&#x7A0B;&#x5E8F;&#x8C03;&#x7528;, &#x7CFB;&#x7EDF;&#x53EA;&#x52A0;&#x8F7D;&#x4E00;&#x6B21;, &#x591A;&#x4E2A;&#x7A0B;&#x5E8F;&#x5171;&#x7528;, &#x8282;&#x7701;&#x5185;&#x5B58;</li>
+</ul>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x76EE;&#x524D;swift&#x5E76;&#x4E0D;&#x652F;&#x6301;&#x9759;&#x6001;&#x5E93;</p>
+<h3 id="a&#x9759;&#x6001;&#x5E93;&#x7684;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x4F7F;&#x7528;">.a&#x9759;&#x6001;&#x5E93;&#x7684;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x4F7F;&#x7528;</h3>
+<p>Cocoa Touch Framework, &#x5373;.framework&#x6709;&#x52A8;&#x6001;&#x5E93;&#x548C;&#x9759;&#x6001;&#x5E93;&#x4E4B;&#x5206;&#xFF0C;Cocoa Touch Static Library&#xFF0C;&#x5373;.a&#x662F;&#x9759;&#x6001;&#x5E93;</p>
+<p><img src="images/4.png" alt=""></p>
+<p>&#x793A;&#x4F8B;&#xFF1A;
+File -&gt; new -&gt; Cocoa Touch Static Library, &#x8BBE;&#x547D;&#x540D;&#x4E3A;<code>MyStaticFramework</code></p>
+<pre><code class="lang-Objective-C">@interface MyStaticFramework : NSObject
+
+- (void)sayHello;
+
+@end
+
+@implementation MyStaticFramework
+
+- (void)sayHello {
+    Person *p = [[Person alloc] init];
+    [p sayHello];
+
+    Cat *cat = [[Cat alloc] init];
+    [cat sayHello];
+}
+
+@end
+
+@interface Person : NSObject
+
+- (void)sayHello;
+
+@end
+
+@implementation Person
+
+- (void)sayHello {
+    NSLog(@&quot;Person say hello&quot;);
+}
+
+@end
+
+@interface Cat : NSObject
+
+- (void)sayHello;
+
+@end
+
+@implementation Cat
+
+- (void)sayHello {
+    NSLog(@&quot;Cat say hello&quot;);
+}
+
+@end
+</code></pre>
+<p>Command+B&#x7F16;&#x8BD1;&#x540E;&#x4F1A;&#x751F;&#x6210;libMyStaticFramework.a&#x6587;&#x4EF6;&#xFF0C;&#x53F3;&#x952E;show in Finder
+<img src="images/5.png" alt="">
+&#x5149;&#x6709;.a&#x6587;&#x4EF6;&#x4E0D;&#x884C;, &#x8FD8;&#x9700;&#x8981;&#x628A;&#x5934;&#x6587;&#x4EF6;&#x66B4;&#x9732;&#x51FA;&#x53BB;&#x4F9B;&#x522B;&#x4EBA;&#x4F7F;&#x7528;&#xFF0C;&#x66B4;&#x9732;&#x5934;&#x6587;&#x4EF6;&#x53EF;&#x4EE5;&#xFF1A;</p>
+<ul>
+<li>&#x76F4;&#x63A5;&#x628A;&#x5934;&#x6587;&#x4EF6;copy&#x8FC7;&#x53BB;,&#x4F46;&#x662F;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x8FD9;&#x4E48;&#x505A;</li>
+<li>&#x7B2C;&#x4E8C;&#x79CD;&#x5DE5;&#x7A0B;&#x5185;&#x914D;&#x7F6E;&#xFF0C;&#x628A;&#x9700;&#x8981;&#x66B4;&#x9732;&#x7684;&#x5934;&#x6587;&#x4EF6;&#x6DFB;&#x52A0;&#x8FDB;&#x53BB;, &#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;
+<img src="images/6.png" alt=""></li>
+</ul>
+<p>&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x628A;Person.h&#x6DFB;&#x52A0;&#x8FDB;&#x53BB;&#xFF0C;&#x8FD9;&#x6837;Command+B&#x7F16;&#x8BD1;&#x540E;&#xFF0C;&#x518D;show in Finder&#x67E5;&#x770B;&#xFF1A;
+<img src="images/7.png" alt=""></p>
+<p><strong>&#x9759;&#x6001;&#x5E93;&#x7684;&#x5408;&#x5E76;</strong>
+&#x771F;&#x673A;&#x548C;&#x6A21;&#x62DF;&#x5668;&#x7684;&#x9759;&#x6001;&#x5E93;&#x4E0D;&#x4E00;&#x6837;, &#x8981;&#x6EE1;&#x8DB3;&#x540C;&#x65F6;&#x9002;&#x7528;&#x5728;&#x771F;&#x673A;&#x548C;&#x6A21;&#x62DF;&#x5668;&#x4E0A;, &#x5C31;&#x8981;&#x5BF9;&#x7F16;&#x8BD1;&#x597D;&#x771F;&#x673A;&#x548C;&#x6A21;&#x62DF;&#x5668;&#x7684;&#x4E24;&#x4E2A;&#x9759;&#x6001;&#x5E93;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#xFF1A;
+lipo -create path_of_lib_1 path_of_lib_2 dest_path&#xFF0C;&#x793A;&#x4F8B;&#xFF1A;</p>
+<pre><code class="lang-shell">$ lipo -create Debug-iphoneos/libMyStaticFramework.a Debug-iphonesimulator/libMyStaticFramework.a -output ./libMyStaticFramework.a
+</code></pre>
+<p><img src="images/8.png" alt=""></p>
+<p>&#x8FD9;&#x4E2A;&#x65B0;&#x7684;libMyStaticFramework.a&#x53EF;&#x540C;&#x65F6;&#x8FD0;&#x884C;&#x5728;&#x6A21;&#x62DF;&#x673A;&#x548C;&#x771F;&#x673A;&#x4E0A;&#xFF0C;&#x4F46;&#x7F3A;&#x70B9;&#x662F;&#x5408;&#x5E76;&#x540E;&#x7684;&#x5305;&#x4F1A;&#x53D8;&#x5927;&#xFF0C;&#x56E0;&#x6B64;&#x4E00;&#x4E9B;&#x7B2C;&#x4E09;&#x65B9;&#x7684;&#x9759;&#x6001;&#x5E93;.a&#x533A;&#x5206;&#x4E0D;&#x540C;&#x7684;&#x5305;.
+&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;lipo -info&#x67E5;&#x770B;&#x4E00;&#x4E0B;&#x8FD9;&#x4E2A;&#x5408;&#x5E76;&#x540E;&#x7684;&#x5305;&#xFF1A;</p>
+<pre><code class="lang-shell">$ lipo -info libMyStaticFramework.a 
+Architectures in the fat file: libMyStaticFramework.a are: x86_64 arm64  #&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x540C;&#x65F6;&#x652F;&#x6301;x86&#x4F53;&#x7CFB;&#x548C;arm&#x4F53;&#x7CFB;
+</code></pre>
+<p><strong>.a&#x9759;&#x6001;&#x5E93;&#x7684;&#x4F7F;&#x7528;</strong></p>
+<p>&#x9759;&#x6001;&#x5E93;&#x7684;&#x4F7F;&#x7528;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x628A;.a&#x548C;&#x5934;&#x6587;&#x4EF6;&#x62D6;&#x5165;&#x5DE5;&#x7A0B;&#x4F7F;&#x7528;&#x5373;&#x53EF;&#xFF1A;</p>
+<pre><code class="lang-Objective-C">#import &quot;ViewController.h&quot;
+#import &quot;MyStaticFramework.h&quot;
+
+@interface ViewController ()
+
+@end
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    MyStaticFramework *f = MyStaticFramework.new;
+    [f sayHello];
+    Person *p = [[Person alloc] init];
+    [p sayHello];
+}
+
+@end
+</code></pre>
+<p>&#x6700;&#x540E;&#xFF0C;&#x5236;&#x4F5C;&#x9759;&#x6001;&#x5E93;.a&#x7684;Release&#x7248;&#x672C;&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x6539;&#x4E00;&#x4E0B;Build Configuration&#x4E3A;Release&#x5373;&#x53EF;&#xFF1A;</p>
+<p><img src="images/9.png" alt="">
+<img src="images/10.png" alt="">
+<img src="images/11.png" alt=""></p>
+<p><strong>&#x5751;</strong></p>
+<p>&#x521A;&#x521B;&#x5EFA;&#x7684;.a&#x9759;&#x6001;&#x5E93;&#x652F;&#x6301;&#x7684;cpu&#x67B6;&#x6784;&#x4E3A;&#xFF1A;<code>x86_64 arm64</code>&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x6A21;&#x62DF;&#x5668;&#x6216;&#x771F;&#x673A;&#x4E0D;&#x662F;&#x4F7F;&#x7528;&#x7684;<code>x86_64</code>&#x6216;<code>arm64</code>&#x5C31;&#x53EF;&#x80FD;&#x8DD1;&#x4E0D;&#x8D77;&#x6765;&#x3002;&#x6BD4;&#x5982;:</p>
+<ul>
+<li>iPhone simulator 4s ~ iPhone simulator 5: <code>i386</code></li>
+<li>iPhone simulator 5s ~ iPhone simulator 7plus: <code>x86_64</code></li>
+<li>iPhone 3gs ~ iPhone 4s: <code>armv7</code></li>
+<li>iPhone 5 ~ iPhone 5c: <code>armv7s</code></li>
+</ul>
+<p>&#x4E3A;&#x4E86;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x652F;&#x6301;&#x66F4;&#x591A;&#x5E73;&#x53F0;&#xFF0C;&#x5EFA;&#x8BAE;&#x628A;Build Active Architecture Only&#xFF08;&#x53EA;&#x9488;&#x5BF9;&#x5F53;&#x524D;&#x6D3B;&#x8DC3;&#x67B6;&#x6784;&#x7F16;&#x8BD1;&#xFF09;&#x8BBE;&#x7F6E;&#x4E3A;NO</p>
+<p><img src="images/12.png" alt=""></p>
+<h3 id="framework">.framework</h3>
+<p>.framework&#x53EF;&#x4E3A;&#x52A8;&#x6001;&#x5E93;&#x548C;&#x9759;&#x6001;&#x5E93;&#xFF0C;&#x5148;&#x6765;&#x770B;&#x52A8;&#x6001;&#x5E93;</p>
+<p>&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Single View App&#x7684;iOS&#x5DE5;&#x7A0B;&#xFF1A;TestWeakLink, &#x7136;&#x540E;&#x5728;&#x5DE5;&#x7A0B;&#x4E3B;&#x76EE;&#x5F55;&#x4E0B;&#x5EFA;&#x4E00;module&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5F15;&#x5165;&#x8FD9;&#x4E2A;module&#x6587;&#x4EF6;&#x5939;&#x5230;&#x5DE5;&#x7A0B;&#x3002;
+&#x518D;&#x5EFA;&#x4E00;&#x4E2A;&#x53EB;MyFramework&#x7684;&#x5E93;(File -&gt; New -&gt; Project -&gt; Cocoa Touch Framework)&#xFF0C;&#x653E;&#x5165;module&#x76EE;&#x5F55;&#x4E2D;&#xFF0C;&#x53F3;&#x952E;module -&gt; Add files to &apos;TestWeakLink&apos; -&gt; &#x628A;MyFramework/MyFramwork.xcodeproj&#x5F15;&#x5165;&#x8FDB;&#x53BB;
+<img src="images/1.png" alt=""></p>
+<p>&#x6211;&#x4EEC;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;Person&#x7C7B;&#xFF0C;&#x7136;&#x540E;&#x6D4B;&#x8BD5;&#xFF1A;</p>
+<pre><code class="lang-Objective-C">@interface Person : NSObject
+
+- (void)eat:(NSString *)food;
+
+@end
+
+@implementation Person
+
+- (void)eat:(NSString *)food {
+    NSLog(@&quot;Person eat: %@&quot;, food);
+}
+
+@end
+</code></pre>
+<p>&#x8981;&#x4F7F;&#x7528;Framework&#xFF0C;&#x9700;&#x8981;&#x505A;&#x4EE5;&#x4E0B;&#x914D;&#x7F6E;&#xFF1A;</p>
+<ol>
+<li><p>&#x628A;Person.h&#x5934;&#x6587;&#x4EF6;&#x5F15;&#x5165;MyFramework.h</p>
+<pre><code class="lang-Objective-C">#if __has_include(&lt;MyFramwork/MyFramwork.h&gt;)
+#import &lt;MyFramwork/Person.h&gt;
+#else
+#import &quot;Person.h&quot;
+#endif
+</code></pre>
+</li>
+<li><p>&#x628A;Person.h&#x8FD9;&#x4E2A;&#x5934;&#x6587;&#x4EF6;&#x653E;&#x5165;Public&#x4E2D;
+<img src="images/2.png" alt=""></p>
+</li>
+<li><p>&#x4E3B;&#x9879;&#x76EE;&#x4E2D; -&gt; TARGETS -&gt; Build Phases -&gt; Link Binary With Libraries -&gt; click &quot;+&quot; &#x52A0;&#x5165;MyFramework.framework&#x3002;&#x540C;&#x7406;&#x5728;Target Dependencies&#x4E2D;&#x4E5F;&#x52A0;&#x5165;&#xFF0C;&#x53E6;&#x5916;&#x5728;General&#x4E0B;&#x9762;&#x7684;Embedded Binaries&#x4E2D;&#x4E5F;&#x52A0;&#x5165;</p>
+</li>
+</ol>
+<p><img src="images/3.png" alt=""></p>
+<ol>
+<li>&#x4F7F;&#x7528;&#xFF1A;</li>
+</ol>
+<pre><code class="lang-Objective-c">#import &lt;MyFramework/MyFramework.h&gt;
+
+
+@implementation ViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    Person *p = Person.new;
+    [p eat:@&quot;Fruit&quot;];
+}
+
+@end
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x8FD9;&#x6837;&#x5EFA;&#x7684;Framework&#x662F;&#x52A8;&#x6001;&#x5E93;&#xFF0C;&#x53EF;&#x4EE5;&#x8FDB;&#x5165;&#x5230;MyFramework&#x76EE;&#x5F55;&#xFF0C;&#x627E;&#x5230;MyFramework, &#x4F7F;&#x7528;file&#x547D;&#x4EE4;&#x67E5;&#x770B;&#xFF1A;</p>
+<pre><code class="lang-bash">$ file MyFramework
+MyFramework: Mach-O 64-bit dynamically linked shared library x86_64 <span class="hljs-comment"># dynamically linked&#x4EE3;&#x8868;&#x662F;&#x52A8;&#x6001;&#x94FE;&#x63A5;, &#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;lipo -info MyFramework &#x67E5;&#x770B;&#x67B6;&#x6784;&#x4FE1;&#x606F;</span>
+</code></pre>
+<p>&#x6CE8;&#x610F;&#x8FD9;&#x4ECD;&#x65E7;&#x5B58;&#x5728;&#x4E00;&#x4E2A;CPU&#x67B6;&#x6784;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x540C;&#x4E0A;&#x9762;.a&#x7C7B;&#x4F3C;&#xFF0C;&#x8BBE;&#x7F6E;Build Active Architecture Only -&gt; Debug &#x6539;&#x4E3A;No&#x5E76;&#x4E14;&#x4F7F;&#x7528;lipo -create &#x5408;&#x5E76;&#x6210;&#x771F;&#x673A;&#x548C;&#x6A21;&#x62DF;&#x5668;&#x90FD;&#x53EF;&#x4F7F;&#x7528;&#x7684;&#x5305;</p>
+<p><strong>&#x6CE8;&#xFF1A;</strong> &#x52A8;&#x6001;&#x5E93;&#x91CC;&#x53EF;&#x4EE5;&#x5F15;&#x5165;&#x4E00;&#x4E9B;&#x9759;&#x6001;&#x5E93;&#xFF0C;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x9759;&#x6001;&#x5E93;&#x4E0D;&#x66B4;&#x9732;&#x5728;&#x5916;&#x9762;&#xFF0C;&#x5219;&#x4E0D;&#x4F1A;&#x548C;&#x5916;&#x9762;&#x9879;&#x76EE;&#x4E2D;&#x7684;&#x5E93;&#x5F15;&#x8D77;&#x51B2;&#x7A81;&#x3002;</p>
+<p><strong>.framework&#x9759;&#x6001;&#x5E93;</strong></p>
+<p>.framework&#x9759;&#x6001;&#x5E93;&#x548C;.framework&#x52A8;&#x6001;&#x5E93;&#x7684;&#x5236;&#x4F5C;&#x7C7B;&#x4F3C;&#xFF0C;&#x533A;&#x5206;&#x6709;&#x4E24;&#x4E2A;&#xFF1A;</p>
+<ul>
+<li>&#x66F4;&#x6539;TARGETS -&gt; Build Settings -&gt; Mach-O Type&#x4E3A;<code>Static Library</code></li>
+<li>&#x7531;&#x4E8E;&#x4E0D;&#x662F;&#x52A8;&#x6001;&#x5E93;&#xFF0C;&#x56E0;&#x6B64;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x5728;Embedded Binaries&#x4E2D;&#x5F15;&#x5165;</li>
+</ul>
+<p><img src="images/13.png" alt=""></p>
+<hr>
+<p>&#x53C2;&#x8003;&#x94FE;&#x63A5;&#xFF1A;</p>
+<ul>
+<li><a href="http://www.cnblogs.com/mtystar/p/6082363.html" target="_blank">http://www.cnblogs.com/mtystar/p/6082363.html</a></li>
+<li><a href="https://www.cnblogs.com/mtystar/p/6083288.html" target="_blank">https://www.cnblogs.com/mtystar/p/6083288.html</a></li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Framework">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="Frameworks和弱链接.html" class="navigation navigation-next " aria-label="Next page: Frameworks和弱链接">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Frameworks的创建和使用","level":"1.4.5.1","depth":3,"next":{"title":"Frameworks和弱链接","level":"1.4.5.2","depth":3,"path":"iOS/Framework/Frameworks和弱链接.md","ref":"iOS/Framework/Frameworks和弱链接.md","articles":[]},"previous":{"title":"Framework","level":"1.4.5","depth":2,"path":"iOS/Framework/README.md","ref":"iOS/Framework/README.md","articles":[{"title":"Frameworks的创建和使用","level":"1.4.5.1","depth":3,"path":"iOS/Framework/Frameworks的创建和使用.md","ref":"iOS/Framework/Frameworks的创建和使用.md","articles":[]},{"title":"Frameworks和弱链接","level":"1.4.5.2","depth":3,"path":"iOS/Framework/Frameworks和弱链接.md","ref":"iOS/Framework/Frameworks和弱链接.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Framework/Frameworks的创建和使用.md","mtime":"2019-04-10T12:21:28.446Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-11T09:54:01.450Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
