@@ -4,6 +4,8 @@
 
 总体流程：creating a private repository, letting CocoaPods know where to find it and adding the podspecs to the repository.
 
+###1. 创建私有库
+
 安装Cocoapods会到官方的索引库，生成本地索引库。使用Pod install时，默认情况下，会去更新本地索引库，当然了可以在后面添加--no-repo-update忽略更新。
 这个本地索引库地址默认为: `~/.cocoapods/repos/`
 
@@ -42,28 +44,87 @@ MyPrivateRepo
 
 至此，本地私有索引库创建完成。
 
-现在的本地私有索引库是空的，我们需要创建podspec文件并上传到私有库，示例：
+###2. 创建需要引用的资源
+
+接下来我们建一个git项目：`GitBookDemos_Thinker`, 在此目录下建个工程
+![](images/2.png)
+![](images/3.png)
+
+![Demo地址](https://gitee.com/aCommonChinese/GitBookDemos_Thinker.git)
+
+然后上传到git上：
+```
+git add *
+git commit -m "Init"
+git push
+git tag 1.0.0
+git push --tag
+```
+
+###3. 创建podspec文件，引用资源
+
+`pod spec create Thinker`
+这会生成Thinker.podspec文件，内容：
 
 ```ruby
 Pod::Spec.new do |s|
-    s.name         = 'ZZQRManager'
-    s.version      = '1.3'
-    s.summary      = 'An easy way to use qr manage'
-    s.homepage     = 'https://github.com/ACommonChinese/ZZQRManager/'
+    s.name         = 'Thinker' #此名字应当和文件名相同，即文件名为Thinker.podspec, 此name当为Thinker
+    s.version      = '1.0.0'
+    s.summary      = 'pod summary here'
+    s.homepage     = 'https://gitee.com/aCommonChinese/GitBookDemos_Thinker/'
     s.license      = 'MIT'
-    s.authors      = {'ACommonChinese' => 'liuxing8807@126.com'}
-    s.platform     = :ios, '11.0'
-    s.source       = {:git => "https://github.com/ACommonChinese/ZZQRManager.git", :tag => s.version}
-    s.source_files = 'ZZQRManager/*.{h,m}'
-    s.resource     = 'ZZQRManager/ZZQRManager.bundle'
+    s.authors      = {'aCommonChinese' => 'liuxing8807@126.com'}
+    s.platform     = :ios, '7.0'
+    s.source       = {:git => "https://gitee.com/aCommonChinese/GitBookDemos_Thinker.git", :tag => s.version}
+    s.source_files = 'MyThinkerDemo/MyThinkerDemo/Thinker/*.{h,m}'
+    s.resource     = 'MyThinkerDemo/MyThinkerDemo/Thinker/Thinker.bundle'
     s.frameworks   = "UIKit"
     s.requires_arc = true
 end
 ```
 
-**把podspec文件上传到私有库**
+###4. 把podspec文件上传到私有库
 
-首先参见[](提交自己的Pod.md)
+可以参见：<a href="#file:///提交本地Pod.html">提交本地Pod</a>
+
+上传之前先检测一下此podspec是否合法：
+`pod spec lint Thinker.podspec`，验证通过后上传到私有库：
+```ruby
+pod repo push MyPrivateRepo 
+# 如果有多个，可指定名字：pod repo push MyPrivateRepo Thinker.podspec 
+```
+
+这样上传之后我们可以打开：`open ~/.cocoapods/repos`, 发现：
+![](images/4.png)
+
+###5. 使用私有库
+使用前可以通过pod search查询：
+
+```
+pod search Thinker
+
+-> Thinker (1.0.0)
+   pod summary here
+   pod 'Thinker', '~> 1.0.0'
+   - Homepage: https://gitee.com/aCommonChinese/GitBookDemos_Thinker/
+   - Source:   https://gitee.com/aCommonChinese/GitBookDemos_Thinker.git
+   - Versions: 1.0.0 [MyPrivateRepo repo]
+```
+
+###6. 移除私有库
+`pod repo remove [name]`
+
+###遇到的错误
+使用pod search可以找到，但使用pod install时出现：`Unable to find a specification for ...`
+参见：[https://cloud.tencent.com/developer/article/1336298](https://cloud.tencent.com/developer/article/1336298)
+
+
+参考链接：
+
+[https://blog.csdn.net/lincsdnnet/article/details/79836974](https://blog.csdn.net/lincsdnnet/article/details/79836974)
+[https://cloud.tencent.com/developer/article/1336298](https://cloud.tencent.com/developer/article/1336298)
+
+
 
 
 
