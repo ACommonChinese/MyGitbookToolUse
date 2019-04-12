@@ -4,7 +4,7 @@
 
 总体流程：creating a private repository, letting CocoaPods know where to find it and adding the podspecs to the repository.
 
-###1. 创建私有库
+###1. 创建私有索引库
 
 安装Cocoapods会到官方的索引库，生成本地索引库。使用Pod install时，默认情况下，会去更新本地索引库，当然了可以在后面添加--no-repo-update忽略更新。
 这个本地索引库地址默认为: `~/.cocoapods/repos/`
@@ -21,7 +21,7 @@ master
 
 上面的URL地址就是公共索引库的地址，里面存放着很多库的podspec索引文件。为了使我们私有的库也支持cocoapods就需要创建私有的索引库。
 
-比如我在[码云](https://gitee.com/)上新建一个私有仓库`MyPrivateRepo`, 接下来将私有库添加到本地：
+比如我在[码云](https://gitee.com/)上新建一个私有仓库[MyPrivateRepo](https://gitee.com/aCommonChinese/MyPrivteRepo), 接下来将私有库添加到本地：
 
 ```ruby
 pod repo add MyPrivateRepo https://gitee.com/aCommonChinese/MyPrivteRepo.git
@@ -46,11 +46,9 @@ MyPrivateRepo
 
 ###2. 创建需要引用的资源
 
-接下来我们建一个git项目：`GitBookDemos_Thinker`, 在此目录下建个工程
+接下来我们建一个git项目：[GitBookDemos_Thinker](https://gitee.com/aCommonChinese/GitBookDemos_Thinker.git), 在此目录下建个工程
 ![](images/2.png)
 ![](images/3.png)
-
-![Demo地址](https://gitee.com/aCommonChinese/GitBookDemos_Thinker.git)
 
 然后上传到git上：
 ```
@@ -83,7 +81,7 @@ Pod::Spec.new do |s|
 end
 ```
 
-###4. 把podspec文件上传到私有库
+###4. 把podspec文件上传到私有索引库
 
 可以参见：<a href="#file:///提交本地Pod.html">提交本地Pod</a>
 
@@ -109,6 +107,33 @@ pod search Thinker
    - Homepage: https://gitee.com/aCommonChinese/GitBookDemos_Thinker/
    - Source:   https://gitee.com/aCommonChinese/GitBookDemos_Thinker.git
    - Versions: 1.0.0 [MyPrivateRepo repo]
+```
+
+接下来新建一项目，编辑Podfile：
+```ruby
+source 'https://github.com/CocoaPods/Specs.git' #官方source
+source 'https://gitee.com/aCommonChinese/MyPrivteRepo.git' #注意此source必须添加，否则找不到Thinker
+platform :ios, '7.0'
+
+target 'UseThinkerDemo' do
+  use_frameworks!
+  #pod 'AFNetworking'
+  pod 'Thinker' # 注：这里不需要指定版本号，否则：[!] A dependency with an external source may not specify version requirements (Thinker).
+end
+```
+
+执行`pod install`，使用即可：
+```Objective-C
+#import <Thinker/Person.h>
+...
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+    
+    Person *p = [[Person alloc] init];
+    self.imageView.image = [p think];
+}
 ```
 
 ###6. 移除私有库
