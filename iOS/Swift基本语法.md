@@ -620,7 +620,7 @@ class Tiger : Cat {
 
 ![](images/2.png)
 
-designated intializers   
+designated intializers  
 convenience initializers
 
 在 Apple 的官方文档中讲到，Swift 定义了两种类初始化器类型，用来保证所有成员属性能够获得一个初始化值，  
