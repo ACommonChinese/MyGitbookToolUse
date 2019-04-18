@@ -56,6 +56,8 @@ dismiss_____2. remove from super window
 dismiss_____3. did remove from super view
 ```
 
+影响view是否可接收到事件的因素：
+
 
 
 
