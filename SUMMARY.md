@@ -15,7 +15,7 @@
         * [基本操作](WordPress/BeTheme/基本操作.md)
         * [遇到的一些问题](WordPress/BeTheme/遇到的一些问题.md)
 * [iOS](iOS/README.md)
-    * [UIView生命周期](iOS/UIView生命周期.md)
+    * [UIView](iOS/UIView.md)
     * [WKWebView](iOS/WKWebView.md)
     * [组件化](iOS/组件化.md)
     * [Pod](iOS/Pod/README.md)
