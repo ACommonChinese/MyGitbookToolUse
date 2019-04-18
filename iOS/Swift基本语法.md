@@ -240,4 +240,369 @@ for (key, value) in someDict {
 }
 ```
 
+#### 闭包
+```Swift
+
+// 无参闭包：
+let sayHello = {
+    print("hello world!")
+}
+
+sayHello()
+
+// 带参的闭包：
+let divide = {
+    (val1: Int, val2: Int) -> Int in
+        return val1 / val2
+}
+let result = divide(200, 20)
+print(result)
+
+// 看一个数组排序的示例：
+public func sorted(by areInIncreasingOrder: (Element, Element) throws -> Bool) rethrows -> [Element]
+
+let names = ["A", "D", "C", "B", "G"]
+
+直接使用闭包：
+var reversed = names.sorted { (s1: String, s2: String) -> Bool in
+    return s1 > s2
+}
+print(names) // ["A", "D", "C", "B", "G"]
+print(reversed) // ["G", "D", "C", "B", "A"]
+
+也可以使用函数：
+func backwards(s1: String, s2: String) -> Bool {
+    return s1 > s2
+}
+reversed = names.sorted(by: backwards)
+print(reversed) // ["G", "D", "C", "B", "A"]
+
+let names = ["A", "D", "C", "B", "G"]
+
+// 可以使用参数名缩写
+var reversed = names.sorted(by: {$0 > $1})
+print(reversed)
+```
+
+尾随闭包：
+尾随闭包是一个书写在函数括号之后的闭包表达式，函数支持将其作为最后一个参数调用。
+其实尾随闭包只是改了一种写法，即如果闭包是函数的最后一个参数，则调用的时候可以放在函数括号之后
+
+```Swift
+
+
+func calculate(_ a: Int, _ b: Int, _ sum: (Int, Int) -> Int) -> Int {
+    return sum(a, b)
+}
+
+// 不使用尾随闭包
+var result = calculate(20, 30, { (a: Int, b: Int) -> Int in
+    return a + b
+})
+
+print(result) // 50
+
+// 使用尾随闭包
+result = calculate(2, 3) { (a: Int, b: Int) -> Int in
+    return a + b
+}
+
+print(result) // 5
+
+再示例：
+let names = ["T", "A", "B", "S", "D"]
+
+var reversed = names.sorted() { (a: String, b: String) -> Bool in // 这里()可以省略
+    return a > b
+}
+print(reversed)
+
+reversed = names.sorted(by: {
+    (a: String, b: String) -> Bool in
+        return a > b
+})
+
+print(reversed)
+
+再示例：
+// 尾随闭包是一个书写在函数括号之后的闭包表达式，函数支持将其作为最后一个参数调用
+func test(closure: (String) -> Void) -> Void {
+    closure("hello")
+}
+
+// 不使用尾随闭包进行函数调用
+test(closure: {(a: String) -> Void in
+    print(a)
+})
+
+// 使用尾随闭包进行函数调用
+test() { (a: String) -> Void in
+    print(a)
+}
+
+// 使用尾随闭包进行函数调用（省略括号）
+test { (a: String) -> Void in
+    print(a)
+}
+
+
+let names = ["AT", "AE", "D", "S", "BE"]
+
+// 不使用尾随闭包进行函数调用
+var reversed_0 = names.sorted(by: {(v1: String, v2: String) -> Bool in
+    return v1 < v2
+})
+print(reversed_0)
+
+// 使用尾随闭包进行函数调用
+var reversed_1 = names.sorted() {
+    $0 < $1
+}
+print(reversed_1)
+
+// 使用尾随闭包进行函数调用（省略括号）
+var reversed_2 = names.sorted { (v1: String, v2: String) -> Bool in
+    return v1 < v2
+}
+print(reversed_2)
+```
+
+#### 闭包捕获值
+```Swift
+
+// 闭包可以在其定义的上下文中捕获常量或变量。
+// 即使定义这些常量和变量的原域已经不存在，闭包仍然可以在闭包函数体内引用和修改这些值。
+// Swift最简单的闭包形式是嵌套函数，也就是定义在其他函数的函数体内的函数。
+// 嵌套函数可以捕获其外部函数所有的参数以及定义的常量和变量。
+// 函数和闭包都是引用类型
+func makeIncrement(a: Int) -> () -> Int {
+    var total = 0
+    func incrementor() -> Int {
+        total += a
+        return total
+    }
+    return incrementor
+}
+
+// incrementor实际上捕获并存储了变量total的一个副本，而该副本随着incrementor一同被存储
+// 所以我们调用这个函数时会累加
+
+let incrementByTen = makeIncrement(a: 10)
+
+// 返回的值为10
+print(incrementByTen()) // 10
+
+// 返回的值为20
+print(incrementByTen()) // 20
+
+// 返回的值为30
+print(incrementByTen()) // 30
+
+let block = incrementByTen
+print(block()) // 40
+```
+
+#### 枚举
+```Swift
+
+enum DaysofaWeek {
+    case Sunday
+    case Monday
+    case Tuesday
+    case Wenesday
+    case Thursday
+    case Friday
+    case Saturday
+}
+
+var weekDay = DaysofaWeek.Sunday
+weekDay = .Thursday
+switch weekDay {
+case .Sunday: print("周日")
+case .Monday: print("周一")
+case .Tuesday: print("周二")
+case .Wenesday: print("周三")
+case .Thursday: print("周四")
+case .Friday: print("周五")
+case .Saturday: print("周六")
+}
+
+— 枚举原始值 —
+// 原始值可以是字符串，字符，或者任何整型值或浮点型值
+// 在原始值为整数的枚举时，不需要显式的为每一个成员赋值，Swift会自动为你赋值
+enum Month: Int {
+    case January = 1,
+    Febrary,
+    March,
+    April,
+    May,
+    June,
+    July,
+    August,
+    September,
+    October,
+    November,
+    December
+}
+
+let m = Month.May.rawValue
+print(m) // 5
+
+
+—  枚举相关值 — 
+enum Student {
+    case Name(String)
+    case Mark(chinese: Int, math: Int, english: Int)
+}
+
+var studDetails = Student.Name("Runoob")
+var studMarks = Student.Mark(chinese: 98, math: 100, english: 100)
+
+switch studMarks {
+case .Name(let studentName):
+    print("\(studentName)")
+case .Mark(let mark1, let mark2, let mark3):
+    print("\(mark1) -- \(mark2) - \(mark3)") // 98 -- 100 - 100
+}
+```
+
+#### 结构体
+
+注：结构体总是通过被复制的方式在代码中传递，因此它的值是不可修改的
+
+```Swift
+struct studentMarks {
+    var mark1 = 100
+    var mark2 = 78
+    var mark3 = 98
+}
+
+let marks = studentMarks()
+print(marks.mark1)
+print(marks.mark2)
+print(marks.mark3)
+
+— 示例 —
+
+import Foundation
+
+struct MarksStudent {
+    var mark: Int
+    
+    init(mark: Int) {
+        self.mark = mark
+    }
+    
+    func addMarkNum(a: Int) -> Int {
+        return self.mark + a
+    }
+}
+
+var a = MarksStudent(mark: 98)
+var b = a
+b.mark = 97  // b发生变化并不会使用a发生变化，因为结构体是通过被复制的方式传递的
+print(a.mark) // 98
+print(b.mark) // 97
+
+print(a.addMarkNum(a: 100))
+```
+
+结构体实例总是通过值传递来定义你的自定义数据类型（结构体实例是通过值传递而不是通过引用传递）
+按照通用的准则，当符合一条或多条以下条件时，请考虑构建结构体：
+
+结构体的主要目的是用来封装少量相关简单数据值。
+有理由预计一个结构体实例在赋值或传递时，封装的数据将会被拷贝而不是被引用。
+任何在结构体中储存的值类型属性，也将会被拷贝，而不是被引用。
+结构体不需要去继承另一个已存在类型的属性或者行为。
+
+举例来说，以下情境中适合使用结构体：
+几何形状的大小，封装一个width属性和height属性，两者均为Double类型。
+一定范围内的路径，封装一个start属性和length属性，两者均为Int类型。
+三维坐标系内一点，封装x，y和z属性，三者均为Double类型。
+
+
+#### 属性
+```Swift
+// 存储属性
+var arr0: Int = 100
+    
+// 存储属性
+// 通过闭包运算赋值
+var arr1: [Int] = {
+ 	return [1, 2, 3]
+} ()
+    
+// 存储属性
+// 通过闭包运算赋值
+var arr1_1: [Int] = { () -> [Int] in
+    return [6, 7, 8]
+} ()
+    
+// 计算属性，只读，是arr3的简化形式
+var arr2: [Int] {
+	return [1, 2 ,3]
+}
+    
+// 计算属性，只读
+var arr3: [Int] {
+	get {
+		return [1, 2, 3]
+	}
+	set {
+		// set方法无效
+        print(newValue)
+    }
+}
+    
+// 存储属性可以直接读写赋值。
+// 计算属性不能直接对其操作，其本身只起计算作用，没有具体的值
+// 2 和 3相同，2是3的简化形式，声明一个计算属性，只读
+```
+
+#### 初始化
+```Swift
+http://huizhao.win/2016/11/13/swift-init/
+
+swift的初始化方法，如果是继承于其他类，需要加关键字override，但可以不实现super.init方法，编译器会自动添加。
+在初始化方法中要求所有的成员变量都已被正确赋值，示例：
+
+class BlogInit: NSObject {
+    let param: String
+    override init() {
+        self.param = "da liu"
+        // super.init() 可不写，编译器自动生成
+    }
+}
+
+对于需要修改父类中成员变量值的情况，我们需要在调用 super.init 之后再进行修改
+
+class Cat: NSObject {
+    var name: String
+
+    override init() {
+        name = "cat"
+    }
+}
+
+class Tiger : Cat {
+    let power: Int
+
+    override init() {
+        power = 10
+        super.init()
+        name = "tiger"
+    }
+}
+```
+
+因此 Swift 中类的初始化顺序可以总结如下：
+
+1. 初始化自己的成员变量，必须；power = 10
+2. 调用父类初始化方法，如无需第三步，则这一步也可省略； super.init()
+3. 修改父类成员变量，可选。name = “tiger”
+
+补充:
+使用 let 声明的常量是可以在初始化方法中进行赋值的，这是编译器所允许的，因为 Swift 中的 init 方法只会被调用一次，这与 Objective-C 不同；
+
+#### 初始化init
 
