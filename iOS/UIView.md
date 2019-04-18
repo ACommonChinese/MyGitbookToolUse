@@ -1,7 +1,5 @@
 # UIView
 
-# UIView
-
 ###生命周期
 
 ```swift
