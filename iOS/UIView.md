@@ -58,6 +58,10 @@ dismiss_____3. did remove from super view
 
 影响view是否可接收到事件的因素：
 
+A hidden view does not (normally) receive touch events.
+A view whose background color is nil (the default) has a transparent background, it will be invisible, can receive touch events.
+A view’s alpha affects it’s subviews, A view whose alpha is 0 or very close to it is like a view whose isHidden is true, it is completely transparent, invisible, along with subviews, and cannot (normally) be touched.
+
 
 
 
