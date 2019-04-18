@@ -606,3 +606,215 @@ class Tiger : Cat {
 
 #### 初始化init
 
+![](images/2.png)
+
+
+designated intializers 
+convenience initializers
+
+在 Apple 的官方文档中讲到，Swift 定义了两种类初始化器类型，用来保证所有成员属性能够获得一个初始化值，
+ 即 designated initializers 和 convenience initializers
+ Designated initializers are the primary initializers for a class. A designated initializer fully initializes all properties introduced by that class and calls an appropriate superclass initializer to continue the initialization process up the superclass chain.
+
+primary initializers：designated initializers 是一个类的主初始化器，理论上来说是一个类初始化的必经之路（注：不同的初始化路径可能调用不同的 designated initializers）
+fully initializes all properties：这点很明确，必须在 designated initializers 中完成所有成员属性的初始化
+calls an appropriate superclass initializer：需要调用合适的父类初始化器完成初始化，不能随意调用
+
+UIView的两个designated initializers:
+
+```Swift
+public init(frame: CGRect)
+public init?(coder aDecoder: NSCoder)
+
+class CustomView: UIView {
+    let param: Int
+    
+    // Designated initializer
+    override init(frame: CGRect) {
+        self.param = 1
+        super.init(frame: frame)
+    }
+    
+    // Required initializer
+    // 'required' initializer 'init(coder:)' must be provided by subclass of 'UIView'
+    required init?(coder aDecoder: NSCoder) {
+        // fatalError("init(coder:) has not been implemented")
+        self.param = 1
+        super.init(coder: aDecoder)
+    }
+    
+    // Convenience initializer
+    convenience init(param: Int, frame: CGRect) {
+        // self.param = param // 'let' property 'param' may not be initialized directly; use "self.init(...)" or "self = ..." instead
+        self.init(frame: frame)
+    }
+}
+```
+
+#### 可失败初始化器
+可失败初始化器（Failable Initializers），即可以返回 nil 的初始化方法
+就是将初始化返回值变成 optional value（在 init 后面加上 ?），并在不满足初始化条件的地方 return nil，这样，我们通过调用处判断是否有值即可知道是否初始化成功
+
+```Swift
+class Product {
+    let name: String
+    init?(name: String) {
+        if name.isEmpty {
+            return nil
+        }
+        self.name = name
+    }
+}
+
+class Car: Product {
+    let quantity: Int
+    init?(name: String, quantity: Int) {
+        if quantity < 1 { return nil }
+        self.quantity = quantity
+        super.init(name: name)
+    }
+}
+```
+
+#### 逐一成员构造器
+
+如果结构体对所有存储型属性提供了默认值且自身没有提供定制的构造器，它们能自动获得一个逐一成员构造器
+结构体 Rectangle 自动获得了一个逐一成员构造器 init(length:breadth:)
+
+![](images/3.png)
+
+#### Swift中的子类仅在确定和安全的情况下被继承
+
+```Swift
+class mainClass {
+    var no1: Int
+    init(no1: Int) {
+        self.no1 = no1
+    }
+}
+
+class SubClass: mainClass {
+    var no2: Int
+    init(no1: Int, no2: Int) {
+        self.no2 = no2
+        super.init(no1: no1)
+    }
+}
+
+var sub: SubClass = SubClass(no1: 10, no2: 20)
+sub = SubClass(no1: 10) // Missing argument for parameter 'no2' in call
+```
+上面的父类的构造器Init没有被继承，因为假始被SubClass继承，则no2就可能没有被初始化，因此，这是“不安全的”
+
+下面的示例可以：
+```Swift
+class mainClass: NSObject {
+    var no1: Int
+    init(no1: Int) {
+        self.no1 = no1
+    }
+}
+
+class SubClass: mainClass {
+}
+
+var sub = SubClass(no1: 10) // OK
+```
+
+另外需要注意的是：Swift中当重定父类指定的构造器时，需要写override
+
+#### 元组
+```Swift
+// 不需要的元素用 _ 标记
+let (name, age, _) = ("明明", 10, "男")
+print(name, age)
+
+// 通过下标访问特定的元素
+let student = ("明明", 10, "男")
+print(student.0, student.1, student.2)
+
+// 通过指名名字访问元素
+let bobo = (name:"波波",age:"24")
+print(bobo.name, bobo.age)
+```
+
+#### mutating
+Swift 语言中结构体和枚举是值类型。一般情况下，值类型的属性不能在它的实例方法中被修改。
+如果你确实需要在某个具体的方法中修改结构体或者枚举的属性，你可以选择变异(mutating)这个方法，然后方法就可以从方法内部改变它的属性；
+
+```Swift
+struct area {
+    var length = 1
+    var breadth = 1
+    
+    func area() -> Int {
+        return length * breadth
+    }
+    
+    func resetValue(length: Int, breadth: Int) -> Int {
+        self.length = length // Cannot assign to property: 'self' is immutable
+    }
+}
+
+struct area {
+    var length = 1
+    var breadth = 1
+    
+    func area() -> Int {
+        return length * breadth
+    }
+    
+    mutating func resetValue(length: Int, breadth: Int) -> Int {
+        self.length = length // ok
+        ...
+    }
+}
+```
+
+#### static方法
+声明结构体和枚举的类型方法，在方法的func关键字之前加上关键字static。类可能会用关键字class来允许子类重写父类的实现方法。
+```Swift
+class Animal {
+    class func eat() -> Void {
+        print("animal eat")
+    }
+}
+
+class Cat: Animal {
+    override static func eat() -> Void {
+        print("cat eat")
+    }
+}
+
+Animal.eat()
+Cat.eat()
+```
+#### 下标脚本
+```Swift
+
+subscript(index: Int) -> Int {
+    get {
+        // 用于下标脚本值的声明
+    }
+    set(newValue) {
+        // 执行赋值操作
+    }
+}
+
+struct SubExample {
+    let num: Int = 100
+    
+    subscript(i: Int) -> Int {
+        return num / i
+    }
+}
+
+let division = SubExample()
+print("100 除以 9 等于 \(division[9])")
+print("100 除以 2 等于 \(division[2])")
+print("100 除以 3 等于 \(division[3])")
+print("100 除以 5 等于 \(division[5])")
+print("100 除以 7 等于 \(division[7])")
+```
+
+
