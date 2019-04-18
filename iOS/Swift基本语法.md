@@ -132,3 +132,112 @@ swap(&a, &b)
 print("a: \(a) -- b: \(b)") // a: 2 -- b: 1
 ```
 
+#### 函数类型作为参数
+```Swift
+// 可以定义一个类型为函数的常量或变量，并将适当的函数赋值给它
+// 下面我们定义一个函数，然后让一个变量指向这个函数
+
+func sum(a: Int, b: Int) -> Int {
+    return a + b
+}
+
+var addition: (Int, Int) -> Int = sum
+print(addition(1, 2)) // 3
+
+// 上面我们定义一个叫做 addition 的变量，参数与返回值类型均是 Int ，并让这个新变量指向 sum 函数
+
+func sum(a: Int, b: Int) -> Int {
+    return a + b
+}
+
+func minus(a: Int, b: Int) -> Int {
+    return a - b
+}
+
+func another(function: (Int, Int) -> Int, a: Int, b: Int) -> Int {
+    return function(a, b)
+}
+
+print(another(function: sum(a:b:), a: 1, b: 2))
+print(another(function: minus(a:b:), a: 1, b: 2))
+
+print(another(function: sum, a: 10, b: 2))
+print(another(function: minus, a: 10, b: 2))
+
+var sum_2: (Int, Int) -> Int = sum
+var minus_2: (Int, Int) -> Int = minus
+
+print(another(function: sum_2, a: 100, b: 200))
+print(another(function: minus_2, a: 100, b: 200))
+
+func mySum(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+func mySum(a: Int, b: Int) -> Int {
+    return a + b
+}
+
+print(another(function: mySum(_:_:), a: 100, b: 200))
+print(another(function: mySum(a:b:), a: 100, b: 200))
+```
+
+#### 函数类型作为返回值
+```Swift
+func sum(_ a: Int, _ b: Int) -> Int {
+    return a + b
+}
+
+func calculate() -> (Int, Int) -> Int {
+    return sum(_:_:)
+}
+
+print(calculate()(1, 2))
+```
+
+#### 函数嵌套
+```Swift
+// 加上plusValue，再乘以multiplyValue
+// (2 + 5) * 3
+
+func makeCalculate(_ num: Int, _ plusValue: Int) -> (_ multiplyValue: Int) -> Int {
+    var value = num + 5;
+    func multiply(number: Int) -> Int {
+        return value * number
+    }
+    return multiply
+}
+
+let method = makeCalculate(2, 5) // 2 + 5
+print(method(3)) // 21
+```
+
+#### 字典
+```Swift
+// key可以是整型或字符串
+var someDict:[Int: String] = [1: "One", 2: "Two", 3: "Three"]
+print(someDict[1]) // Optional("One") 注：有警告: Expression implicitly coerced from 'String?' to Any
+print(someDict[1]!) // One
+if let value = someDict[1] {
+    print(value)
+}
+
+someDict.updateValue("壹", forKey: 1) // [2: "Two", 3: "Three", 1: "壹"]
+print(someDict)
+
+移除：
+var someDict:[Int:String] = [1:"One", 2:"Two", 3:"Three"]
+someDict.removeValue(forKey: 1)
+print(someDict[1]) // nil
+
+也可以通过设置值为nil移除
+
+字典遍历：
+var someDict:[Int:String] = [1:"One", 2:"Two", 3:"Three"]
+
+for (key, value) in someDict {
+    print("字典 key \(key) -  字典 value \(value)")
+}
+```
+
+
