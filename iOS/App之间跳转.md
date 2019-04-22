@@ -36,8 +36,10 @@ if ([[UIApplication sharedApplication] canOpenURL:url]) {
 接下来我们写三个App: `MyApp`，`AliPay`，`WeChat`, 从MyApp里可以分别跳转到AliPay和WeChat中完成支付，然后再跳转回来并传一些参数。
 
 我们先在这三个APP里编辑URL Types以表示自己的Schema，可以在Info.plist中添加`URL types`，也可以在TARGETS->Info->URL Types中直接编辑：
-
 ![](images/4.png)
+
+这样编辑好后，发现Info.plist中也自动添加了相应描述：
+![](images/5.png)
 
 同样编辑`AliPay`和`WeChat`:
 - MyApp
@@ -49,4 +51,6 @@ if ([[UIApplication sharedApplication] canOpenURL:url]) {
 - WeChat
   - Identifer: cn.com.alipay
   - URL Schemes: Schema_WeChat
+一个APP可以有多个URL Schema, 为了区分，我们再给MyApp添加两个Schema:
+![](images/6.png)
 
