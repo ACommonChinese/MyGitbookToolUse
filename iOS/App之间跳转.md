@@ -52,7 +52,7 @@ if ([[UIApplication sharedApplication] canOpenURL:url]) {
   - Identifer: cn.com.alipay
   - URL Schemes: Schema_WeChat
 
-一个APP可以有多个URL Schema, 为了区分，我们再给MyApp添加两个Schema:
+一个APP可以有多个URL Schema, 为了区分，我们再给MyApp添加两个Schema, `Schema_From_AliPay` `Schema_From_WeChat`
 ![](images/6.png)
 
 
