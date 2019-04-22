@@ -25,7 +25,6 @@ if ([[UIApplication sharedApplication] canOpenURL:url]) {
 1. 在B的Plist文件的LSApplicationQueriesSchemes选项中配置Schema名称
 2. 在A的Plist文件的URL type选项中配置Schema.
 
-不过，经试验发现，如果不设置`LSApplicationQueriesSchemes`，而强制调用`[[UIApplication sharedApplication] openURL:url]`也是可以工作的，但通常我们不这么干。
 
 另外，比如从B跳回A，则会回调方式：
 
@@ -54,6 +53,7 @@ if ([[UIApplication sharedApplication] canOpenURL:url]) {
 
 一个APP可以有多个URL Schema, 为了区分，我们再给MyApp添加两个Schema, `Schema_From_AliPay` `Schema_From_WeChat`
 ![](images/6.png)
+
 
 
 
