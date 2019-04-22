@@ -16,3 +16,5 @@ if ([[UIApplication sharedApplication] canOpenURL:url]) {
     - URL identifier: 此应用的identififier
     - URL Schemes
       - item0: SomeApp
+
+思路明确，即要从A打开B，则需要
