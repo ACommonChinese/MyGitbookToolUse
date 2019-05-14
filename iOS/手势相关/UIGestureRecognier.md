@@ -1,5 +1,8 @@
 # UIGestureRecognier
 
+参考链接：
+[https://www.jianshu.com/p/ce86d57e40cf](https://www.jianshu.com/p/ce86d57e40cf)
+[https://www.jianshu.com/p/ef60a6c10a8d](https://www.jianshu.com/p/ef60a6c10a8d)
 
 **cancelsTouchesInView**
  When this property is YES (the default) and the receiver recognizes its gesture, the touches of that gesture that are pending are not delivered to the view and previously delivered touches are cancelled through a touchesCancelled:withEvent: message sent to the view. If a gesture recognizer doesn’t recognize its gesture or if the value of this property is NO, the view receives all touches in the multi-touch sequence.
