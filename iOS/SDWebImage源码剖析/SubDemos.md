@@ -5,4 +5,5 @@
 * [NSCache](https://github.com/ACommonChinese/MyGitbookSubDemos/tree/master/NSCache)
 * [NSProgress](https://github.com/ACommonChinese/MyGitbookSubDemos/tree/master/NSProgress)
 * [类名同协议名](https://github.com/ACommonChinese/MyGitbookSubDemos/tree/master/ClassName%3DprotolName)
+* [UIImage_animatedImageWithImages](https://github.com/ACommonChinese/MyGitbookSubDemos/tree/master/UIImage_animatedImageWithImages)
 
