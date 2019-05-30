@@ -1,2 +1,13 @@
 [Etag介绍](https://baike.baidu.com/item/ETag/4419019?fr=aladdin)
 
+它是一个 hash 值，用作 Request 缓存请求头，每一个资源文件都对应一个唯一的 ETag 值， 服务器单独负责判断记号是什么及其含义，并在HTTP响应头中将其传送到客户端:
+
+```
+服务器端返回的格式:
+ETag: "50b1c1d4f775c61:df3"
+
+客户端的查询更新格式:
+If-None-Match: W/"50b1c1d4f775c61:df3"
+
+// If-None-Match - 与响应头的 Etag 相对应，可以判断本地缓存数据是否发生变化, 如果ETag没改变，则返回状态304然后不返回，这也和Last-Modified一样。
+```
