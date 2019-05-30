@@ -22,6 +22,7 @@
     * [Toll-free bridging](iOS/Toll-free_bridging.md)
     * [SDWebImage源码剖析](iOS/SDWebImage源码剖析/README.md)
         * [SubDemos](iOS/SDWebImage源码剖析/SubDemos.md)
+        * [缓存](iOS/SDWebImage源码剖析/缓存.md)
         * [结构分析](iOS/SDWebImage源码剖析/结构分析.md)
     * [手势相关](iOS/手势相关/README.md)
         * [UIGestureRecognier](iOS/手势相关/UIGestureRecognier.md)
