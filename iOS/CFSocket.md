@@ -27,7 +27,9 @@ SOCK_STREAM 有以下几个特征：
 - 限制每次传输的数据大小；
 - 数据的发送和接收是同步的（有的教程也称“存在数据边界”）。
 
+除了源端口和目的端口，面向连接的套接字还包括序号、确认信号、数据偏移、控制标志（通常说的 URG、ACK、PSH、RST、SYN、FIN）、窗口、校验和、紧急指针、选项等信息；而无连接的套接字则只包含长度和校验和信息
 
+![](./images/wifi.png)
 
 相关链接：
 - [https://baike.baidu.com/item/socket/281150?fr=aladdin](https://baike.baidu.com/item/socket/281150?fr=aladdin)
