@@ -8,6 +8,7 @@ CF7插件用来做“联系我们”留言板。 访客填写信息留言后，�
 上图所示的留言板引用的是：`[contact-form-7 id="2338" title="Contact form"]`对应的位置是：
 Contact > Contact Forms下面Contact form
 ![](images/23.png)
+![](images/24.png)
 
 
 
