@@ -22,11 +22,11 @@ Contact（联系） &gt; Contact Forms下面Contact form
 **Step 3&gt; 设置WP Mail SMTP**  
 Settings &gt; WP Mail SMTP
 
-* From Email: 填写自己的Email ==&gt; 示例：12118...@qq.com
-* From Name: 对方看到的邮箱名 ==&gt; 示例：liuxi...@163.com
+* From Email: 填写自己的Email ==&gt; 示例：123456789@qq.com
+* From Name: 对方看到的邮箱名 ==&gt; 示例：123456789@163.com
 * SMTP Host: SMTP服务器地址 ==&gt; QQ的是 smtp.qq.com
 * Encryption: 可以勾选SSL
-* SMTP Port: 如果勾选了SSL，则此处对应填写，QQ的是465
+* SMTP Port: 如果勾选了SSL，则此处对应填写，QQ和163的是465
 * Aoto TLS: 不必要选中
 * Authentication: ON 打开
 * SMTP Username: SMTP用户名，和上面From Eamil是一样的，即自己的邮箱
