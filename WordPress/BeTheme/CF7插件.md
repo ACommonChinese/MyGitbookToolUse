@@ -35,5 +35,7 @@ Settings &gt; WP Mail SMTP
 **Step 4&gt; 设置CF7表单的Mail**
 Contact > 在这些表单列表中找到要编辑的表单 > Edit > Mail
 ![](images/25.png)
+- To: 收件人，示例：123456789@qq.com
+- From: 收件人，示例：[your-name]<123456789@qq.com>
 
 
