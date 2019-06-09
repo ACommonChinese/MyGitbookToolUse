@@ -12,4 +12,7 @@ Contact（联系） > Contact Forms下面Contact form
 要使用访客留言可以发送到正确的邮箱，还需要填写邮箱信息：
 ![](images/25.png)
 
+借助第三方邮箱服务器发邮件还需要一个SMTP插件，比如：
+![](images/26.png)
+
 
