@@ -33,7 +33,8 @@ Settings &gt; WP Mail SMTP
 * Authentication: ON 打开
 * SMTP Username: SMTP用户名，和上面From Eamil是一样的，即自己的邮箱
 * SMTP Password: SMTP密码 注：这个密码不是网页登录密码，而是腾讯/网易给的IMAP/SMTP授权码
-  **Step 4&gt; 设置CF7**
+
+**Step 4&gt; 设置CF7**
 
 
 
