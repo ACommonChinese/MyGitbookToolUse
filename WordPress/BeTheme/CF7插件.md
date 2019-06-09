@@ -13,8 +13,6 @@ CF7 + 插件 + 第三方SMTP
 Contact（联系） &gt; Contact Forms下面Contact form  
 ![](images/23.png)  
 ![](images/24.png)  
-要使用访客留言可以发送到正确的邮箱，还需要填写邮箱信息：  
-![](images/25.png)
 
 **Step 1&gt; 安装SMTP插件**  
 借助第三方邮箱服务器发邮件需要一个SMTP插件，比如：  
@@ -36,6 +34,6 @@ Settings &gt; WP Mail SMTP
 
 **Step 4&gt; 设置CF7**
 Contact > 在这些表单列表中找到要编辑的表单 > Edit > Mail
-
+![](images/25.png)
 
 
