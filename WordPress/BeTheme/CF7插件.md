@@ -15,4 +15,15 @@ Contact（联系） > Contact Forms下面Contact form
 借助第三方邮箱服务器发邮件还需要一个SMTP插件，比如：
 ![](images/26.png)
 
+邮箱的设置在：Settings > WP Mail SMTP:
+- From Email: 填写自己的Email
+- From Name: 对方看到的邮箱名
+- SMTP Host: SMTP服务器地址
+- Encryption: 可以勾选SSL
+- SMTP Port: 如果勾选了SSL，则此处使用465
+- Aoto TLS: 不必要选中
+- Authentication: ON 打开
+- SMTP Username: 用户名
+- SMTP Password: 密码
+
 
