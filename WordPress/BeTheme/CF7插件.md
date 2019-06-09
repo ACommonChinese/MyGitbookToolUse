@@ -35,6 +35,7 @@ Settings &gt; WP Mail SMTP
 * SMTP Password: SMTP密码 注：这个密码不是网页登录密码，而是腾讯/网易给的IMAP/SMTP授权码
 
 **Step 4&gt; 设置CF7**
+Contact > 在这些表单列表中找到要编辑的表单 > Edit > Mail
 
 
 
