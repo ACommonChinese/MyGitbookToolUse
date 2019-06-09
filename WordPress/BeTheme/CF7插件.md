@@ -16,10 +16,9 @@ Contact（联系） &gt; Contact Forms下面Contact form
 要使用访客留言可以发送到正确的邮箱，还需要填写邮箱信息：  
 ![](images/25.png)
 
-借助第三方邮箱服务器发邮件还需要一个SMTP插件，比如：  
-![](images/26.png)
-
 **Step 1&gt; 安装SMTP插件**  
+借助第三方邮箱服务器发邮件需要一个SMTP插件，比如：  
+![](images/26.png)
 **Step 2&gt; 通过第三方邮件平台获取授权码**  
 比如QQ邮箱的设置里，通过发短信的方式获取IMAP/SMTP授权码  
 **Step 3&gt; 设置WP Mail SMTP**  
