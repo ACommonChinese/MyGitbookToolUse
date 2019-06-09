@@ -16,14 +16,14 @@ Contact（联系） > Contact Forms下面Contact form
 ![](images/26.png)
 
 邮箱的设置在：Settings > WP Mail SMTP:
-- From Email: 填写自己的Email
-- From Name: 对方看到的邮箱名
-- SMTP Host: SMTP服务器地址
+- From Email: 填写自己的Email ==> 示例：1213618...@qq.com
+- From Name: 对方看到的邮箱名 ==> 示例：liuxi...@163.com
+- SMTP Host: SMTP服务器地址 ==> QQ的是 smtp.qq.com
 - Encryption: 可以勾选SSL
-- SMTP Port: 如果勾选了SSL，则此处使用465
+- SMTP Port: 如果勾选了SSL，则此处对应填写，QQ的是465
 - Aoto TLS: 不必要选中
 - Authentication: ON 打开
-- SMTP Username: 用户名
-- SMTP Password: 密码
+- SMTP Username: SMTP用户名，和上面From Eamil是一样的，即自己的邮箱
+- SMTP Password: SMTP密码 注：这个密码不是网页登录密码，而是腾讯/网易给的授权码
 
 
