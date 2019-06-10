@@ -42,3 +42,6 @@ UIView *lastSubView = UIView.new;
     }];
 }
 ```
+
+**XIB布局约束示例**
+
