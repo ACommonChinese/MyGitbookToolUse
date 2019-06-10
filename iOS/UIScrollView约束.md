@@ -44,4 +44,20 @@ UIView *lastSubView = UIView.new;
 ```
 
 **XIB布局约束示例**
+```Objective-C
+Step 1> 拖入ScrollView，设置其相对于控制器的View上下左右为0
+Step 2> 拖入UIView放在ScrollView上作为ScrollView的ContentView并设置:
+        contentView.left.top.right.bottom = 0; // relative to scrollView
+        contentView.width = controller.view.width; 
+        contentView.height = scrollView.height(此height即scrollView.contentSize.height，由于height不固定，因此勾选这个约束的Placeholder: Remove at build time，表示这个约束实际上通过代码控制，但先伪设置上以便XCode不作错误提示)
+Step 4> 通过代码控制ContentView.height
+- (void)resetContentViewConstraint:(UIView *)contentView withLastSubview:(UIView *)lastSubview {
+    if (!contentView || !lastSubview) {
+        return;
+    }
+    [contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(lastSubview.mas_bottom);
+    }];
+}
+```
 
