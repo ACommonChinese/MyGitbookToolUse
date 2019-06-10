@@ -59,5 +59,6 @@ Step 4> 通过代码控制ContentView.height
         make.bottom.mas_equalTo(lastSubview.mas_bottom);
     }];
 }
+上面是设置bottom的方式来处理的，也可以直接设置contentView.height, 但一般不这么做
 ```
 
