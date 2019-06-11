@@ -40,7 +40,7 @@ SOCK\_STREAM 有以下几个特征：
 
 接下来仿照[http://c.biancheng.net/view/2128.html](http://c.biancheng.net/view/2128.html)的代码写一个示例，这个示例包含server端和client, server端监听并等待client的连接，当client发起连接后，server向client询问：  
 你想要哪一种水果?  
-1. 苹果   
+1. 苹果  
 2. 桔子  
 3. 香蕉
 
