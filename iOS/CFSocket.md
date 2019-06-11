@@ -1,8 +1,7 @@
 # CFSocket
 
 推荐链接：  
-[http://c.biancheng.net/view/2123.html](#)  
-
+[http://c.biancheng.net/view/2123.html](#)
 
 #### 什么是Socket?
 
@@ -39,15 +38,16 @@ SOCK\_STREAM 有以下几个特征：
 
 关于Socket的一些原始API的用法，可以参见Linux的[man-pages](https://www.kernel.org/doc/man-pages/), 可以下载下来：[https://www.kernel.org/doc/man-pages/download.html](https://www.kernel.org/doc/man-pages/download.html), 也可以在线搜索：[http://man.he.net/](http://man.he.net/)
 
-接下来仿照[http://c.biancheng.net/view/2128.html](http://c.biancheng.net/view/2128.html)的代码先一个示例，这个示例包含server端和client, server端监听并等待client的连接，当client发起连接后，server向client询问：
-你想要哪一种水果?
-1. 苹果 
-2. 桔子
+接下来仿照[http://c.biancheng.net/view/2128.html](http://c.biancheng.net/view/2128.html)的代码先一个示例，这个示例包含server端和client, server端监听并等待client的连接，当client发起连接后，server向client询问：  
+你想要哪一种水果?  
+1. 苹果   
+2. 桔子  
 3. 香蕉
 
 接下来client端输入一个序号，然后server就把相关的水果发送给client.
 
 server源码示例
+
 ```C
 //
 //  main.cpp
@@ -76,20 +76,20 @@ int main(int argc, const char * argv[]) {
         参数domain: AF_INET: internetwork: UDP, TCP, etc.  AF_INET6: IPV6
         参数type: SOCK_STREAM SOCK_DGRAM SOCK_RAW
         参数protocol: 协议
-     
+
      tcp_socket = socket(AF_INET, SOCK_STREAM, 0);
      udp_socket = socket(AF_INET, SOCK_DGRAM, 0);
      raw_socket = socket(AF_INET, SOCK_RAW, protocol);
      */
     int serv_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
-    
+
     /**
      struct sockaddr_in {
         sa_family_t sin_family;   // address family: AF_INET 采用的地址，IPv4或IPv6
         in_port_t sin_port;       // port in network byte order 端口
         struct in_addr sin_addr;  // internet address IP地址
      }
-     
+
      // Internet address
      struct in_addr {
         uint32_t s_addr; // address in network byte order
@@ -109,10 +109,10 @@ int main(int argc, const char * argv[]) {
      ntohl: Network To Host Long  ==> uint32_t ntohl(uint32_t netlong);
      ntohs: Network To Host Short ==> uint16_t ntohs(uint16_t netshort);
      */
-    
+
     // 将套接字和IP、端口绑定
     bind(serv_sock, (const struct sockaddr *)&serv_addr, sizeof(serv_addr));
-    
+
     /**
      listen for connections on a socket   #include <sys/socket.h>
      函数原形：int listen(int sockt, int backlog)
@@ -125,7 +125,7 @@ int main(int argc, const char * argv[]) {
      The listen() call applies only to sockets of type SOCK_STREAM.
      */
     listen(serv_sock, 20); // 进入监听状态，等待客户端发起请求
-    
+
     // 接收客户端请求
     struct sockaddr_in clnt_addr;
     socklen_t clnt_addr_size = sizeof(clnt_addr);
@@ -179,10 +179,10 @@ int main(int argc, const char * argv[]) {
 
     char str[] = "你想要哪一种水果?\n1. 苹果 \n2. 桔子\n3. 香蕉\n";
     write(clnt_sock, str, sizeof(str)); // 发送给客户端
-    
+
     int buffer;
     read(clnt_sock, (void *)&buffer, sizeof(buffer));
- 
+
     switch (buffer) {
             case 1: {
                 char fruits[100] = "苹果...";
@@ -213,12 +213,13 @@ int main(int argc, const char * argv[]) {
     // 关闭套接字
     close(clnt_sock);
     close(serv_sock);
-    
+
     return 0;
 }
 ```
 
 client源码示例
+
 ```C
 #include <stdio.h>
 #include <string.h>
@@ -230,7 +231,7 @@ client源码示例
 int main(int argc, const char * argv[]) {
     // 创建套接字
     int sock = socket(AF_INET, SOCK_STREAM, 0);
-    
+
     // 向服务器（特定的IP和端口）发起请求
     struct sockaddr_in serv_addr;
     memset(&serv_addr, 0, sizeof(serv_addr));  // 每个字节都用0填充
@@ -250,7 +251,7 @@ int main(int argc, const char * argv[]) {
     read(sock, buffer, 300); // read 方法：http://www.man7.org/linux/man-pages/man2/read.2.html
 
     printf("%s\n", buffer);
-    
+
     int input_num;
     printf("please input number:");
     scanf("%d", &input_num);
@@ -259,10 +260,10 @@ int main(int argc, const char * argv[]) {
     char buffer2[200];
     read(sock, buffer2, sizeof(buffer2));
     printf("\nserver响应: %s\n", buffer2);
-    
+
     // 关闭套接字
     close(sock);
-    
+
     return 0;
 }
 ```
