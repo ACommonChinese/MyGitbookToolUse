@@ -113,7 +113,13 @@ struct sockaddr_in6 {
 - listen() 只是让套接字进入监听状态，并没有真正接收客户端请求，listen() 后面的代码会继续执行，直到遇到 accept()。accept() 会阻塞程序执行（后面代码不能被执行），直到有新的请求到来。
 
 **send()/recv()和write()/read()：发送数据和接收数据**
-****
+在服务器端用 write() 向套接字写入数据，客户端就能收到，然后再使用 read() 从套接字中读取出来，就完成了一次通信。
+- `ssize_t write(int fd, const void *buf, size_t nbytes)`
+  - fd 为要写入的文件的描述符，buf 为要写入的数据的缓冲区地址，nbytes 为要写入的数据的字节数
+write() 函数会将缓冲区 buf 中的 nbytes 个字节写入文件 fd，成功则返回写入的字节数，失败则返回 -1
+- ssize_t read(int fd, void *buf, size_t nbytes)
+  - fd 为要读取的文件的描述符，buf 为要接收数据的缓冲区地址，nbytes 为要读取的数据的字节数
+  - read() 函数会从 fd 文件中读取 nbytes 个字节并保存到缓冲区 buf，成功则返回读取到的字节数（但遇到文件结尾则返回0），失败则返回 -1
 
 **htons**
 htonl, htons, ntohl, ntohs -- convert values between host and network
