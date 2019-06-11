@@ -78,8 +78,7 @@ struct sockaddr{
 };
 ```
 下图是 sockaddr 与 sockaddr_in 的对比（括号中的数字表示所占用的字节数）：
-![](images/8.png)
-
+![](images/8.jpg)
 
 **htons**
 htonl, htons, ntohl, ntohs -- convert values between host and network
