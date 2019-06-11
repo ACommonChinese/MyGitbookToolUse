@@ -270,13 +270,15 @@ int main(int argc, const char * argv[]) {
 
 ```
 先运行server：
-g++ server.cpp -o server
+g++ main.cpp -o server
 ./server
 
 再运行client：
-g++ client.cpp -o client
+g++ main.cpp -o client
 ./client
 ```
+
+![](images/7.png)
 
 相关链接：
 
