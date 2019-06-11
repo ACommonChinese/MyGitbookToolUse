@@ -1,6 +1,8 @@
 # CFSocket
 
-[http://c.biancheng.net/view/2123.html](http://c.biancheng.net/view/2123.html)
+推荐链接：  
+[http://c.biancheng.net/view/2123.html](#)  
+
 
 #### 什么是Socket?
 
