@@ -69,6 +69,18 @@ printf("%ld\n", ip); // 16777343
 ```
 - 参数sin_zero[8] 是多余的8个字节，没有用，一般使用 memset() 函数填充为 0。上面的代码中，先用 memset() 将结构体的全部字节填充为 0，再给前3个成员赋值，剩下的 sin_zero 自然就是 0 了
 
+注：bind() 第二个参数的类型为 sockaddr，而代码中却使用 sockaddr_in，然后再强制转换为 sockaddr，这是为什么呢？
+sockaddr 结构体的定义如下：
+```C
+struct sockaddr{
+    sa_family_t  sin_family;   //地址族（Address Family），也就是地址类型
+    char         sa_data[14];  //IP地址和端口号
+};
+```
+下图是 sockaddr 与 sockaddr_in 的对比（括号中的数字表示所占用的字节数）：
+![](images/8.png)
+
+
 **htons**
 htonl, htons, ntohl, ntohs -- convert values between host and network
      byte order
