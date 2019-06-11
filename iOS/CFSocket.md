@@ -37,6 +37,8 @@ SOCK\_STREAM 有以下几个特征：
 
 ![](./images/wifi.png)
 
+关于Socket的一些原始API的用法，可以参见Linux的[man-pages](https://www.kernel.org/doc/man-pages/), 可以下载下来：[https://www.kernel.org/doc/man-pages/download.html](https://www.kernel.org/doc/man-pages/download.html), 也可以在线搜索：[http://man.he.net/](http://man.he.net/)
+
 相关链接：
 
 * [https://baike.baidu.com/item/socket/281150?fr=aladdin](https://baike.baidu.com/item/socket/281150?fr=aladdin)
@@ -44,6 +46,7 @@ SOCK\_STREAM 有以下几个特征：
 * [Apple CFSocket源码](https://opensource.apple.com/source/CF/CF-635/CFSocket.c.auto.html)
 * [第三方CocoaAsyncSocket](https://github.com/robbiehanson/CocoaAsyncSocket)
 * [http://c.biancheng.net/socket/](http://c.biancheng.net/socket/)
+* [https://www.kernel.org/doc/man-pages/](https://www.kernel.org/doc/man-pages/)
 
 
 
