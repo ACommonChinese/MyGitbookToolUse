@@ -1,6 +1,6 @@
 # server持续监听client
 
-[这里](http://c.biancheng.net/view/2348.html)展示了Windows环境下让服务器端持续监听客户端的请求的代码示例，我在这里写一个Mac环境下(Linux通用)代码
+[这里](http://c.biancheng.net/view/2348.html)展示了Windows环境下让服务器端持续监听客户端的请求的代码示例，我在下面写一个Mac环境下(Linux通用)代码
 
 **Server端**
 ```C++
