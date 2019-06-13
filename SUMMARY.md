@@ -23,6 +23,8 @@
     * [TCP粘包问题](Socket/TCP粘包问题.md)
 * [C_C++](C_C++/README.md)
     * [关键字restrict](C_C++/关键字restrict.md)
+* [Python](Python/README.md)
+    * [备记语法](Python/备记语法.md)
 * [iOS](iOS/README.md)
     * [UIView](iOS/UIView.md)
     * [WKWebView](iOS/WKWebView.md)
