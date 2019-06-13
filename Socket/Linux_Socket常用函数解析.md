@@ -2,6 +2,15 @@
 
 接口查询参考[http://man.he.net/](http://man.he.net/)
 
+**htons**
+htonl, htons, ntohl, ntohs -- convert values between host and network
+     byte order
+即：htonl, htons, ntohl, ntohs这4个函数转换主机节序和网络的字节序。网络中使用大端big endian, 大字节在前
+htonl: Host TO Network Long  ==> uint32_t htonl(uint32_t hostlong);
+htons: Host To Network Short ==> uint16_t htons(uint16_t hostshort);
+ntohl: Network To Host Long  ==> uint32_t ntohl(uint32_t netlong);
+ntohs: Network To Host Short ==> uint16_t ntohs(uint16_t netshort);
+
 **int socket(int af, int type, int protocol)**
 - `#include <sys/socket.h>`
 - 创建一个socket, 示例：`int serv_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);`
@@ -121,14 +130,18 @@ write() 函数会将缓冲区 buf 中的 nbytes 个字节写入文件 fd，成�
   - fd 为要读取的文件的描述符，buf 为要接收数据的缓冲区地址，nbytes 为要读取的数据的字节数
   - read() 函数会从 fd 文件中读取 nbytes 个字节并保存到缓冲区 buf，成功则返回读取到的字节数（但遇到文件结尾则返回0），失败则返回 -1
 
-**htons**
-htonl, htons, ntohl, ntohs -- convert values between host and network
-     byte order
-即：htonl, htons, ntohl, ntohs这4个函数转换主机节序和网络的字节序。网络中使用大端big endian, 大字节在前
-htonl: Host TO Network Long  ==> uint32_t htonl(uint32_t hostlong);
-htons: Host To Network Short ==> uint16_t htons(uint16_t hostshort);
-ntohl: Network To Host Long  ==> uint32_t ntohl(uint32_t netlong);
-ntohs: Network To Host Short ==> uint16_t ntohs(uint16_t netshort);
+**recv**
+```C
+#include <sys/socket.h>
+ssize_t recv(int socket, void *buffer, size_t length, int flags);
+
+ssize_t recvfrom(int socket, void *restrict buffer, size_t length, int flags, struct sockaddr *restrict address, socklen_t *restrict address_len);
+ssize_t recvmsg(int socket, struct msghdr *message, int flags);
+```
+receive a message from a socket
+
+
+
 
 
 
