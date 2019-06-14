@@ -27,6 +27,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 ```
 
 2. 查看本地python3解释器所在位置
+
 ```
 liuweizhendeMacBook-Pro-2:~ liuweizhen$ which a python3
 /usr/local/bin/python3
@@ -37,6 +38,7 @@ python3 is /usr/local/bin/python3
 ```
 
 3. Tools > Build System > New Build System
+
 ```python
 {
 	"shell_cmd": "make"
@@ -53,6 +55,7 @@ command+s保存，弹出弹框名字为**untitled.sublime-build**
 可更改名字，但后缀.sublime-build不可改动
 
 4. 测试
+
 新建`hello.py`
 ```
 #!/usr/bin/python3
