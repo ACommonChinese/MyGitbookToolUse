@@ -5,11 +5,12 @@
 **htons**
 htonl, htons, ntohl, ntohs -- convert values between host and network
      byte order
-即：htonl, htons, ntohl, ntohs这4个函数转换主机节序和网络的字节序。网络中使用大端big endian, 大字节在前
-htonl: Host TO Network Long  ==> uint32_t htonl(uint32_t hostlong);
-htons: Host To Network Short ==> uint16_t htons(uint16_t hostshort);
-ntohl: Network To Host Long  ==> uint32_t ntohl(uint32_t netlong);
-ntohs: Network To Host Short ==> uint16_t ntohs(uint16_t netshort);
+即：htonl, htons, ntohl, ntohs这4个函数转换主机节序和网络的字节序。网络中使用大端big endian, 大字节在前, 常见的网络字节转换函数有：
+htons()：host to network short，将 short 类型数据从主机字节序转换为网络字节序。
+ntohs()：network to host short，将 short 类型数据从网络字节序转换为主机字节序。
+htonl()：host to network long，将 long 类型数据从主机字节序转换为网络字节序。
+ntohl()：network to host long，将 long 类型数据从网络字节序转换为主机字节序。
+htons() 用来将当前主机字节序转换为网络字节序，其中h代表主机（host）字节序，n代表网络（network）字节序，s代表short，htons 是 h、to、n、s 的组合，可以理解为”将 short 型数据从当前主机字节序转换为网络字节序“。
 
 **int socket(int af, int type, int protocol)**
 - `#include <sys/socket.h>`

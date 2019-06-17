@@ -22,6 +22,7 @@
     * [server持续监听client](Socket/server持续监听client.md)
     * [TCP粘包问题](Socket/TCP粘包问题.md)
     * [socket实现文件传输](Socket/socket实现文件传输.md)
+    * [字节序](Socket/字节序.md)
 * [C_C++](C_C++/README.md)
     * [关键字restrict](C_C++/关键字restrict.md)
 * [Python](Python/README.md)
