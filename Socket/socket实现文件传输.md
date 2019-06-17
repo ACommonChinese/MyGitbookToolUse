@@ -1,6 +1,6 @@
 # socket实现文件传输
 
-[这里](http://c.biancheng.net/view/2355.html提供了一个Windows平台下的Demo, 下面提供一个在Linux(MAC)平台下的Code:
+[这里](http://c.biancheng.net/view/2355.html) 提供了一个Windows平台下的Demo, 下面提供一个在Linux(MAC)平台下的Code:
 
 ```C
 -- server.cpp --
