@@ -59,3 +59,11 @@
 - 重做上一个动作 `Ctrl + r, 即Re-do`
 
 **模式切换**
+
+**文件切换**
+- 查找并打开名为filename的文件 `:find filename`
+查找并打开第2个名为filename的文件 `:2find filename`
+goes back to the "previously edited buffers" `:b#`
+go back to the previous buffer `Ctrl+O`
+take you back `:Ex`
+

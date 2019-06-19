@@ -7,6 +7,7 @@
 - [Python中文手册](https://www.runoob.com/manual/pythontutorial3/docs/html/introduction.html)
 - [Python源代码](https://www.python.org/downloads/source/)
 - [Python线上运行](https://www.runoob.com/try/runcode.php?filename=HelloWorld&type=python3)
+- [python flask 教程](https://pan.baidu.com/s/1saj1pEHf0v92JpFe2F6vkA)提取码: qp85 
 
 ###Sublime Text 3 增加Python解释器支持
 
@@ -71,3 +72,4 @@ command+b，下面控制台打印：
 Hello world!
 [Finished in 0.2s]
 ```
+Test
