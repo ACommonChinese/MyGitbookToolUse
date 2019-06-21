@@ -70,5 +70,12 @@ filetype plugin indent on
 :PluginInstall
 ```
 
+**使用Vim配置Python编译**
+[参见这里](https://stackoverflow.com/questions/18948491/running-python-code-in-vim)
+首先，调用`vim --version`, 如果出现`+python3`则：
 
+1. 在~/.vimrc中添加`let g:pymode_python = 'python3'`
+2. 调用`:w !python`运行python
+
+不过一般我们会在vimrc中添加map，使用快捷键直接运行，参见[Leader](./Leader.md)
 
