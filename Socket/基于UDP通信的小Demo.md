@@ -70,7 +70,7 @@ Demo示例如下：
 
 ```C++
 //
-//  main.cpp
+//  server.cpp
 //  server_udp
 //
 //  Created by liuweizhen on 2019/6/21.
@@ -127,7 +127,7 @@ int main(int argc, const char * argv[]) {
 
 ```C++
 //
-//  main.cpp
+//  client.cpp
 //  client_udp
 //
 //  Created by liuweizhen on 2019/6/21.

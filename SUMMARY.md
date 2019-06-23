@@ -29,6 +29,8 @@
     * [关键字restrict](C_C++/关键字restrict.md)
 * [Python](Python/README.md)
     * [备记语法](Python/备记语法.md)
+    * [pickle](Python/pickle.md)
+    * [常用模块](Python/常用模块.md)
 * [Vim](Vim/README.md)
     * [使用Vim编辑Python.md](Vim/使用Vim编辑Python.md)
     * [插件的使用](Vim/插件的使用.md)
