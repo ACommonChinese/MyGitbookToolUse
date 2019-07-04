@@ -208,6 +208,16 @@ print(calculate()(1, 2))
 
 #### 函数嵌套
 
+protocol Container {
+    associatedtype ItemType
+    // 添加一个新元素到容器里
+    mutating func append(_ item: ItemType)
+    // 获取容器中元素的个数
+    var count: Int { get }
+    // 通过索引取值
+    subscript(i: Int) -> ItemType { get }
+}
+
 ```Swift
 // 加上plusValue，再乘以multiplyValue
 // (2 + 5) * 3
@@ -222,6 +232,7 @@ func makeCalculate(_ num: Int, _ plusValue: Int) -> (_ multiplyValue: Int) -> In
 
 let method = makeCalculate(2, 5) // 2 + 5
 print(method(3)) // 21
+
 ```
 
 #### 字典
@@ -533,6 +544,8 @@ print(a.addMarkNum(a: 100))
 
 #### 属性
 
+Swift 中的属性没有对应的实例变量，属性的后端存储也无法直接访问。这就避免了不同场景下访问方式的困扰，同时也将属性的定义简化成一个语句
+
 ```Swift
 // 存储属性
 var arr0: Int = 100
@@ -568,6 +581,73 @@ var arr3: [Int] {
 // 存储属性可以直接读写赋值。
 // 计算属性不能直接对其操作，其本身只起计算作用，没有具体的值
 // 2 和 3相同，2是3的简化形式，声明一个计算属性，只读
+
+
+**延迟存储属性**
+延迟存储属性是指当第一次被调用的时候才会计算其初始值的属性。必须将延迟存储属性声明成变量（使用var关键字），因为属性的值在实例构造完成之前可能无法得到。而常量属性在构造过程完成之前必须要有初始值，因此无法声明成延迟属性.
+
+```Swift
+class sample {
+    lazy var no = number() // `var` 关键字是必须的
+}
+
+class number {
+    var name = "Runoob Swift 教程"
+}
+
+var firstsample = sample()
+print(firstsample.no.name)
+```
+
+**属性观察器**
+有一些属性不需要属性观察器：
+- 延迟存储属性
+- 无法重载的计算属性（因为可以通过setter直接监控和响应值的变化）
+
+观察器方法:
+- willSet在设置新的值之前调用
+- didSet在新的值被设置之后立即调用
+- 注：willSet和didSet观察器在属性初始化过程中不会被调用
+
+```swift
+class Samplepgm {
+    var counter: Int = 0 {
+        willSet(newTotal) {
+            print("willSet：\(newTotal)")
+        }
+        didSet {
+            if counter > oldValue {
+                print("did plus：\(counter - oldValue)")
+            }
+        }
+    }
+}
+
+@IBAction func click(_ sender: Any) {
+    c.counter = 100;
+    c.counter = 200;
+}
+```
+
+**类属性**
+使用关键字 static 来定义值类型的类型属性，关键字 class 来为类定义类型属性。
+即，在结构体或枚举里，使用static，在class中使用class. 示例：
+
+```swift
+struct Rectangle {
+    static var length = 100.0
+}
+
+enum WeekDay {
+    static var currentDay = "Monday"
+}
+
+class Person {
+    static var sex: Int {
+        return 1
+    }
+    // static var sex = "1" // 如果在class中是存储属性，不能使用class, 要使用static
+}
 ```
 
 #### 初始化
@@ -735,7 +815,7 @@ class SubClass: mainClass {
 var sub = SubClass(no1: 10) // OK
 ```
 
-另外需要注意的是：Swift中当重定父类指定的构造器时，需要写override
+另外需要注意的是：Swift中当重载父类指定的构造器时，需要写override
 
 #### 元组
 
@@ -835,6 +915,374 @@ print("100 除以 3 等于 \(division[3])")
 print("100 除以 5 等于 \(division[5])")
 print("100 除以 7 等于 \(division[7])")
 ```
+
+#### 可选链
+
+可选链（Optional Chaining）是一种可以请求和调用属性、方法和子脚本的过程，用于请求或调用的目标可能为nil
+可选链返回两个值：
+- 如果目标有值，调用就会成功，返回该值
+- 如果目标为nil，调用将返回nil
+多次请求或调用可以被链接成一个链，如果任意一个节点为nil将导致整条链失效
+
+```swift
+
+// Person::Residence::Room&Address
+class Person {
+    var residence: Residence?
+}
+
+class Residence {
+    var rooms = [Room]()
+    var numberOfRooms: Int {
+        return rooms.count
+    }
+    var heights = [Int]()
+    subscript(i: Int) -> Room {
+        return rooms[i]
+    }
+    func printNumberOfRooms() -> Void {
+        print("房间数量：\(numberOfRooms)")
+    }
+    var address: Address?
+}
+
+class Room {
+    let name: String
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class Address {
+    var street: String?
+    var buildingName: String?
+    var buildingNumber: String?
+    func buildingIdentifier() -> String? {
+        if buildingName != nil {
+            return buildingName
+        }
+        else if buildingNumber != nil {
+            return buildingNumber
+        }
+        else {
+            return nil
+        }
+    }
+}
+
+@IBAction func click(_ sender: Any) {
+    let john = Person()
+    if john.residence?.printNumberOfRooms() != nil { // 如果方法调用成功，返回为Void, 不是nil, 如果中间出错错误，返回为nil
+        print("ok")
+    }
+    else {
+        print("error")
+    }
+}
+```
+
+#### 内存管理
+swift使用自动引用计数，Swift 提供了两种办法用来解决循环强引用问题：
+
+- weak 弱引用: 对于生命周期中会变为nil的实例使用弱引用
+- unowned 无主引用: 对于初始化赋值后再也不会被赋值为nil的实例，使用无主引用
+
+**闭包引起的循环强引用**
+循环强引用还会发生在当你将一个闭包赋值给类实例的某个属性，并且这个闭包体中又使用了实例, 比如self.a = 闭包w, 而闭w中又"捕获"了self
+
+示例：
+
+```swift
+
+class HTMLElement {
+    let name: String
+    let text: String?
+
+    init(name: String, text: String? = nil) {
+        self.name = name
+        self.text = text
+    }
+
+    lazy var asHTML: () -> String = {
+        [unowned self] in
+        if let text = self.text {
+            return "<\(self.name)>\(text)</\(self.name)>"
+        }
+        else {
+            return "<\(self.name) />"
+        }
+    }
+
+    deinit {
+        print("\(name) 析构函数被调用")
+    }
+}
+
+@IBAction func click(_ sender: Any) {
+    var paragraph: HTMLElement? = HTMLElement(name: "p", text: "hello world!")
+    print(paragraph!.asHTML())
+
+    paragraph = nil
+}
+```
+
+#### 类型转换
+
+- is   if a is Cat: 如果a是Cat 
+- as?  if let cat = a as? Cat: 如果可以把a转换为Cat类型
+- as!  let cat = a as! Cat: 强制把a转换为Cat类型
+
+**Any和AnyObject**
+Swift为不确定类型提供了两种特殊类型别名：
+- AnyObject可以代表任何class类型的实例。
+- Any可以表示任何类型，包括方法类型（function types)
+
+#### 协议
+
+如果协议里有构造器方法，则实现类里的实现方法必须使用required关键字。
+使用required修饰符可以保证：所有的遵循该协议的子类，同样能为构造器规定提供一个显式的实现或继承实现。
+
+如果一个子类重写了父类的指定构造器，并且该构造器遵循了某个协议的规定，那么该构造器的实现需要被同时标示required和override修饰符:
+
+```swift
+protocol TcpProtocol {
+    init(no1: Int)
+}
+
+class mainClass {
+    var no1: Int
+    init(no1:Int) {
+        self.no1 = no1
+    }
+}
+
+class subClass: mainClass, TcpProtocol {
+    var no2: Int
+    init(no1: Int, no2: Int) {
+        self.no2 = no2
+        super.init(no1: no1)
+    }
+    // 因为遵循协议，需要加上"required"; 因为继承自父类，需要加上"override", 因为调用了self.init, 因此需要加"convenience"
+    required override convenience init(no1: Int) { // Designated initializer for 'subClass' cannot delegate (with 'self.init'); did you mean this to be a convenience initializer?
+        self.init(no1: no1, no2: 0)
+    }
+}
+```
+**专属协议**
+可以在协议的继承列表中,通过添加class关键字,限制协议只能适配到类（class）类型，
+示例：
+
+```swift
+// 指定AnimalProtocol只能被Animal或Animal的子类遵守
+protocol AnimalProtocol: Animal {
+    func drink() -> Void
+}
+
+class Animal {
+    func eat() -> Void {
+        print("Animal eat")
+    }
+}
+
+class Cat : Animal, AnimalProtocol {
+    func drink() {
+        print("cat drink")
+    }
+}
+
+class Fruit: AnimalProtocol {
+    // Error: 'AnimalProtocol' requires that 'Fruit' inherit from 'Animal'
+}
+```
+
+**协议合成**
+
+```Swift
+protocol Stname {
+    var name: String { get }
+}
+
+protocol Stage {
+    var age: Int { get }
+}
+
+struct Person: Stname, Stage {
+    var name: String
+    var age: Int
+}
+
+func show(celebrator: Stname & Stage) {
+    print("\(celebrator.name) is \(celebrator.age) years old")
+}
+
+let studname = Person(name: "Priya", age: 21)
+print(studname)
+
+let stud = Person(name: "Rehan", age: 29)
+print(stud)
+
+let student = Person(name: "Roshan", age: 19)
+print(student)
+```
+
+#### 泛型
+
+先来回顾一下可变参的写法：
+
+```Swift
+// vfunc swapTwoValues<T>(_ a: inout T, _ b: inout T)
+func vari<N>(members: N...){
+    for i in members {
+        print(i)
+    }
+}
+vari(members: 4,3,5)
+vari(members: 4.5, 3.1, 5.6)
+vari(members: "Google", "Baidu", "Runoob")
+```
+
+泛型写法类似，示例：
+
+```Swift
+// 定义一个交换两个变量的函数
+func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+ 
+var numb1 = 100
+var numb2 = 200
+ 
+print("交换前数据:  \(numb1) 和 \(numb2)")
+swapTwoValues(&numb1, &numb2)
+print("交换后数据: \(numb1) 和 \(numb2)")
+ 
+var str1 = "A"
+var str2 = "B"
+ 
+print("交换前数据:  \(str1) 和 \(str2)")
+swapTwoValues(&str1, &str2)
+print("交换后数据: \(str1) 和 \(str2)")
+```
+
+**扩展泛型类型**
+示例：
+
+```Swift
+
+struct Stack<T> {
+    var items = [T]()
+    mutating func push(_ item: T) {
+        items.append(item)
+    }
+    mutating func pop() -> T? {
+        if items.isEmpty {
+            return nil
+        }
+        return items.removeLast()
+    }
+}
+
+extension Stack {
+    var topItem: T? {
+        return items.isEmpty ? nil : items[items.count-1]
+    }
+}
+
+var stack = Stack<String>()
+stack.push("Google")
+stack.push("Baidu")
+stack.push("Ali")
+
+if let topItem = stack.topItem {
+    print("栈顶元素：\(topItem)")
+}
+```
+
+**类型约束**
+```Swift
+func someFunction<T: SomeClass, U: SomeProtocol>(someT: T, someU: U) {
+    // 这里是泛型函数的函数体部分
+}
+```
+
+上面这个函数有两个类型参数。第一个类型参数 T，有一个要求 T 必须是 SomeClass 子类的类型约束；第二个类型参数 U，有一个要求 U 必须符合 SomeProtocol 协议的类型约束。
+
+**关联类associatedtype**
+
+Swift 中使用 associatedtype 关键字来表示泛型的关联类型
+
+```Swift
+
+struct Stack<T>: Container {
+    var items = [T]()
+    mutating func push(_ item: T) {
+        items.append(item)
+    }
+    mutating func pop() -> T? {
+        if items.isEmpty {
+            return nil
+        }
+        return items.removeLast()
+    }
+
+    // Container 协议的实现部分
+    mutating func append(_ item: T) { // 此处T可替换为：Stack<T>.ItemType
+        self.push(item)
+    }
+    var count: Int {
+        return items.count
+    }
+    subscript(i: Int) -> T {
+        return items[i]
+    }
+}
+
+extension Stack {
+    var topItem: T? {
+        return items.isEmpty ? nil : items[items.count-1]
+    }
+}
+
+override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    var tos = Stack<String>()
+    tos.push("google")
+    tos.push("runoob")
+    tos.push("taobao")
+    // 元素列表
+    print(tos.items)
+    // 元素个数
+    print( tos.count)
+}
+```
+
+**Where约束**
+
+可以在参数列表中通过where语句定义参数的约束
+
+
+#### Swift常见关键字
+**inout**
+inout关键字用一句话概括：将值类型的对象用引用的方式传递。
+我们经常说值类型和引用类型实际上就是指对象的传递方式分别是 按值传递 和 按址传递
+
+```swift
+func test(){
+    var a:Int = 5
+    handle(a:&a)   //  注意这里使用了取址操作
+    print(a)    // 6
+}
+
+func handle(a:  inout Int){
+    print(a)
+    a = a + 1     //如果没有inout修饰的话，这句代码将会报错，主要意思是不能改变一个let修饰的常量。
+}
+```
+
+
 
 
 
