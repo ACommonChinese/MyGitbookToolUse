@@ -49,6 +49,7 @@
         * [结构分析](iOS/SDWebImage源码剖析/结构分析.md)
     * [手势相关](iOS/手势相关/README.md)
         * [UIGestureRecognier](iOS/手势相关/UIGestureRecognier.md)
+    * [NSScanner](iOS/NSScanner.md)
     * [Swift基本语法](iOS/Swift基本语法.md)
     * [CoreFoundation](iOS/CoreFoundation/README.md)
         * [CFDictionary](iOS/CoreFoundation/CFDictionary.md)

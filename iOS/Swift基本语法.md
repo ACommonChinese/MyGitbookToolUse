@@ -1282,7 +1282,21 @@ func handle(a:  inout Int){
 }
 ```
 
+**guard**
+if-else和guard-else很类似，只是guard和else必须成对出现，而且else中必须return, 因此guard-else常用来表示，如果...继续，否则返回
+比如：
 
+```swift
+let a: Int = 100
+if (a % 20 == 0 && a % 5 == 0) {
+    print("hello")
+}
+else {
+    return
+}
 
+相当于：
 
-
+guard a % 20 == 0 && a % 5 == 0 else { return }
+print("hello")
+```
