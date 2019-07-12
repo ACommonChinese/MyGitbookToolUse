@@ -1300,3 +1300,124 @@ else {
 guard a % 20 == 0 && a % 5 == 0 else { return }
 print("hello")
 ```
+
+#### Swift对象类型易混淆点
+
+**类和类的类型对象.self**
+
+示例：
+```
+class A {
+    static func test() {
+        if A == self { // 编译器报错：... Use '.self' to reference the type object ...
+            print("A == self") // 把上面语句改成 A.self == self, 此句被打印
+        }
+    }
+}
+
+```
+
+我们知道，在类方法中self, 代表类本身，在实例方法中self代表对象本身。
+这里`A`不可以和`self`比较，编译器提示：`Use '.self'` to reference the type object
+也就是说：`A`是类，而`A.self`是类A的类型对象。其实可以理解成A的“元类型MetaType”。
+
+```swift
+print(Int.self) // Int
+print(String.self) // String
+let student: String = "hello"
+print(student.self) // hello
+```
+
+XXX.self：如果XXX是一个Class, 即类，则XXX.self代表这个类的类型对象，如果XXX是一个对象，则XXX.self就是对象本身(一般不使用XXX是对象的情况)。
+
+可以这样判断某一个对象是否属于某一个类, a是否属于A类：
+
+if type(of: a) == A.self {
+    ...
+}
+
+不过，也可以使用is表达式，直接使用Class本身，而不是Class的type对象：
+
+if a is A {
+    ...
+}
+
+**元类型**
+元类型，Metatype, 参见：
+[SwiftRock](https://swiftrocks.com/whats-type-and-self-swift-metatypes.html)
+
+
+
+
+**type(of:)**
+
+
+示例：
+
+```Swift
+class A {
+    // 类方法
+    class func classMethod() {
+        // type对应OC中的Class，是类类型
+        let type1 = type(of: self)
+        print("1. type(of: self) ==> ", type1) // A.Type
+        let type2 = self // 在类方法中，self就代表Type，即Class
+        print("2. self ==> ", type2) // A
+        let type3 = A.self
+        print("3. A.self ==> ", type3) // A
+        if type1 == type3 {
+            print("type(of: self) == A.self")
+        }
+        if type1 == type2 {
+            print("type(of: self) == self")
+        }
+        if type2 == type3 { // 相等
+            print("self == A.self")
+        }
+    }
+
+    func instanceMethod() {
+        let type1 = type(of: self) // self所属的Class
+        print("1. type(of: self) ==> ", type1) // A
+        let type2 = self
+        print("2. self ==> ", type2) // type和_self.A
+        let type3 = A.self
+        print("3. A.self ==> ", type3) // A
+        if type1 == type3 {
+            // 相同
+            print("type(of: self) == A.self")
+        }
+        // Binary operator '==' cannot be applied to operands of type 'A.Type' and A
+        // if type1 == type2 {
+        //    print("type(of: self) == self")
+        // }
+
+        // if type2 == type3 { // 相等
+        //     print("self == A.self")
+        // }
+    }
+}
+```
+
+打印结果显示：
+```
+类方法中：
+1. type(of: self) ==>  A.Type
+2. self ==>  A
+3. A.self ==>  A
+self == A.self
+
+实例方法中：
+1. type(of: self) ==>  A
+2. self ==>  type和_self.A
+3. A.self ==>  A
+type(of: self) == A.self
+```
+
+解释：
+在类方法中：`type(of: self) ==> A.Type` 这里的
+
+
+
+
+
