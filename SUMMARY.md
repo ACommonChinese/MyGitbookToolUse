@@ -51,6 +51,7 @@
         * [UIGestureRecognier](iOS/手势相关/UIGestureRecognier.md)
     * [NSScanner](iOS/NSScanner.md)
     * [Swift基本语法](iOS/Swift基本语法.md)
+    * [Swift常用函数说明](iOS/Swift常用函数说明.md)
     * [CoreFoundation](iOS/CoreFoundation/README.md)
         * [CFDictionary](iOS/CoreFoundation/CFDictionary.md)
     * [Pod](iOS/Pod/README.md)
