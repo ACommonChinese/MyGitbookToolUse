@@ -1,0 +1,1659 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>运算符重载 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../SDWebImage源码剖析/" />
+    
+    
+    <link rel="prev" href="Reflection反射.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../GitBook/">
+            
+                <a href="../../GitBook/">
+            
+                    
+                    GitBook
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../GitBook/安装.html">
+            
+                <a href="../../GitBook/安装.html">
+            
+                    
+                    安装
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1.1" data-path="../../GitBook/语法.html">
+            
+                <a href="../../GitBook/语法.html">
+            
+                    
+                    语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../WordPress/">
+            
+                <a href="../../WordPress/">
+            
+                    
+                    WordPress
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../WordPress/简介.html">
+            
+                <a href="../../WordPress/简介.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../WordPress/域名解析和域名绑定.html">
+            
+                <a href="../../WordPress/域名解析和域名绑定.html">
+            
+                    
+                    域名解析和域名绑定
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../WordPress/使用FTP上传WordPress.html">
+            
+                <a href="../../WordPress/使用FTP上传WordPress.html">
+            
+                    
+                    使用FTP上传WordPress
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.4" data-path="../../WordPress/备案.html">
+            
+                <a href="../../WordPress/备案.html">
+            
+                    
+                    备案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.5" data-path="../../WordPress/主题介绍.html">
+            
+                <a href="../../WordPress/主题介绍.html">
+            
+                    
+                    主题介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6" data-path="../../WordPress/BeTheme/">
+            
+                <a href="../../WordPress/BeTheme/">
+            
+                    
+                    BeTheme主题
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.6.1" data-path="../../WordPress/BeTheme/购买和配置主题.html">
+            
+                <a href="../../WordPress/BeTheme/购买和配置主题.html">
+            
+                    
+                    购买和配置主题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6.2" data-path="../../WordPress/BeTheme/基本操作.html">
+            
+                <a href="../../WordPress/BeTheme/基本操作.html">
+            
+                    
+                    基本操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6.3" data-path="../../WordPress/BeTheme/遇到的一些问题.html">
+            
+                <a href="../../WordPress/BeTheme/遇到的一些问题.html">
+            
+                    
+                    遇到的一些问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6.4" data-path="../../WordPress/BeTheme/新闻博客.html">
+            
+                <a href="../../WordPress/BeTheme/新闻博客.html">
+            
+                    
+                    新闻博客
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.6.5" data-path="../../WordPress/BeTheme/CF7插件.html">
+            
+                <a href="../../WordPress/BeTheme/CF7插件.html">
+            
+                    
+                    CF7插件
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../Socket/">
+            
+                <a href="../../Socket/">
+            
+                    
+                    Socket
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../Socket/认识Socket.html">
+            
+                <a href="../../Socket/认识Socket.html">
+            
+                    
+                    认识Socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../Socket/Linux_Socket常用函数解析.html">
+            
+                <a href="../../Socket/Linux_Socket常用函数解析.html">
+            
+                    
+                    Linux_Socket常用函数解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../Socket/server持续监听client.html">
+            
+                <a href="../../Socket/server持续监听client.html">
+            
+                    
+                    server持续监听client
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../../Socket/TCP粘包问题.html">
+            
+                <a href="../../Socket/TCP粘包问题.html">
+            
+                    
+                    TCP粘包问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.5" data-path="../../Socket/socket实现文件传输.html">
+            
+                <a href="../../Socket/socket实现文件传输.html">
+            
+                    
+                    socket实现文件传输
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.6" data-path="../../Socket/字节序.html">
+            
+                <a href="../../Socket/字节序.html">
+            
+                    
+                    字节序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.7" data-path="../../Socket/通过域名获取IP地址.html">
+            
+                <a href="../../Socket/通过域名获取IP地址.html">
+            
+                    
+                    通过域名获取IP地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../../Socket/基于UDP通信的小Demo.html">
+            
+                <a href="../../Socket/基于UDP通信的小Demo.html">
+            
+                    
+                    基于UDP通信的小Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.9" data-path="../../Socket/NSInputStream_NSOutputStream_Socket.html">
+            
+                <a href="../../Socket/NSInputStream_NSOutputStream_Socket.html">
+            
+                    
+                    NSInputStream_NSOutputStream_Socket
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../C_C++/">
+            
+                <a href="../../C_C++/">
+            
+                    
+                    C_C++
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../C_C++/关键字restrict.html">
+            
+                <a href="../../C_C++/关键字restrict.html">
+            
+                    
+                    关键字restrict
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../Python/">
+            
+                <a href="../../Python/">
+            
+                    
+                    Python
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../Python/备记语法.html">
+            
+                <a href="../../Python/备记语法.html">
+            
+                    
+                    备记语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../Python/pickle.html">
+            
+                <a href="../../Python/pickle.html">
+            
+                    
+                    pickle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../Python/常用模块.html">
+            
+                <a href="../../Python/常用模块.html">
+            
+                    
+                    常用模块
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../Vim/">
+            
+                <a href="../../Vim/">
+            
+                    
+                    Vim
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../Vim/使用Vim编辑Python.html">
+            
+                <a href="../../Vim/使用Vim编辑Python.html">
+            
+                    
+                    使用Vim编辑Python.md
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../Vim/插件的使用.html">
+            
+                <a href="../../Vim/插件的使用.html">
+            
+                    
+                    插件的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../Vim/Leader.html">
+            
+                <a href="../../Vim/Leader.html">
+            
+                    
+                    Leader
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    iOS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../UIView.html">
+            
+                <a href="../UIView.html">
+            
+                    
+                    UIView
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../WKWebView.html">
+            
+                <a href="../WKWebView.html">
+            
+                    
+                    WKWebView
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../组件化.html">
+            
+                <a href="../组件化.html">
+            
+                    
+                    组件化
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../App之间跳转.html">
+            
+                <a href="../App之间跳转.html">
+            
+                    
+                    App之间跳转
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../Toll-free_bridging.html">
+            
+                <a href="../Toll-free_bridging.html">
+            
+                    
+                    Toll-free bridging
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../UIScrollView约束.html">
+            
+                <a href="../UIScrollView约束.html">
+            
+                    
+                    UIScrollView约束
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    Swift
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.7.1" data-path="入门语法.html">
+            
+                <a href="入门语法.html">
+            
+                    
+                    入门语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.2" data-path="常用函数.html">
+            
+                <a href="常用函数.html">
+            
+                    
+                    常用函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7.3" data-path="Reflection反射.html">
+            
+                <a href="Reflection反射.html">
+            
+                    
+                    Reflection反射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8.7.4" data-path="运算符重载.html">
+            
+                <a href="运算符重载.html">
+            
+                    
+                    运算符重载
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../SDWebImage源码剖析/">
+            
+                <a href="../SDWebImage源码剖析/">
+            
+                    
+                    SDWebImage源码剖析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.8.1" data-path="../SDWebImage源码剖析/SubDemos.html">
+            
+                <a href="../SDWebImage源码剖析/SubDemos.html">
+            
+                    
+                    SubDemos
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.2" data-path="../SDWebImage源码剖析/缓存.html">
+            
+                <a href="../SDWebImage源码剖析/缓存.html">
+            
+                    
+                    缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8.3" data-path="../SDWebImage源码剖析/结构分析.html">
+            
+                <a href="../SDWebImage源码剖析/结构分析.html">
+            
+                    
+                    结构分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../手势相关/">
+            
+                <a href="../手势相关/">
+            
+                    
+                    手势相关
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.9.1" data-path="../手势相关/UIGestureRecognier.html">
+            
+                <a href="../手势相关/UIGestureRecognier.html">
+            
+                    
+                    UIGestureRecognier
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="../NSScanner.html">
+            
+                <a href="../NSScanner.html">
+            
+                    
+                    NSScanner
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.11" data-path="../CoreFoundation/">
+            
+                <a href="../CoreFoundation/">
+            
+                    
+                    CoreFoundation
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.11.1" data-path="../CoreFoundation/CFDictionary.html">
+            
+                <a href="../CoreFoundation/CFDictionary.html">
+            
+                    
+                    CFDictionary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.12" data-path="../Pod/">
+            
+                <a href="../Pod/">
+            
+                    
+                    Pod
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.12.1" data-path="../Pod/Pod安装.html">
+            
+                <a href="../Pod/Pod安装.html">
+            
+                    
+                    Pod安装
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.12.2" data-path="../Pod/Pod使用.html">
+            
+                <a href="../Pod/Pod使用.html">
+            
+                    
+                    Pod使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.12.3" data-path="../Pod/提交自己的Pod.html">
+            
+                <a href="../Pod/提交自己的Pod.html">
+            
+                    
+                    提交自己的Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.12.4" data-path="../Pod/本地Pod.html">
+            
+                <a href="../Pod/本地Pod.html">
+            
+                    
+                    本地Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.12.5" data-path="../Pod/私有Pod.html">
+            
+                <a href="../Pod/私有Pod.html">
+            
+                    
+                    私有Pod
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.13" data-path="../Framework/">
+            
+                <a href="../Framework/">
+            
+                    
+                    Framework
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.13.1" data-path="../Framework/Frameworks的创建和使用.html">
+            
+                <a href="../Framework/Frameworks的创建和使用.html">
+            
+                    
+                    Frameworks的创建和使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.13.2" data-path="../Framework/Frameworks和弱链接.html">
+            
+                <a href="../Framework/Frameworks和弱链接.html">
+            
+                    
+                    Frameworks和弱链接
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../Dart/">
+            
+                <a href="../../Dart/">
+            
+                    
+                    Dart
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../Dart/Mixin.html">
+            
+                <a href="../../Dart/Mixin.html">
+            
+                    
+                    Mixin
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../JavaScript/">
+            
+                <a href="../../JavaScript/">
+            
+                    
+                    JavaScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../JavaScript/常用语法.html">
+            
+                <a href="../../JavaScript/常用语法.html">
+            
+                    
+                    常用语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../Node.js/">
+            
+                <a href="../../Node.js/">
+            
+                    
+                    Node.js
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../../Node.js/NodeJS服务器搭建.html">
+            
+                <a href="../../Node.js/NodeJS服务器搭建.html">
+            
+                    
+                    NodeJS服务器搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11.2" data-path="../../Node.js/NodeJS服务器Demo.html">
+            
+                <a href="../../Node.js/NodeJS服务器Demo.html">
+            
+                    
+                    NodeJS服务器Demo
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../算法/">
+            
+                <a href="../../算法/">
+            
+                    
+                    算法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../算法/二分查找.html">
+            
+                <a href="../../算法/二分查找.html">
+            
+                    
+                    二分查找
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../算法/插入排序.html">
+            
+                <a href="../../算法/插入排序.html">
+            
+                    
+                    插入排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../算法/快速排序.html">
+            
+                <a href="../../算法/快速排序.html">
+            
+                    
+                    快速排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../算法/选择排序.html">
+            
+                <a href="../../算法/选择排序.html">
+            
+                    
+                    选择排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../../算法/冒泡排序.html">
+            
+                <a href="../../算法/冒泡排序.html">
+            
+                    
+                    冒泡排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../../算法/归并排序.html">
+            
+                <a href="../../算法/归并排序.html">
+            
+                    
+                    归并排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../../算法/堆排序.html">
+            
+                <a href="../../算法/堆排序.html">
+            
+                    
+                    堆排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../../算法/计数排序.html">
+            
+                <a href="../../算法/计数排序.html">
+            
+                    
+                    计数排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../../算法/希尔排序.html">
+            
+                <a href="../../算法/希尔排序.html">
+            
+                    
+                    希尔排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="../../算法/拓扑排序.html">
+            
+                <a href="../../算法/拓扑排序.html">
+            
+                    
+                    拓扑排序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="../../算法/汉诺塔.html">
+            
+                <a href="../../算法/汉诺塔.html">
+            
+                    
+                    汉诺塔
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.13" data-path="../../工具使用/">
+            
+                <a href="../../工具使用/">
+            
+                    
+                    工具使用
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.13.1" data-path="../../工具使用/MAC_OS/Handoff.html">
+            
+                <a href="../../工具使用/MAC_OS/Handoff.html">
+            
+                    
+                    MAC_OS
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >运算符重载</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x8FD0;&#x7B97;&#x7B26;&#x91CD;&#x8F7D;">&#x8FD0;&#x7B97;&#x7B26;&#x91CD;&#x8F7D;</h1>
+<p><strong>&#x53CC;&#x76EE;&#x8FD0;&#x7B97;&#x7B26;</strong></p>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Vector</span> </span>{
+    <span class="hljs-keyword">var</span> x: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
+    <span class="hljs-keyword">var</span> y: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
+    <span class="hljs-keyword">var</span> z: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
+
+    <span class="hljs-keyword">init</span>(x: <span class="hljs-type">Double</span>, y: <span class="hljs-type">Double</span>, z: <span class="hljs-type">Double</span>) {
+        <span class="hljs-keyword">self</span>.x = x
+        <span class="hljs-keyword">self</span>.y = y
+        <span class="hljs-keyword">self</span>.z = z
+    }
+
+    <span class="hljs-keyword">convenience</span> <span class="hljs-keyword">init</span>() {
+        <span class="hljs-keyword">self</span>.<span class="hljs-keyword">init</span>(x: <span class="hljs-number">0</span>, y: <span class="hljs-number">0</span>, z: <span class="hljs-number">0</span>) 
+    }
+
+    <span class="hljs-comment">/// Operator &apos;+&apos; declared in type &apos;Vector&apos; must be &apos;static&apos;</span>
+    <span class="hljs-comment">/// + &#x662F;&#x53CC;&#x76EE;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x4E24;&#x4E2A;&#x53C2;&#x6570;</span>
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> +<span class="hljs-params">(v1: Vector, v2: Vector)</span></span> -&gt; <span class="hljs-type">Vector</span> {
+        <span class="hljs-keyword">let</span> vector: <span class="hljs-type">Vector</span> = <span class="hljs-type">Vector</span>()
+        vector.x = v1.x + v2.x
+        vector.y = v1.y + v2.y
+        vector.z = v1.z + v2.z
+        <span class="hljs-keyword">return</span> vector
+    }
+}
+</code></pre>
+<p><strong>&#x5355;&#x76EE;&#x8FD0;&#x7B97;&#x7B26;</strong></p>
+<p>&#x7C7B;&#x548C;&#x7ED3;&#x6784;&#x4F53;&#x4E5F;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5355;&#x76EE;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x5355;&#x76EE;&#x8FD0;&#x7B97;&#x7B26;&#x53EA;&#x8FD0;&#x7B97;&#x4E00;&#x4E2A;&#x503C;&#x3002;
+&#x8FD0;&#x7B97;&#x7B26;&#x51FA;&#x73B0;&#x5728;&#x503C;&#x4E4B;&#x524D;&#x4E3A;&#x524D;&#x7F00;&#x8FD0;&#x7B97;&#x7B26;(prefix, &#x5982; -a)&#xFF0C;&#x51FA;&#x73B0;&#x5728;&#x503C;&#x4E4B;&#x540E;&#x4E3A;&#x540E;&#x7F00;&#x8FD0;&#x7B97;&#x7B26;(postfix, &#x5982;a!)&#x3002;</p>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Coordinate</span> </span>{
+    <span class="hljs-keyword">var</span> x: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
+    <span class="hljs-keyword">var</span> y: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">prefix</span> <span class="hljs-function"><span class="hljs-keyword">func</span> +<span class="hljs-params">(coordinate: Coordinate)</span></span> -&gt; <span class="hljs-type">Coordinate</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-type">Coordinate</span>(x: +coordinate.x, y: +coordinate.y)
+    }
+
+    <span class="hljs-keyword">static</span> <span class="hljs-keyword">prefix</span> <span class="hljs-function"><span class="hljs-keyword">func</span> -<span class="hljs-params">(coordinate: Coordinate)</span></span> -&gt; <span class="hljs-type">Coordinate</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-type">Coordinate</span>(x: -coordinate.x, y: -coordinate.y)
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">let</span> p1 = <span class="hljs-type">Coordinate</span>(x: <span class="hljs-number">1.0</span>, y: <span class="hljs-number">1.0</span>)
+    <span class="hljs-keyword">let</span> p2 = <span class="hljs-type">Coordinate</span>(x: <span class="hljs-number">2.0</span>, y: <span class="hljs-number">2.0</span>)
+    <span class="hljs-built_in">print</span>(-p1) <span class="hljs-comment">// Coordinate(x: -1.0, y: -1.0)</span>
+    <span class="hljs-built_in">print</span>(+p2) <span class="hljs-comment">// Coordinate(x: 2.0, y: 2.0)</span>
+}
+</code></pre>
+<p><strong>&#x590D;&#x5408;&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;</strong></p>
+<p>&#x590D;&#x5408;&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;&#x662F;&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;&#xFF08;=&#xFF09;&#x548C;&#x5176;&#x4ED6;&#x8FD0;&#x7B97;&#x7B26;&#x8FDB;&#x884C;&#x7ED3;&#x5408;, &#x5982; +=&#x3001;-=</p>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Coordinate</span> </span>{
+    <span class="hljs-keyword">var</span> x: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
+    <span class="hljs-keyword">var</span> y: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
+
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> +=<span class="hljs-params">(<span class="hljs-keyword">left</span>: <span class="hljs-keyword">inout</span> Coordinate, <span class="hljs-keyword">right</span>: Coordinate)</span></span> {
+        <span class="hljs-keyword">left</span> = <span class="hljs-type">Coordinate</span>(x: <span class="hljs-keyword">left</span>.x + <span class="hljs-keyword">right</span>.x, y: <span class="hljs-keyword">left</span>.y + <span class="hljs-keyword">right</span>.y)
+    }
+
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> -=<span class="hljs-params">(<span class="hljs-keyword">left</span>: <span class="hljs-keyword">inout</span> Coordinate, <span class="hljs-keyword">right</span>: Coordinate)</span></span> {
+        <span class="hljs-keyword">left</span> = <span class="hljs-type">Coordinate</span>(x: <span class="hljs-keyword">left</span>.x - <span class="hljs-keyword">right</span>.x , y: <span class="hljs-keyword">left</span>.y - <span class="hljs-keyword">right</span>.y)
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">var</span> p1 = <span class="hljs-type">Coordinate</span>(x: <span class="hljs-number">1.0</span>, y: <span class="hljs-number">1.0</span>)
+    <span class="hljs-keyword">let</span> p2 = <span class="hljs-type">Coordinate</span>(x: <span class="hljs-number">2.0</span>, y: <span class="hljs-number">2.0</span>)
+    p1 += p2
+    <span class="hljs-built_in">print</span>(p1) <span class="hljs-comment">// Coordinate(x: 3.0, y: 3.0)</span>
+}
+</code></pre>
+<p><strong>&#x6CE8;&#xFF1A;<code>=</code>&#x548C;&#x4E09;&#x76EE;&#x8FD0;&#x7B97;&#x7B26;<code>a ? b : c</code>&#x4E0D;&#x53EF;&#x91CD;&#x8F7D;</strong></p>
+<p><strong>&#x7B49;&#x4EF7;&#x8FD0;&#x7B97;&#x7B26; ==</strong></p>
+<p>&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x548C;&#x7ED3;&#x6784;&#x4F53;&#x6CA1;&#x6709;&#x5BF9;&#x7B49;&#x4EF7;&#x8FD0;&#x7B97;&#x7B26;&#x8FDB;&#x884C;&#x9ED8;&#x8BA4;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x7B49;&#x4EF7;&#x8FD0;&#x7B97;&#x7B26;&#x4E00;&#x822C;&#x88AB;&#x79F0;&#x4E3A;&#x76F8;&#x7B49;&#x8FD0;&#x7B97;&#x7B26;<code>==</code>&#x548C;&#x4E0D;&#x7B49;&#x8FD0;&#x7B97;&#x7B26; <code>!=</code></p>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Coordinate</span> </span>{
+    <span class="hljs-keyword">var</span> x: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
+    <span class="hljs-keyword">var</span> y: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
+
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> ==<span class="hljs-params">(<span class="hljs-keyword">left</span>: Coordinate, <span class="hljs-keyword">right</span>: Coordinate)</span></span> -&gt; <span class="hljs-type">Bool</span> {
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">left</span>.x == <span class="hljs-keyword">right</span>.x &amp;&amp; <span class="hljs-keyword">left</span>.y == <span class="hljs-keyword">right</span>.y {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    }
+
+    <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">func</span> !=<span class="hljs-params">(<span class="hljs-keyword">left</span>: Coordinate, <span class="hljs-keyword">right</span>: Coordinate)</span></span> -&gt; <span class="hljs-type">Bool</span> {
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">left</span>.x != <span class="hljs-keyword">right</span>.x || <span class="hljs-keyword">left</span>.y != <span class="hljs-keyword">right</span>.y {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">let</span> p1 = <span class="hljs-type">Coordinate</span>(x: <span class="hljs-number">1.0</span>, y: <span class="hljs-number">1.0</span>)
+    <span class="hljs-keyword">var</span> p2 = <span class="hljs-type">Coordinate</span>(x: <span class="hljs-number">2.0</span>, y: <span class="hljs-number">2.0</span>)
+
+    <span class="hljs-built_in">print</span>(p1 == p2) <span class="hljs-comment">// false</span>
+    p2.x -= <span class="hljs-number">1</span>
+    p2.y -= <span class="hljs-number">1</span>
+    <span class="hljs-built_in">print</span>(p1 == p2) <span class="hljs-comment">// true</span>
+}
+</code></pre>
+<p><strong>&#x81EA;&#x5B9A;&#x4E49;&#x8FD0;&#x7B97;&#x7B26;</strong></p>
+<p>&#x53EF;&#x4EE5;&#x81EA;&#x5B9A;&#x4E49;&#x524D;&#x7F6E;&#x8FD0;&#x7B97;&#x7B26;prefix&#x3001;&#x540E;&#x7F6E;&#x8FD0;&#x7B97;&#x7B26;postfix&#x3001;&#x4E2D;&#x7F6E;&#x8FD0;&#x7B97;&#x7B26;infix,  &#x7EA6;&#x675F;&#x6761;&#x4EF6;&#xFF1A;</p>
+<ol>
+<li>&#x53EA;&#x80FD;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x5B57;&#x7B26;&#xFF1A;
+<code>/ = - + * % &lt; &gt; ! &amp; | ^ . ~</code></li>
+<li>&#x53EA;&#x6709;&#x4E2D;&#x7F6E;&#x8FD0;&#x7B97;&#x7B26;&#x53EF;&#x4EE5;&#x7EE7;&#x627F;&#x4F18;&#x5148;&#x7EA7;&#x7EC4; precdence(&#x540E;&#x9762;&#x4ECB;&#x7ECD;)</li>
+<li>&#x81EA;&#x5B9A;&#x4E49;&#x8FD0;&#x7B97;&#x7B26;&#x4E0D;&#x53EF;&#x653E;&#x5728;&#x7C7B;&#x4E2D;&#xFF0C;&#x5FC5;&#x987B;&#x653E;&#x5728;&#x6587;&#x4EF6;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;</li>
+</ol>
+<p>&#x81EA;&#x5B9A;&#x4E49;&#x540E;&#x7F6E;&#x8FD0;&#x7B97;&#x7B26;</p>
+<pre><code class="lang-Swift"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Coordinate</span> </span>{
+    <span class="hljs-keyword">var</span> x: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
+    <span class="hljs-keyword">var</span> y: <span class="hljs-type">Double</span> = <span class="hljs-number">0.0</span>
+}
+
+<span class="hljs-comment">// &#x6587;&#x4EF6;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x5373;&#x5168;&#x5C40;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x4E0D;&#x53EF;&#x5728;class&#x4E0B;</span>
+<span class="hljs-keyword">prefix</span> <span class="hljs-keyword">operator</span> +++
+<span class="hljs-keyword">prefix</span> <span class="hljs-function"><span class="hljs-keyword">func</span> +++<span class="hljs-params">(coordinate: <span class="hljs-keyword">inout</span> Coordinate)</span></span> -&gt; <span class="hljs-type">Coordinate</span> {
+    coordinate.x = coordinate.x + coordinate.x
+    coordinate.y = coordinate.y + coordinate.y
+    <span class="hljs-keyword">return</span> coordinate
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">var</span> p1 = <span class="hljs-type">Coordinate</span>(x: <span class="hljs-number">1.0</span>, y: <span class="hljs-number">1.0</span>)
+    <span class="hljs-built_in">print</span>(+++p1) <span class="hljs-comment">// Coordinate(x: 2.0, y: 2.0)</span>
+}
+</code></pre>
+<p>&#x81EA;&#x5B9A;&#x4E49;&#x524D;&#x7F6E;&#x8FD0;&#x7B97;&#x7B26;&#x548C;&#x81EA;&#x5B9A;&#x4E49;&#x540E;&#x7F6E;&#x8FD0;&#x7B97;&#x7B26;&#x7C7B;&#x4F3C;</p>
+<pre><code class="lang-Swift"><span class="hljs-keyword">postfix</span> <span class="hljs-keyword">operator</span> +++
+<span class="hljs-keyword">postfix</span> <span class="hljs-function"><span class="hljs-keyword">func</span> +++<span class="hljs-params">(coordinate: <span class="hljs-keyword">inout</span> Coordinate)</span></span> -&gt; <span class="hljs-type">Coordinate</span> {
+    coordinate.x = coordinate.x + coordinate.x
+    coordinate.y = coordinate.y + coordinate.y
+    <span class="hljs-keyword">return</span> coordinate
+}
+</code></pre>
+<p>&#x81EA;&#x5B9A;&#x4E49;&#x4E2D;&#x7F6E;&#x8FD0;&#x7B97;&#x7B26;</p>
+<pre><code class="lang-Swift">precedencegroup <span class="hljs-type">MyPrecedence</span> {
+    <span class="hljs-comment">// higherThan: AdditionPrecedence   // &#x4F18;&#x5148;&#x7EA7;, &#x6BD4;&#x52A0;&#x6CD5;&#x8FD0;&#x7B97;&#x9AD8;</span>
+    lowerThan: <span class="hljs-type">AdditionPrecedence</span>       <span class="hljs-comment">// &#x4F18;&#x5148;&#x7EA7;, &#x6BD4;&#x52A0;&#x6CD5;&#x8FD0;&#x7B97;&#x4F4E;</span>
+    <span class="hljs-keyword">associativity</span>: <span class="hljs-keyword">none</span>                 <span class="hljs-comment">// &#x7ED3;&#x5408;&#x65B9;&#x5411;:left, right or none</span>
+    assignment: <span class="hljs-literal">false</span>                   <span class="hljs-comment">// true=&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;,false=&#x975E;&#x8D4B;&#x503C;&#x8FD0;&#x7B97;&#x7B26;</span>
+}
+
+
+<span class="hljs-keyword">infix</span> <span class="hljs-keyword">operator</span> +++ : <span class="hljs-type">MyPrecedence</span>  <span class="hljs-comment">// &#x7EE7;&#x627F; MyPrecedence &#x4F18;&#x5148;&#x7EA7;&#x7EC4;(&#x53EF;&#x9009;)</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> +++<span class="hljs-params">(<span class="hljs-keyword">left</span>: Int, <span class="hljs-keyword">right</span>: Int)</span></span> -&gt; <span class="hljs-type">Int</span> {
+    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">left</span> + <span class="hljs-keyword">right</span>) * <span class="hljs-number">2</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-built_in">print</span>(<span class="hljs-number">3</span>+++<span class="hljs-number">2</span>)
+}
+</code></pre>
+<p>&#x501F;&#x52A9;&#x81EA;&#x5B9A;&#x4E49;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6D6A;&#x4E00;&#x6D6A;&#xFF0C;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x7B26;&#xFF0C;&#x5F53;&#x6709;&#x503C;&#x662F;&#x4F7F;&#x7528;&#x6B64;&#x503C;&#xFF0C;&#x65E0;&#x503C;&#x65F6;&#x4F7F;&#x7528;&#x60F3;&#x8981;&#x7684;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-Swift"><span class="hljs-keyword">postfix</span> <span class="hljs-keyword">operator</span> &lt;&lt;&lt;
+<span class="hljs-keyword">postfix</span> <span class="hljs-function"><span class="hljs-keyword">func</span> &lt;&lt;&lt;(a: String?) -&gt; <span class="hljs-title">String</span> </span>{ <span class="hljs-keyword">return</span> a ?? <span class="hljs-string">&quot;&quot;</span> }
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">test</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-built_in">print</span>(getStr()&lt;&lt;&lt;)
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">getStr</span><span class="hljs-params">()</span></span> -&gt; <span class="hljs-type">String</span>? {
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x793A;&#x4F8B;</p>
+<pre><code class="lang-Swift">postfix operator &lt;&lt;&lt;
+
+postfix func &lt;&lt;&lt;(a: String?)              -&gt; String              { return a ?? &quot;&quot; }
+postfix func &lt;&lt;&lt;(a: Int?)                 -&gt; Int                 { return a ?? 0 }
+postfix func &lt;&lt;&lt;(a: Int8?)                -&gt; Int8                { return a ?? 0 }
+postfix func &lt;&lt;&lt;(a: Int16?)               -&gt; Int16               { return a ?? 0 }
+postfix func &lt;&lt;&lt;(a: Int32?)               -&gt; Int32               { return a ?? 0 }
+postfix func &lt;&lt;&lt;(a: Int64?)               -&gt; Int64               { return a ?? 0 }
+postfix func &lt;&lt;&lt;(a: UInt?)                -&gt; UInt                { return a ?? 0 }
+postfix func &lt;&lt;&lt;(a: Double?)              -&gt; Double              { return a ?? 0.0 }
+postfix func &lt;&lt;&lt;(a: Float?)               -&gt; Float               { return a ?? 0.0 }
+postfix func &lt;&lt;&lt;(a: [AnyObject]?)         -&gt; [AnyObject]         { return a ?? [] }
+postfix func &lt;&lt;&lt;(a: [String]?)            -&gt; [String]            { return a ?? [] }
+postfix func &lt;&lt;&lt;(a: [Int]?)               -&gt; [Int]               { return a ?? [] }
+postfix func &lt;&lt;&lt;(a: [String: AnyObject]?) -&gt; [String: AnyObject] { return a ?? [:]}
+postfix func &lt;&lt;&lt;(a: [String: String]?)    -&gt; [String: String]    { return a ?? [:] }
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Reflection反射.html" class="navigation navigation-prev " aria-label="Previous page: Reflection反射">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../SDWebImage源码剖析/" class="navigation navigation-next " aria-label="Next page: SDWebImage源码剖析">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"运算符重载","level":"1.8.7.4","depth":3,"next":{"title":"SDWebImage源码剖析","level":"1.8.8","depth":2,"path":"iOS/SDWebImage源码剖析/README.md","ref":"iOS/SDWebImage源码剖析/README.md","articles":[{"title":"SubDemos","level":"1.8.8.1","depth":3,"path":"iOS/SDWebImage源码剖析/SubDemos.md","ref":"iOS/SDWebImage源码剖析/SubDemos.md","articles":[]},{"title":"缓存","level":"1.8.8.2","depth":3,"path":"iOS/SDWebImage源码剖析/缓存.md","ref":"iOS/SDWebImage源码剖析/缓存.md","articles":[]},{"title":"结构分析","level":"1.8.8.3","depth":3,"path":"iOS/SDWebImage源码剖析/结构分析.md","ref":"iOS/SDWebImage源码剖析/结构分析.md","articles":[]}]},"previous":{"title":"Reflection反射","level":"1.8.7.3","depth":3,"path":"iOS/Swift/Reflection反射.md","ref":"iOS/Swift/Reflection反射.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"iOS/Swift/运算符重载.md","mtime":"2019-07-12T10:50:39.338Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-16T07:08:15.424Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -1,0 +1,35 @@
+# vimrc样例
+
+
+```shell
+" ============================================================"
+"                      For Vundle                             "
+" ============================================================"
+set nocompatible              " required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+" ============================================================"
+"                      Vim simple config                       "
+" ============================================================"
+
+syntax enable
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set number
+filetype indent on
+set autoindent
+let g:ycm_use_clangd = 0 
+
+```
+
